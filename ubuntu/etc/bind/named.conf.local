@@ -8,10 +8,20 @@
 
 zone "ariafatah.com" {
 	type master;
-	file "/etc/bind/db.ariafatah";
+	file "/etc/bind/db.forward";
 };
 
 zone "1.1.168.192.in-addr.arpa" {
 	type master;
-	file "/etc/bind/db.192";
+	file "/etc/bind/db.reverse";
 };
+
+#zone "ariafatah.net" {
+#	type master;
+#	file "/etc/bind/db.ariafatah.net";
+#};
+
+#zone "27.128.168.192.in-addr.arpa" {
+#	type master;
+#	file "/etc/bind/db.wifi";
+#};

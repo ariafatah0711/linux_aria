@@ -1,0 +1,14 @@
+;
+; BIND reverse data file for broadcast zone
+;
+$TTL	604800
+@	IN	SOA	ariafatah.id. root.ariafatah.id. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ariafatah.id.
+@	IN	A	192.168.128.27
+27	IN	PTR	ariafatah.id.
