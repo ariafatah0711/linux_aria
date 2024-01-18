@@ -24,9 +24,19 @@ this is my linux conf, and my file for run linux
 <p id="table-of-contents"></p>
 
 ## 📋 Table of Contents
-<details>
-  <summary><b>size virtual box</b></summary>
+<details open>
+  <summary><b>Dokumentasi</b></summary>
 
+  - 
+    - <a href="./README/1/01 - remote server.md">01 - remote server</a>
+    - <a href="./README/1/02 - ftp server.md">02 - ftp server</a>
+    -  <a href="./README/1/03 - file server.md">03 - file server</a>
+  - server
+    - <a href="./README/2/01 - dhcp server.md">01 - dhcp server</a>
+    - <a href="./README/2/02 - web server.md">02 - web server</a>
+    - <a href="./README/2/03 - dns server.md">03 - dns server</a>
+    - <a href="./README/2/04 - database server.md">04 - database server</a>
+    - <a href="./README/2/05 - mail server.md">05 - mail server</a>
 </details>
 
 <details>
