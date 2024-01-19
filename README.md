@@ -40,8 +40,46 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
-  <summary><b>apache2</b></summary>
+  <summary><b>ubuntu</b></summary>
 
+  - install ubuntu
+</details>
+
+
+<details>
+  <summary><b>redhat</b></summary>
+  
+  - install redhat with cli
+    - before install in option installasion click "TAB"
+    - and add in prompt "inst.text"
+
+  - mount package
+    - click icon iso in bottom window virtual machine red hat
+      - and click rhel9dvd or ur iso red hat
+    - make folder /mnt/disc/ ```mkdir -p /mnt/disc/```
+    - mount repository ```mount /dev/sr0 /mnt/disc/```
+    - make file repository conf with ```vi /etc/yum.repos.d/rhel9dvd.repo```
+      ```
+      [BaseOS]
+      name=BaseOS Package Red Hat Enterprise Linux 9
+      metadata_expire=-1
+      gpgcheck=1
+      enabled=1
+      baseurl=file:///mnt/disc/BaseOS/
+      gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+
+      [AppStream]
+      name=AppStream Packages Red Hat Enterprise Linux 9
+      metadata_expire=-1
+      gpgcheck=1
+      enabled=1
+      baseurl=file:///mnt/disc/AppStream/
+      gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+      ```
+    - change subscription manager conf with ```vi /etc/yum/pluginconf.d/subscription-manager.conf```
+      - change enabled 1 to 0
+    - ```yum clean all```
+    - ```yum repolist```
 </details>
 
 <p id="download"></p>

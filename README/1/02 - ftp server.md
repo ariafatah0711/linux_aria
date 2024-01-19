@@ -6,7 +6,7 @@ FTP adalah singkatan dari File Transfer Protocol. Ini adalah protokol standar ya
 - install vsftpd
     - ```apt install vsftpd```
 
-- konfigurasi fsvtpd /etc/fsvtpd.conf
+- config fsvtpd /etc/fsvtpd.conf
   - ```cp /etc/vsftpd.conf /etc/vsftpd.conf.backup```
   - ```nano /etc/fsvtpd.conf```
     - uncomment this line
@@ -31,3 +31,19 @@ FTP adalah singkatan dari File Transfer Protocol. Ini adalah protokol standar ya
 - start in host windows
   - start in terminal ```ftp localhost```
   - open in file with file explore and put ```ftp://192.168.1.1```
+
+## redhat
+- install vsftpd
+  - ```yum install vsftpd```
+
+- config vsftpd
+  - ```cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.backup```
+  - ```vi /etc/vsftpd/vsftpd.conf```
+    - uncoment this
+    ```
+    ```
+
+- start vsftpd
+  - ```firewall-cmd --permanent --add-port=30000-31000/tcp```
+  - ```firewall-cmd --reload```
+  - ``` firewall-cmd --list-ports```
