@@ -60,7 +60,7 @@ DHCP kepanjangan dari Dynamic Host Configuration Protocol. Pengertian DHCP adala
                 option subnet-mask              255.255.255.0;
                 option broadcast-address        10.10.10.255;
                 option domain-name-servers      10.10.10.1;
-                option domain-name              "ariafatah.com";
+                option domain-search            "ariafatah.com";
         }
         ```
 - start dhcpd server
