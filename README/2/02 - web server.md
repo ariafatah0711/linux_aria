@@ -32,6 +32,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
       ```
     - ```a2ensite ariafatah.com-ssl.conf``` to active configuration
     - ```a2dissite 000-default.conf``` to deactive configuration
+    - ```a2query -s``` to list active configuration
 
 - start configuration
   - ```systemctl restart/status```
