@@ -86,32 +86,52 @@ this is my linux conf, and my file for run linux
   <summary><b>package error</b></summary>
 
   - process id
-    - ps aux | grep -i apt
-    - sudo kill <process_id>
-    - sudo kill -9 <process_id>
-    - sudo killall apt apt-get
+    - ```ps aux | grep -i apt```
+    - ```sudo kill <process_id>```
+    - ```sudo kill -9 <process_id>```
+    - ```sudo killall apt apt-get```
 
   - lsof dpkg lock
-    - sudo lsof /var/lib/dpkg/lock
-    - sudo lsof /var/lib/apt/lists/lock
-    - sudo lsof /var/cache/apt/archives/lock
+    - ```sudo lsof /var/lib/dpkg/lock```
+    - ```sudo lsof /var/lib/apt/lists/lock```
+    - ```sudo lsof /var/cache/apt/archives/lock```
 
-    - sudo rm /var/lib/apt/lists/lock
-    - sudo rm /var/cache/apt/archives/lock
-    - sudo rm /var/lib/dpkg/lock
-    - sudo dpkg --configure -a
+    - ```sudo rm /var/lib/apt/lists/lock```
+    - ```sudo rm /var/cache/apt/archives/lock```
+    - ```sudo rm /var/lib/dpkg/lock```
+    - ```sudo dpkg --configure -a```
 
   - dpkg front-end
-    - sudo lsof /var/lib/dpkg/lock-frontend
+    - ```sudo lsof /var/lib/dpkg/lock-frontend```
       ```
       lsof: WARNING: can't stat() fuse.gvfsd-fuse file system /run/user/1000/gvfs
       Output information may be incomplete.
       COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
       unattende 2823 root    5uW  REG    8,2        0 145221 /var/lib/dpkg/lock-frontend
       ```
-    - sudo kill -9 PID
-    - sudo rm /var/lib/dpkg/lock-frontend
-    - sudo apt update
+    - ```sudo kill -9 PID```
+    - ```sudo rm /var/lib/dpkg/lock-frontend```
+    - ```sudo apt update```
+</details>
+
+<details>
+  <summary><b>firewall-cmd</b></summary>
+
+  - ```firewall-cmd --permanent --add-port=1000-1100/tcp```
+  - ```firewall-cmd --permanent --add-port={80/tcp,443/tcp}```
+  - ```firewall-cmd --permanent --add-port=21/tcp```
+  - ```firewall-cmd --permanent --remove-port=21/tcp```
+  - ```firewall-cmd --reload```
+  - ``` firewall-cmd --list-ports```
+</details>
+
+<details>
+  <summary><b>ufw</b></summary>
+
+  - ```ufw status```
+  - ```ufw enable```
+  - ```ufw disable```
+  - ```ufw allow 23```
 </details>
 
 <p id="download"></p>
