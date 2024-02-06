@@ -1,4 +1,4 @@
-# dhcp server
+# dhcp server :67, 68
 
 DHCP kepanjangan dari Dynamic Host Configuration Protocol. Pengertian DHCP adalah protokol yang di gunakan untuk menyediakan dan menyebarkan alamat IP secara otomatis ke perangkat lainnya yang terhubung dalam suatu jaringan.
 

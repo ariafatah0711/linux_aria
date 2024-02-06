@@ -1,4 +1,4 @@
-# database
+# database :1433, 1521, 8000
 
 Database server adalah program komputer (server) yang bertugas untuk mengelola, mendistribusikan, serta menyimpan database dengan menggunakan model klien server
 

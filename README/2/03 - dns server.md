@@ -1,4 +1,4 @@
-# dns server
+# dns server :53
 
 DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nama host agar lebih efisien dan mudah diingat
 

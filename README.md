@@ -1,4 +1,4 @@
-# termux_aria
+# linux_aria
 
 My file bash, and configurate for linux
 

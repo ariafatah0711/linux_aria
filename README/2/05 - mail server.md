@@ -1,1 +1,1 @@
-mail
+# mail sever :993/IMAP, 995/POP3, 465/SMTP

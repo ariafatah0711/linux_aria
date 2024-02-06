@@ -1,4 +1,4 @@
-# ftp
+# ftp :21, 20
 
 FTP adalah singkatan dari File Transfer Protocol. Ini adalah protokol standar yang digunakan untuk mentransfer file dari satu host ke host lainnya di internet atau dalam suatu jaringan komputer.
 

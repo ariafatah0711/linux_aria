@@ -1,4 +1,4 @@
-# samba
+# samba :139, 445
 
 Samba Server adalah sebuah program dengan protokol client server yang dapat diibaratkan sebagai jembatan yang menghubungkan proses penyediaan layanan untuk berbagi data atau dokumen antara sistem operasi keluarga UNIX dengan sistem operasi Microsoft Windows.
 

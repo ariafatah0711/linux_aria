@@ -1,4 +1,4 @@
-# ssh
+# ssh :22
 
 SSH adalah Secure Shell, yaitu sebuah protokol yang memungkinkan kamu untuk mengontrol perangkat, termasuk mengakses dan memodifikasi beragam pengaturan file yang ada dalam server dalam jarak jauh.
 
@@ -19,4 +19,12 @@ SSH adalah Secure Shell, yaitu sebuah protokol yang memungkinkan kamu untuk meng
 - host windows / termux
   - ```ssh user@192.168.1.1 -p 22```
 
-# telnet
+# telnet :23
+
+Perbedaan Utama Antara Telnet dan SSH Telnet tidak menyediakan autentikasi, sedangkan SSH mengautentikasi penerima. Jaringan pribadi berfungsi dengan Telnet, sedangkan SSH beroperasi pada jaringan bersama. Telnet berinteraksi melalui TCP/IP melalui nomor port 23, sedangkan SSH menggunakan nomor port 22 untuk komunikasi.
+
+- install ssh
+  - ```apt install telnet```
+
+- host windows / termux
+  - ```telnet 192.168.1.1```

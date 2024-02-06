@@ -1,4 +1,4 @@
-# web server
+# web server :80/http, 443/https
 
 Web server adalah sebuah software (perangkat lunak) yang memberikan layanan berupa data. Berfungsi untuk menerima permintaan HTTP atau HTTPS dari klien atau kita kenal dengan web browser (Chrome, Firefox).
 
