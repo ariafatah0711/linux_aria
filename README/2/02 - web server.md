@@ -38,3 +38,28 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
   - ```systemctl restart/status```
   - check ur host windows browser and go ip address / dns
     - click learn more / advance and click accept
+
+## red hat
+- install nginx
+  - ```mount /dev/sr0 /mnt/disc```
+  - ```yum install nginx```
+
+- config nginx
+  - go to directory /usr/share/nginx/
+    - ```cd /usr/share/nginx```
+    - add ur file / repositroy
+  - go to directory config nginx, or edit file in /etc/nginx/nginx.conf
+    - ```vi /etc/nginx/nginx.conf```
+      ```
+        listen       80;
+        listen       [::]:80;
+        server_name  _;
+        root         /usr/share/nginx/newFolder;
+      ```
+  - ```nginx -t```
+  - ```setenforce 0``` for disable security nginx folder
+  - ```systemctl restart nginx```
+
+- firewall
+  - ```firewall-cmd --permanent --add-port={80/tcp,443/tcp}```
+  - ```firewall-cmd --reload```

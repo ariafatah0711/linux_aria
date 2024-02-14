@@ -134,6 +134,22 @@ this is my linux conf, and my file for run linux
   - ```ufw allow 23```
 </details>
 
+
+<details>
+  <summary><b>file permission</b></summary>
+
+  - ```sudo chmod 777 file.txt```
+    - chmod owner-group-other
+      - 4 = read
+      - 2 = write
+      - 1 = execute
+    - ls -a => all file
+    - ls -l => list permission
+
+  - ```sudo chown -R $USER:$USER /path/to/path```
+  - ```sudo chmod -R 755 /path/to/path```
+</details>
+
 <p id="download"></p>
 
 ## 🔨 download

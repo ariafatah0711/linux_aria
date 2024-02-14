@@ -39,8 +39,11 @@ FTP adalah singkatan dari File Transfer Protocol. Ini adalah protokol standar ya
 - config vsftpd
   - ```cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.backup```
   - ```vi /etc/vsftpd/vsftpd.conf```
-    - uncoment this
+    - Change the line which contain
     ```
+    anonymous_enable=YES
+    local_enable=YES
+    write_enable=YES
     ```
 
 - start vsftpd
