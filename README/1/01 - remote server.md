@@ -2,7 +2,7 @@
 
 SSH adalah Secure Shell, yaitu sebuah protokol yang memungkinkan kamu untuk mengontrol perangkat, termasuk mengakses dan memodifikasi beragam pengaturan file yang ada dalam server dalam jarak jauh.
 
-## ubuntu
+## ubuntu, redhat, termux
 - install ssh
   - ```apt install openssh-server```
 

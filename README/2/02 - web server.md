@@ -63,3 +63,37 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
 - firewall
   - ```firewall-cmd --permanent --add-port={80/tcp,443/tcp}```
   - ```firewall-cmd --reload```
+
+### redhat p2
+- add folder in any directory
+  - ```cd /var/www/```
+  - ```git clone https://agithub.com/riafatah0711/linktree.git```
+  - ```chown -R $USER:$USER linktree```
+  - ```chmod -R 755 linktree```
+
+- add new port
+  - ```cd /etc/nginx/conf.d/```
+  - ```vi linktree.conf```
+    ```
+    server {
+        listen 1010;
+        listen [::]:1010;
+        server_name ariafatah.id;
+        root /var/www/linktree;
+
+        index index.html;
+
+        location / {
+                try_files $uri $uri/ =404;
+            }
+    }
+    ```
+
+- test nginx conf, and disable security nginx
+  - ```nginx -t```
+  - ```setenforce 0``` for disable security nginx folder
+  - ```systemctl restart nginx```
+
+- firewall
+  - ```firewall-cmd --permanent --add-port=1010/tcp```
+  - ```firewall-cmd --reload```
