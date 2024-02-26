@@ -120,6 +120,7 @@ this is my linux conf, and my file for run linux
   - ```firewall-cmd --permanent --add-port=1000-1100/tcp```
   - ```firewall-cmd --permanent --add-port={80/tcp,443/tcp}```
   - ```firewall-cmd --permanent --add-port=21/tcp```
+  - ```firewall-cmd --permanent --add-service=dns```
   - ```firewall-cmd --permanent --remove-port=21/tcp```
   - ```firewall-cmd --reload```
   - ``` firewall-cmd --list-ports```
@@ -158,13 +159,12 @@ this is my linux conf, and my file for run linux
 2. Navigate to the directory where you want to save this project.
 3. Use the following command to download the project from the GitHub repository:
    ```sh
-   git clone https://github.com/ariafatah0711/dicoding_3.git
+   git clone https://github.com/ariafatah0711/linux_aria.git
    ```
 
 <p id="related"></p>
 
 ## 📈 related
-<a href="" alt="DEMO"><img src="https://img.shields.io/static/v1?style=for-the-badge&label=DEMO&message=WEB&color=000000"></a>
 
 <p id="license"></p>
 

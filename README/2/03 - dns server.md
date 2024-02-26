@@ -71,12 +71,13 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
 
 ## redhat
 - install bind and backup conf
-  - ```yum install bind```
+  - ```yum install bind bind-utils```
   - ```vi /etc/named.conf /etc/named.conf.backup```
   - ```vi /etc/named.rfc1912.zones /etc/named.rfc1912.zones.backup```
 
 - firewall port 53
   - ```firewall-cmd --permanent --add--port=53/tcp```
+  - ```firewall-cmd --permanent --add--port=53/udp```
   - ```firewall-cmd --add-service=dns --permanent```
   - ```firewall-cmd --reload```
 
@@ -92,11 +93,13 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
         memstatistics-file "/var/named/data/named_mem_stats.txt";
         secroots-file   "/var/named/data/named.secroots";
         recursing-file  "/var/named/data/named.recursing";
-        allow-query     { localhost; any;};
+        allow-query     { localhost; 11.11.11.0/24; any; };
+        allow-transfer  { localhost; 11.11.11.0/24; any; };
         forwarders { 8.8.8.8; 8.8.4.4; };
     }
     ```
   - ```vi /etc/named.rfc1912.zones```
+    u can use forward.zone or db.forward
     ```
       zone "ariafatah.id" IN {
         type master;
@@ -112,7 +115,9 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
     ```
 
 - config record addres: forward, and reverse
-  - ```vi /var/named/forward.conf```
+  - ```cp named.localhost forward.zone```
+  - ```cp named.localhost reverse.zone```
+  - ```vi /var/named/forward.zone```
     ```
     $TTL 86400
     @       IN      SOA     ns1.ariafatah.id       admin.ariafatah.id (
@@ -143,6 +148,12 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
     @       IN      NS      ns1.ariafatah.id.
     1       IN      PTR     ns1.ariafatah.id.
     ```
+
+- check configuration
+  - ```named-checkconf /etc/named.conf```
+  - ```named-checkzone ariafatah.id /var/named/forward.zone```
+  - ```named-checkzone 11.11.11.in-addr.arpa /var/named/reverse.zone```
+
 - enable server, and restart server 
   - ```systemctl enable named```
   - ```systemctl start named```
