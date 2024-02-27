@@ -27,7 +27,7 @@ this is my linux conf, and my file for run linux
 <details open>
   <summary><b>Dokumentasi</b></summary>
 
-  - 
+  - service
     - <a href="./README/1/01 - remote server.md">01 - remote server</a>
     - <a href="./README/1/02 - ftp server.md">02 - ftp server</a>
     -  <a href="./README/1/03 - file server.md">03 - file server</a>
@@ -37,6 +37,9 @@ this is my linux conf, and my file for run linux
     - <a href="./README/2/03 - dns server.md">03 - dns server</a>
     - <a href="./README/2/04 - database server.md">04 - database server</a>
     - <a href="./README/2/05 - mail server.md">05 - mail server</a>
+  - more service / server
+    - <a href="./README/3/01 - vnc server.md">01 - vnc server</a>
+    - <a href="./README/3/02 - ajenti.md">02 - ajenti</a>
 </details>
 
 <details>

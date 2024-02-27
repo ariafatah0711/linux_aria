@@ -49,3 +49,19 @@
   - vncserver -localhost
   - ssh -L 59000:localhost:5901 -c -N -l user 192.168.10.10
   - connect localhost:5901
+
+- x11vnc
+  - apt install x11vnc
+  - x11vnc -storepasswd
+  - x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared
+    -auth guess: Mencoba menebak file otentikasi X Window.
+    -forever: Tetap berjalan tanpa keluar setelah klien terputus.
+    -loop: Tunggu dan perbarui setiap detik.
+    -noxdamage: Nonaktifkan pengoptimalan X damage extension.
+    -repeat: Aktifkan perekaman pengulangan perangkat input.
+    -rfbauth ~/.vnc/passwd: Tentukan lokasi file password.
+    -rfbport 5900: Gunakan port 5900 (bisa diganti sesuai kebutuhan).
+    -shared: Berbagi sesi dengan pengguna lain (opsional)
+  - Terhubung Menggunakan RealVNC Viewer: Gunakan RealVNC Viewer atau aplikasi VNC lainnya untuk terhubung ke alamat IP atau nama host mesin Ubuntu pada port 5900.
+  - Pastikan untuk mengganti ~/.vnc/passwd dengan lokasi file password yang telah Anda tentukan. Setelah itu, Anda dapat mengakses VNC server Ubuntu Anda menggunakan RealVNC Viewer atau klien VNC lainnya. Jangan lupa untuk menyesuaikan pengaturan sesuai kebutuhan Anda.
+
