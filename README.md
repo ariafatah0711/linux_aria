@@ -40,6 +40,10 @@ this is my linux conf, and my file for run linux
   - more service / server
     - <a href="./README/3/01 - vnc server.md">01 - vnc server</a>
     - <a href="./README/3/02 - ajenti.md">02 - ajenti</a>
+
+  - cyber security
+    - <a href="./README/4/01 - CIA Triagle.md">01 - CIA Triagle</a>
+    - <a href="./README/4/02 - cryptography.md">02 - cryptography</a>
 </details>
 
 <details>

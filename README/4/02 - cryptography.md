@@ -44,4 +44,27 @@ metode
                     ```
                 - ROT47 => merotasikan setiap urutan ke 47 alphabet (uppercase + lowercase ) + angka + symbol
 
-    - vigenere chiper => 
+    - vigenere chiper => salah satu jenis kriptograpi klasik
+        - tetapi bukan monoalphabetic
+        - dimana kunci yang digunakan akan berulang sepanjang plain text
+            - ssetiap karakter plain text akan ditambahkan karakter di keyword, dan hasilnya di modulo 26 (huruf alpahabet)
+            - termasuk dalam polyalphalbetic
+            - 26 karena itu adalah huruf alphabet
+            - dihitungnya dari 0
+                ```
+                kunci   = GELAS
+                        = 6, 4, 11, 0, 18
+
+                p text  = HATIHATIDIJALAN
+                        = 7 0 19 8 7  0 19  8 3  8 9 0 11 0 13
+                gelas   = 6 4 11 0 18 6  4 11 0 18 6 4 11 0 18 (diulang)
+                ------- = ----------- ------------ ----------- +
+                        = 13 4 30 8 25 6 23 19 3 26 15 4 22 0 31 mode 26
+                        = 13 4 4 8 25 6 23 19 3 0 15 4 22 0 5
+                Chiper  = NEEIZGXTDAPEWAF
+                ```
+            - langkah
+                - konversi plain text menjadi nilai urutnya
+                - konversi kunci menjadi nilai urutnya dan ulangi sebanyak plain textnya
+                - jumlahkan nilai p dan k dan hasilnya di modulo 26
+                    - misal (15 + 4) = 19 mod 26 = S (ingat hitungnya dari 0 bukan dari 1)
