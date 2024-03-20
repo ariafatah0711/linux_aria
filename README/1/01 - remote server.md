@@ -19,6 +19,40 @@ SSH adalah Secure Shell, yaitu sebuah protokol yang memungkinkan kamu untuk meng
 - host windows / termux
   - ```ssh user@192.168.1.1 -p 22```
 
+# remote with keygen
+- make ssh keygen
+  ```
+  ssh-keygen -t rsa
+  scp path_to_path/.ssh/id.rsa.pub user@server:/home/user/.ssh/authorized_keys
+  scp path_to_path/.ssh/id.rsa.pub user@server:/home/user/.ssh/windows.keys
+  ```
+- authorized keys
+  - cd /etc/ssh/sshd.conf
+  - and add this
+  ```
+  AuthorizedKeysFile  /home/ariafatah/.ssh/windows.keys
+  ```
+  - systemctl restart sshd
+
+- server / client
+  - make keygen
+    - ```ssh-keygen```
+    - ```ssh-keygen -t RSA / -t DSA / -t ECDSA``` (opsional)
+  - add file and put pass every login
+    - Enter file in which to save the key (/root/.ssh/id_rsa): (u can enter or add path manual)
+    - Enter passphrase (empty for no passphrase): (opsional)
+  - cheeck key
+    ```
+    Your identification has been saved in /root/.ssh/id_rsa
+    Your public key has been saved in /root/.ssh/id_rsa.pub
+    ```
+    - ```cat /root/.ssh/id_rsa.pub```
+      - and copy key and put to authorized_keys
+      - and u can use in client
+- client
+    - ```scp C:\Users\ariaf\.ssh\id_rsa.pub ariafatah@192.168.1.1:/home/ariafatah/.ssh/authorized_keys```
+    - ```ssh-copy-id -i /root/.ssh/id_rsa.pub user@<destination_ip>```
+
 # telnet :23
 
 Perbedaan Utama Antara Telnet dan SSH Telnet tidak menyediakan autentikasi, sedangkan SSH mengautentikasi penerima. Jaringan pribadi berfungsi dengan Telnet, sedangkan SSH beroperasi pada jaringan bersama. Telnet berinteraksi melalui TCP/IP melalui nomor port 23, sedangkan SSH menggunakan nomor port 22 untuk komunikasi.
