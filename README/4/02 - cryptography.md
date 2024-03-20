@@ -68,3 +68,44 @@ metode
                 - konversi kunci menjadi nilai urutnya dan ulangi sebanyak plain textnya
                 - jumlahkan nilai p dan k dan hasilnya di modulo 26
                     - misal (15 + 4) = 19 mod 26 = S (ingat hitungnya dari 0 bukan dari 1)
+        
+    - Affine Chiper => dimana setiap huruf dalam alphabet di mapping dengan nomer urutnya dan di enkripsi dengan rumus fungsi matematika
+        - rumus: E(x) = (ax + b) mod m
+            - X = nomer urut dari karakter plain text
+            - a = bilangan primer dari 1 - 26
+            - b = bilangan integer
+            - m = jumlah alphabet
+        - cara kerja
+            - terdiri dari 2 kunci
+                - k1 = a
+                - k2 = b
+            - biasanya ditulis k(a, b)
+            - sama dengan chiper substitusi, setiap huruf plain text dikonversi menjadi nomer urutnya
+            - kemudian setiap nomer urut digunakan rumus E(x) = (ax + b) mod m
+
+        - contoh
+            - plain text = selamat
+            - kunci = k(3,10)
+            - chiper text = ?
+
+            - penyelesaian
+                - selamat
+                - 18 4 11 0 12 0 19
+                - ((18x3) + 10) mod 26 = 12, ((4x3) + 10) mod 26
+                    - 64 = 26 + 26 + 12 = M
+            - jawaban = MWRKUKP
+        
+        - contoh
+            - plain text = selamat
+            - kunci = k(17, 3)
+            - chiper text = ?
+
+            - penyelesaian
+                - selamat
+                - 18 4 11 0 12 0 19
+                - ((18x17) + 3) mod 26 = 309, ((4x17) + 3) mod 26 = 71
+                    - 309 = 23 = x
+                    - 68 = 19 = t
+            - jawaban = xtidzdo
+
+    - hill chiper => 
