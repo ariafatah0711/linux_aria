@@ -44,6 +44,14 @@ this is my linux conf, and my file for run linux
   - cyber security
     - <a href="./README/4/01 - CIA Triagle.md">01 - CIA Triagle</a>
     - <a href="./README/4/02 - cryptography.md">02 - cryptography</a>
+
+  - defence
+    - <a href="./README/defence/01 - hardeninx. linux.md">01 - 01 - hardeninx. linux</a>
+
+  - tryhackme
+    - <a href="./README/tryhackme/01 - nmap.md">01 - nmap</a>
+    - <a href="./README/tryhackme/02 - root me.md">02 -root me</a>
+    - <a href="./README/tryhackme/03 - basic pentarasi.md">02 - 03 - basic pentarasi</a>
 </details>
 
 <details>

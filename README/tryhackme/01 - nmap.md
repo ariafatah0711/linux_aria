@@ -10,8 +10,8 @@ nmap => network mapping
 - help
     - nmap -h / man nmap -
     - nmap -o => OS system operation
-    - nmap -sC => 
-    - nmap -sV => version
+    - nmap -sC => vulnerabilty
+    - nmap -sV => show version
     - nmap -sn => scan with ping
         - nmap -sn 192.168.0.1-254
         - nmap -sn 192.168.0.0/24
