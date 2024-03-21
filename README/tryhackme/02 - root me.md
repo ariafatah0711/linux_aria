@@ -14,7 +14,7 @@
 - What service is running on port 22? ssh
 - Find directories on the web server using the GoBuster too? /panel/
   - ```gobuster dir -u http://10.10.1.253/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt```
-    - gobuster =brute force direcotry tersembunyi pada situs web
+    - gobuster =brute force URIs (directories and files), DNS subdomains, and virtual host name
     - dir = type directory
     - -u = destination url
     - -w = file worldlist
