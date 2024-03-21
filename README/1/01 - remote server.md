@@ -52,6 +52,8 @@ SSH adalah Secure Shell, yaitu sebuah protokol yang memungkinkan kamu untuk meng
 - client
     - ```scp C:\Users\ariaf\.ssh\id_rsa.pub ariafatah@192.168.1.1:/home/ariafatah/.ssh/authorized_keys```
     - ```ssh-copy-id -i /root/.ssh/id_rsa.pub user@<destination_ip>```
+    - ```ssh-copy-id -i /lokasi/ke/kunci.pub user@server```
+    - ```ssh -i user_cert user@server_address```
 
 # telnet :23
 
