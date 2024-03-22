@@ -2,6 +2,11 @@ kriptograpi => proses menyamarkan informasi sehingga tidak dapat di baca atau di
     - cryptosystem => metode yang dirancang untuk melakukan proses kriptograpi
     - cryptoanalyst => metode mengembalikan penyamaran dari hasil cryptosystem menjadi hasil informasi yang dapat dimengerti
 
+- note
+  ```
+  abcdefghij k  l  m   n o  p  q  r  s  t  u  v  w  x  y  z
+  0123456789 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+  ```
 metode
     - shift chiper(caesar chiper) => merupakan jenis enkripsi klasik
         - dimana cara kerjanya adalah menggeser kiri/kanan sejumlah langkah dari urutan alpahabet
@@ -160,3 +165,21 @@ metode
         - dan dimulainya dengan kolom yang sejajar 235461
             - yaitu maaix, lalu badmi, anaun, dan seterusnya
         - jadi hasilnya = maaixbadmianaunaknaxgaahiiekrx
+
+```
+KAGJI PC KK RMM KAMP (true)
+RAIBTYYYYTCMESUEOUHARGROOBSOSERVE ()
+QUZUQ AHA UIUH UTU LAS QUFCJ (true)
+Dy=ax-b mod m () Dx=ax-b mod m (put)
+2, 3, 5, 7, 11, 13, 17, 19, 23 (true)
+KITA KETEMUAN YUK (true)
+Istilah lain dari Shift Cipher adalah Caesar Cipher () Shift Cipher menggunakan sistem pergeseran alphabet ()
+JAGA RAHASIA PESAN INI (true)
+R (true)
+z () V ()
+Inverse Matriks (true)
+Cryptanalysis () Cryptanalis ()
+Kunci publik (true)
+Karena kriptografi klasik merupakan dasar dari kriptografi modern ()
+Affine
+```
