@@ -108,4 +108,55 @@ metode
                     - 68 = 19 = t
             - jawaban = xtidzdo
 
-    - hill chiper => 
+    - hill chiper => salah satu kriptograpi yang berbasis aljabar linear dimana proses enkripsinya mengalihkan antara plain text dengan kunci yang berupa matrix
+        - merupakan polygrapic pertama
+        - cata kerja  =>
+            - setiap block dari huruf m akan menentukan mxm matriks
+                - jika setiap block ada 2 huruf maka setiap block yang digunakan adalah 2x2
+                - jika setiap block ada 3 huruf maka setiap block yang digunakan adalah 3x3\
+            - jika p = july, k = LIDH, maka kita buat 2 block
+                - (JU), dan (LY) yang masing masing block terdiri dari 2 huruf
+                - (9, 20), dan (11, 24)
+                - key = (LIDH) = 11 8 3 7
+            - jawab = 
+                - c = (11 8)(9 ) mod 26
+                    = (3  7)(20) 
+
+                    99 + 160 = 21 + 16
+                    27 + 140
+
+                - c = (3) dan (11) = DELW
+                    = (4)     (20)
+    
+    - transpotion chiper => berbeda dengan substitution chiper, 
+        - chiper ini nmenyusun plain text dengan berbagai macam pola
+        - sehingga untuk membuat chiper text, dilihat dari plain text yang sudah disusun
+            - simple columnar
+            - keyword columnar
+        - cara kerja simple columnar => 
+            - plain text = bagaimana keadaan kamu hari ini
+                key = 6 kolom
+            - urutan => 
+                - bagaim
+                - anakea
+                - daanka
+                - muhari
+                - ini
+            - kemudian disusun dari kolom 1 sampai 6 secara menurun
+                - badmianaunghhaiaknaiekrmaai
+        
+    - cara kerja keyword columnar
+        - plain text = bagaimana keadaan kamu hari ini
+            key = cerita
+                = 235461
+        - urutan plain text dari huruf k ditambahkan x
+            - bagaim
+            - anakea
+            - daanka
+            - muhari
+            - inixxx
+
+            - 235461
+        - dan dimulainya dengan kolom yang sejajar 235461
+            - yaitu maaix, lalu badmi, anaun, dan seterusnya
+        - jadi hasilnya = maaixbadmianaunaknaxgaahiiekrx

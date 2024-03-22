@@ -50,3 +50,14 @@ FTP adalah singkatan dari File Transfer Protocol. Ini adalah protokol standar ya
   - ```firewall-cmd --permanent --add-port=30000-31000/tcp```
   - ```firewall-cmd --reload```
   - ``` firewall-cmd --list-ports```
+
+## kali linux
+  - apt install vsftpd
+  - nano /etc/vsftpd.conf
+    - write enable yes
+    - chroot local user yes
+    - chroot list enable yes
+    - chroot list file = vsftpd.chroot_list
+  - add file vsftpd.chroot_list
+    - nano and add user
+  - systemctl restart vsftpd
