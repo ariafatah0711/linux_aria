@@ -59,3 +59,10 @@ tool: cyberchef
         - find text and found "AHH_YOU_FOUND_ME!"
     - binwalk file.jpg
         - and open folder extract and open the file
+
+
+
+## stnography
+steghide extract -sf namafile.jpg
+string file.jpg
+binwalk file.jpg

