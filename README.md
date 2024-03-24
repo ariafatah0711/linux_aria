@@ -28,21 +28,21 @@ this is my linux conf, and my file for run linux
   <summary><b>Dokumentasi</b></summary>
   
   - linux
-    - <a href="./readme/0/01 - basic.md">01 - basic</a>
+    - <a href="./README/0/01 - basic.md">01 - basic</a>
 
   - service
-    - <a href="./readme/1/01 - remote server.md">01 - remote server</a>
-    - <a href="./readme/1/02 - ftp server.md">02 - ftp server</a>
-    -  <a href="./readme/1/03 - file server.md">03 - file server</a>
+    - <a href="./README/1/01 - remote server.md">01 - remote server</a>
+    - <a href="./README/1/02 - ftp server.md">02 - ftp server</a>
+    -  <a href="./README/1/03 - file server.md">03 - file server</a>
   - server
-    - <a href="./readme/2/01 - dhcp server.md">01 - dhcp server</a>
-    - <a href="./readme/2/02 - web server.md">02 - web server</a>
-    - <a href="./readme/2/03 - dns server.md">03 - dns server</a>
-    - <a href="./readme/2/04 - database server.md">04 - database server</a>
-    - <a href="./readme/2/05 - mail server.md">05 - mail server</a>
+    - <a href="./README/2/01 - dhcp server.md">01 - dhcp server</a>
+    - <a href="./README/2/02 - web server.md">02 - web server</a>
+    - <a href="./README/2/03 - dns server.md">03 - dns server</a>
+    - <a href="./README/2/04 - database server.md">04 - database server</a>
+    - <a href="./README/2/05 - mail server.md">05 - mail server</a>
   - more service / server
-    - <a href="./readme/3/01 - vnc server.md">01 - vnc server</a>
-    - <a href="./readme/3/02 - ajenti.md">02 - ajenti</a>
+    - <a href="./README/3/01 - vnc server.md">01 - vnc server</a>
+    - <a href="./README/3/02 - ajenti.md">02 - ajenti</a>
 </details>
 
 <details>

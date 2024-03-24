@@ -9,7 +9,9 @@ kriptograpi => proses menyamarkan informasi sehingga tidak dapat di baca atau di
   abcdefghij k  l  m   n o  p  q  r  s  t  u  v  w  x  y  z
   0123456789 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
   ```
+
 metode
+```
     - shift chiper(caesar chiper) => merupakan jenis enkripsi klasik
         - dimana cara kerjanya adalah menggeser kiri/kanan sejumlah langkah dari urutan alpahabet
         ```
@@ -167,3 +169,4 @@ metode
         - dan dimulainya dengan kolom yang sejajar 235461
             - yaitu maaix, lalu badmi, anaun, dan seterusnya
         - jadi hasilnya = maaixbadmianaunaknaxgaahiiekrx
+```
