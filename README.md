@@ -51,7 +51,6 @@ this is my linux conf, and my file for run linux
   - install ubuntu
 </details>
 
-
 <details>
   <summary><b>redhat</b></summary>
   
@@ -155,6 +154,22 @@ this is my linux conf, and my file for run linux
 
   - ```sudo chown -R $USER:$USER /path/to/path```
   - ```sudo chmod -R 755 /path/to/path```
+</details>
+
+<details>
+  <summary><b>upgrade disk in virtual box</b></summary>
+
+  - click tools > media , and chose u disk
+  - chnage the memory to ur want
+  - open machine
+    - lsbk -p | grep "disk"
+    - lsbk -p | grep "part"
+  - if u have gprated u can install and add in ide partisi
+  - pindahin alocated ke extend  dev2,
+  - lalu dari situ tambahin yang dev5 yaitu sswap tapi yang free storage
+  - lalu kecilini partisi extend dev2
+  - lalu tambahin deh yang dev1
+  - aply lalu aktifkan dev5 ke swap dan restart
 </details>
 
 <p id="download"></p>
