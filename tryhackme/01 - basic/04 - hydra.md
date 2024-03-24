@@ -1,11 +1,4 @@
-```
-gobsuter -h
-gobuster dir => direcotry
-gobuster dir -u => url
-gobuster dir -u url -w => world list
-gobuster dir -u url -w world_list.txt -t 30 => threads int
-```
-
+# hydra
 ```
 hydra -l <username> -P <full path to pass> 10.10.157.21 -t 4 ssh
 
