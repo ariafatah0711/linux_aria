@@ -26,6 +26,7 @@ this is my linux conf, and my file for run linux
 ## 📋 Table of Contents
 <details open>
   <summary><b>Dokumentasi</b></summary>
+  
   - linux
     - <a href="./readme/0/01 - basic.md">01 - basic</a>
 
