@@ -158,6 +158,7 @@ this is my linux conf, and my file for run linux
 
 <details>
   <summary><b>upgrade disk in virtual box</b></summary>
+  https://www.pragmaticlinux.com/2020/09/how-to-increase-the-disk-size-in-a-virtualbox-virtual-machine/
 
   - click tools > media , and chose u disk
   - chnage the memory to ur want
