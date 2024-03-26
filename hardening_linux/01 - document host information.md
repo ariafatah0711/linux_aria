@@ -91,19 +91,38 @@ nano /etc/ssh/sshd.conf
 
 - Nonaktifkan Binari SUID dan SGID yang Tidak Diinginkan
     - Semua bit SUID / SGID diaktifkan file dapat disalahgunakan ketika SUID / SGID executable memiliki masalah keamanan atau bug. Semua pengguna lokal atau jarak jauh dapat menggunakan file tersebut. Ini adalah ide yang baik untuk menemukan semua file tersebut. Gunakan perintah find sebagai berikut:
-#See all set user id files:
-find / -perm +4000
-# See all group id files
-find / -perm +2000
-# Or combine both in a single command
-find / \( -perm -4000 -o -perm -2000 \) -print
-find / -path -prune -o -type f -perm +6000 -ls
+    ```
+    #See all set user id files:
+    find / -perm +4000
+    # See all group id files
+    find / -perm +2000
+    # Or combine both in a single command
+    find / \( -perm -4000 -o -perm -2000 \) -print
+    find / -path -prune -o -type f -perm +6000 -ls
 
-- Secure Apache/PHP/Nginx server
-Edit httpd.conf file and add the following:
+    - Secure Apache/PHP/Nginx server
+    Edit httpd.conf file and add the following:
 
-ServerTokens Prod
-ServerSignature Off
-TraceEnable Off
-Options all -Indexes
-Header always unset X-Powered-By
+    ServerTokens Prod
+    ServerSignature Off
+    TraceEnable Off
+    Options all -Indexes
+    Header always unset X-Powered-By
+    ```
+
+- 36. Gunakan fail2ban / denyhost sebagai IDS (Instal Sistem Deteksi Intrusi)
+    ```
+    Fail2ban atau denyhost memindai file log untuk terlalu banyak upaya login yang gagal dan memblokir alamat IP yang menunjukkan tanda-tanda berbahaya. Lihat cara menginstal dan menggunakan denyhost untuk Linux. Seseorang dapat menginstal fail2ban dengan mudah:
+
+    ATAU
+
+    Edit file konfigurasi sesuai kebutuhan Anda:
+
+    Mulai ulang layanan:
+    $ sudo apt-get install fail2ban
+    $ sudo yum install fail2ban
+    $ sudo vi /etc/fail2ban/jail.conf
+
+    $ sudo systemctl restart fail2ban.service
+    ```
+
