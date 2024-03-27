@@ -126,3 +126,6 @@ nano /etc/ssh/sshd.conf
     $ sudo systemctl restart fail2ban.service
     ```
 
+install snort
+- sudo yum install epel-release
+- 

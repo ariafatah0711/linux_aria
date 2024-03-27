@@ -23,3 +23,15 @@ ids => snort fail2 serucuta
     - /usr/bin/suricata -c /etc/suricata/suricata.yaml -i enp0s3
     - tail -f /var/log/suricata/fast.log
       - if people scan with nmap this log show
+    
+## ubuntu
+- apt install snort
+- wheris snort
+  - /etc/snort: /usr/sbin/snort: /usr/lib/snort: /usr/include/snort:
+- nano /etc/snort/snort.conf
+  - masukan ip kita enp0s3
+-  sudo snort -T -i enps03 -c /etc/snort/snort.conf
+  - -T is used to open snort in test mode.
+  - -i is used to specify the network adapter in use.
+  - -c is used to denote the snort configuration file and where it’s located.
+

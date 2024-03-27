@@ -17,3 +17,5 @@ What service has been configured to allow him to work from home? ssh
 Okay! Now we know this, what directory on the share should we look in? .ssh
 This directory contains authentication keys that allow a user to authenticate themselves on, and then access, a server. Which of these keys is most useful to us? id_rsa
 What is the smb.txt flag?
+
+## Task 5 Understanding Telnet
