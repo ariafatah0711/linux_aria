@@ -26,6 +26,20 @@ ids => snort fail2 serucuta
     
 ## ubuntu
 - apt install snort
+  - sudo ip link set enp0s3 promisc on
+- nano /etc/snort/snort.conf
+  - any ganti jadi ip_kita
+- nano /etc/snort/rules/local.rules
+  ```
+  alert icmp any any -> $HOME_NET any (msg:"Ping Detected!"; sid:100001; rev:1;)
+  ```
+- snort -q -l /var/log/snort -i enp0s3 -A console -c /etc/snort/snort.conf
+  - ls /var/log/snort
+
+- nano /etc/snort/snort.conf
+  - include community.rules
+- sudo snort -c /etc/snort/test_snort.conf -q -i ens34 -A full -A console -l /var/log/snort/exploitation
+
 - wheris snort
   - /etc/snort: /usr/sbin/snort: /usr/lib/snort: /usr/include/snort:
 - nano /etc/snort/snort.conf
@@ -34,4 +48,3 @@ ids => snort fail2 serucuta
   - -T is used to open snort in test mode.
   - -i is used to specify the network adapter in use.
   - -c is used to denote the snort configuration file and where it’s located.
-

@@ -97,3 +97,20 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
 - firewall
   - ```firewall-cmd --permanent --add-port=1010/tcp```
   - ```firewall-cmd --reload```
+
+## centos
+- yum install apache
+  - nano /etc/apache2/sites-avaible/conf
+    ```
+    <Directory /usr/local/apache2/htdocs/dontlistme>
+      Options -Indexes
+    </Directory>
+
+    Options FollowSymLinks
+    AllowOverride None
+
+    Options -Indexes
+
+    IndexIgnore tmp* .. #Jika Anda ingin daftar diaktifkan, tetapi Anda ingin menghilangkan file tertentu,
+    IndexOptions ShowForbiddenShowForbidden
+    ```

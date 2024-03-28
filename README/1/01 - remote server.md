@@ -55,6 +55,19 @@ SSH adalah Secure Shell, yaitu sebuah protokol yang memungkinkan kamu untuk meng
     - ```ssh-copy-id -i /lokasi/ke/kunci.pub user@server```
     - ```ssh -i user_cert user@server_address```
 
+
+inget id_rsa yang dikirim pub
+lalu untuk fileyang di .ssh/authorized_keys nya harus 700 dan harus milih user
+  
+- server
+  - jika ingin sshnya hanya bisa di akses lewat id_rsa
+  - bisa tambahkan aturan di /etc/ssh/sshd_conf
+    ```
+    PasswordAuthentication no
+    ```
+
+    sudo firewall-cmd --add-port=1026/tcp --permanent successsudo firewall-cmd --remove-service=ssh --permanent success
+
 # telnet :23
 
 Perbedaan Utama Antara Telnet dan SSH Telnet tidak menyediakan autentikasi, sedangkan SSH mengautentikasi penerima. Jaringan pribadi berfungsi dengan Telnet, sedangkan SSH beroperasi pada jaringan bersama. Telnet berinteraksi melalui TCP/IP melalui nomor port 23, sedangkan SSH menggunakan nomor port 22 untuk komunikasi.
@@ -64,3 +77,17 @@ Perbedaan Utama Antara Telnet dan SSH Telnet tidak menyediakan autentikasi, seda
 
 - host windows / termux
   - ```telnet 192.168.1.1```
+
+
+
+
+sestatus #untuk cek status selinux
+# mengaktidkan selinux
+- setenforce 1
+  atau
+- nano /etc/selinux/config > SELINUX=enforcing
+
+
+- karakter dot kedua dienkripsi sebagai %2e, “…/” berubah menjadi “.%2e/” dan berhasil melewati pemeriksaan.
+- GET /cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd HTTP/1.1
+Host: 127.0.0.1:8080

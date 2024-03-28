@@ -19,3 +19,9 @@ This directory contains authentication keys that allow a user to authenticate th
 What is the smb.txt flag?
 
 ## Task 5 Understanding Telnet
+What is Telnet? application protocol
+What has slowly replaced Telnet? ssh
+How would you connect to a Telnet server with the IP 10.10.10.3 on port 23? telnet 10.10.10.3:23
+The lack of what, means that all Telnet communication is in plaintext? encryption
+
+## Task 6 Enumerating Telnet

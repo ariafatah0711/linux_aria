@@ -129,3 +129,7 @@ nano /etc/ssh/sshd.conf
 install snort
 - sudo yum install epel-release
 - 
+
+public key authentication 
+
+
