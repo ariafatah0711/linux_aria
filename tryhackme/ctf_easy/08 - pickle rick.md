@@ -7,7 +7,6 @@
   gobuster dir -u http://10.10.10.1 -w wordlist.txt -x html,php,js,txt,cgi,css,py
 
   robots.txt
-
   ```
 - What is the second ingredient in Rick’s potion?
 - What is the last and final ingredient?

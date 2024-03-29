@@ -114,3 +114,11 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
     IndexIgnore tmp* .. #Jika Anda ingin daftar diaktifkan, tetapi Anda ingin menghilangkan file tertentu,
     IndexOptions ShowForbiddenShowForbidden
     ```
+
+    ```
+    ServerTokens Prod
+    ServerSignature Off
+    TraceEnable Off
+    Options all -Indexes
+    Header always unset X-Powered-By
+    ```
