@@ -1,0 +1,3 @@
+# teori
+
+## tri angle
