@@ -5,6 +5,131 @@ openvpn namafile.opvn
 
 ## konfigurasi vpn
 yum install epel-release
+yum -y install openvpn easy-rsa iptables-services wget
+wget -O /tmp/easyrsa https://github.com/OpenVPN/easy-rsa-old/archive/2.3.3.tar.gz
+
+cd /etc/openvpn
+tar xfz /tmp/easyrsa
+mkdir /etc/ovenpn/easy-rsa
+
+cp /etc/openvpn/easy-rsa-old-2.3.3/easy-rsa/2.0/* /etc/openvpn/easy-rsa
+sudo chown sammy /etc/openvpn/easy-rsa/
+
+cp -r /usr/share/doc/openvpn-2.4.12/sample/sample-config-files/server.conf .
+nano /etc/openvpn/server.conf
+```
+push "redirect-gateway def1 bypass-dhcp"
+
+push "dhcp-option DNS 8.8.8.8"
+push "dhcp-option DNS 8.8.4.4"
+
+user nobody
+group nobody
+
+topology subnet
+
+remote-cert-eku "TLS Web Client Authentication"
+
+;tls-auth ta.key 0
+tls-crypt myvpn.tlsauth
+``` 
+sudo openvpn --genkey --secret /etc/openvpn/myvpn.tlsauth
+
+sudo mkdir /etc/openvpn/easy-rsa/keys
+nano vars
+```
+KEY_CN: Di sini, masukkan domain atau subdomain yang ditetapkan ke server Anda.
+KEY_NAME: Anda harus masuk ke sini. Jika Anda memasukkan sesuatu yang lain.
+KEY_COUNTRY: Untuk variabel ini, masukkan singkatan dua huruf dari negara tempat tinggal Anda.
+KEY_PROVINCE: Ini harus berupa nama atau singkatan dari negara bagian tempat tinggal Anda.
+KEY_CITY: Di sini, masukkan nama kota tempat Anda tinggal.
+KEY_ORG: Ini harus nama organisasi atau perusahaan Anda.
+KEY_EMAIL: Masukkan alamat email yang ingin Anda sambungkan ke sertifikat keamanan.
+KEY_OU: Ini harus berupa nama "Unit Organisasi" tempat Anda berada, biasanya nama departemen atau tim Anda.
+```
+source ./vars
+.clean-all
+.build-ca
+
+./build-key-server server
+./build-dh
+
+cd /etc/openvpn/easy-rsa/keys
+sudo cp dh2048.pem ca.crt server.crt server.key /etc/openvpn
+
+cd /etc/openvpn/easy-r
+./build-key client
+
+cp /etc/openvpn/easy-rsa/openssl-1.0.0.cnf /etc/openvpn/easy-rsa/openssl.cnf
+
+firewall-cmd --get-active-zones
+
+sudo firewall-cmd --zone=trusted --permanent --add-service openvpn
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-services --zone=trusted
+
+sudo firewall-cmd --permanent --add-masquerade
+sudo firewall-cmd --query-masquerade
+
+
+SHARK=$(ip route get 8.8.8.8 | awk 'NR==1 {print $(NF-2)}')
+firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s 10.8.0.0/24 -o $SHARK -j MASQUERADE
+firewall-cmd --reload
+
+nano /etc/sysctl.conf
+```
+net.ipv4.ip_forward = 1
+```
+systemctl restart network.service
+
+sudo systemctl -f enable openvpn@server.service
+sudo systemctl start openvpn@server.service
+
+## membuat sertifikat file client
+copy file ini ke client =>
+/etc/openvpn/easy-rsa/keys/ca.crt
+/etc/openvpn/easy-rsa/keys/client.crt
+/etc/openvpn/easy-rsa/keys/client.key
+/etc/openvpn/myvpn.tlsauth
+
+nano client.ovpn
+```
+client
+tls-client
+ca /path/to/ca.crt
+cert /path/to/client.crt
+key /path/to/client.key
+tls-crypt /path/to/myvpn.tlsauth
+remote-cert-eku "TLS Web Client Authentication"
+proto udp
+remote your_server_ip 1194 udp
+dev tun
+topology subnet
+pull
+user nobody
+group nobody
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+yum install epel-release
 yum install openvpn easy-rsa
 
 cd /usr/share/doc/openvpn-2.3/sample/sample-config-files/
