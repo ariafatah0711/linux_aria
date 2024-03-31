@@ -1,11 +1,4 @@
 # hardening linux
-- buat dokument yang mencantumkan informasi mesin virtual seperti:
-- selalu update paket secara teratur
-- hapus beberapa banner, dan version yang digunakan pada sebuah service untuk menjaga kerahasian sebuah servicec yang digunakan
-- menyembunyikan informasi kernel
-
-- menutup port seperti ssh dan mengubah port menjadi ribuan untuk menjaga keamanan dan agar tidak lebih mudah di identifikasi portnya
-- dan mnghapus port yang sudah tidak aman seperti ftp, telneet, dll
 
 <?php phpinfo(); ?>
 
@@ -27,13 +20,6 @@
   - /etc/ssh/sshd_config
   - /etc/httpd/conf/httpd.conf
   - /etc/vsftpd.conf
-- menyembunyikan informasi kernel
-  - /etc/sysctl.conf
-  ```
-  kernel.printk = 3 3 3 3
-  ```
-  - sudo sysctl -p
-- 
 
 ## Hardisk Encription
 - menambahkan hardisk pada linux machine
