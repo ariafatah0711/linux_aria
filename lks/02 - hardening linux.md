@@ -7,6 +7,8 @@
 - menutup port seperti ssh dan mengubah port menjadi ribuan untuk menjaga keamanan dan agar tidak lebih mudah di identifikasi portnya
 - dan mnghapus port yang sudah tidak aman seperti ftp, telneet, dll
 
+<?php phpinfo(); ?>
+
 ## document host information
 - buat dokument yang mencantumkan informasi mesin virtual seperti:
   ```
@@ -67,6 +69,10 @@
     ```
 
     ```
+    - semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+    - firewall-cmd --permanent --remove-service=ssh
+    - firewall-cmd --permanent --add-port=20000/tcp
+  - systemctl restart sshd
     
 ## Whitelisting Selinux
 - mangaktifkan selinux
@@ -85,7 +91,7 @@
   - mkdir -p /var/chroot
 
 - mengcopy system ke chroot
-  - cp /bin/bash /var/chroot/bin
+  - cp -v /bin/bash /var/chroot/bin
       - ldd /var/chroot/bin
       - cp /lib64/~~~ /var/chroot/lib
 
@@ -107,11 +113,10 @@
       ```
       atau
       ```
-      Subsystem    sftp       internal-sftp
-
       Match user jail
             ChrootDirectory /var/chroot
-            ForceCommand /bin/bash
+            #ForceCommand /bin/bash
+            ForceCommand internal-sftp
       ```
     - client => 
       - sftp -P 1026 ariafatah@localhost

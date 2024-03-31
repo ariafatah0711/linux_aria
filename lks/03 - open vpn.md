@@ -9,7 +9,7 @@ yum install openvpn easy-rsa
 
 cd /usr/share/doc/openvpn-2.3/sample/sample-config-files/
 ls -l
-cp server.conf/etc/openvpn
+cp server.conf /etc/openvpn
 
 cd /etc/openvpn
 mkdir rsa

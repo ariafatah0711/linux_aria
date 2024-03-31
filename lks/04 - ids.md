@@ -1,29 +1,29 @@
 # ids
 
 ## installasi konfigurasi ids
-yum update
-yum install epel-release dnf
-dnf install https://www.snort.org/downloads/snort/snort-2.9.20-1.centos.x86_64.rpm
+- yum update
+- yum install epel-release dnf
+- dnf install https://www.snort.org/downloads/snort/snort-2.9.20-1.centos.x86_64.rpm
 
-dnf --enablerepo=powertools install libnetfilter_queue-devel
-dnf install libnetfilter_queue-devel
+- dnf --enablerepo=powertools install libnetfilter_queue-devel
+atau
+- dnf install libnetfilter_queue-devel
 
-dnf install gcc-c++ git flex bison zlib zlib-devel pcre libnet tcpdump libnghttp2 wget xz-devel -y
-dnf install pcre-devel
+- dnf install gcc-c++ git flex bison zlib zlib-devel pcre libnet tcpdump libnghttp2 wget xz-devel -y
+- dnf install pcre-devel
 
-mkdir /root/snort && cd snorts
+- mkdir /root/snort && cd snorts
+- wget https://www.tcpdump.org/release/libpcap-1.10.4.tar.gz
+- tar xzvf libpcap-1.10.4.tar.gz
+- cd libcap
+- ./configure
+- make
+- make install
 
-wget https://www.tcpdump.org/release/libpcap-1.10.4.tar.gz
-tar xzvf libpcap-1.10.4.tar.gz
-cd libcap
-./configure
-make
-make install
-
-ldconfig
-ln -s /usr/lib64/libdnet.so.1 /usr/lib64/libdnet.1
-dnf install libdnet
-snort -v
+- ldconfig
+- ln -s /usr/lib64/libdnet.so.1 /usr/lib64/libdnet.1
+- yum install libdnet
+- snort -v
 
 #############################
 
