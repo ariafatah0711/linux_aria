@@ -11,7 +11,7 @@
 - buat dokument yang mencantumkan informasi mesin virtual seperti:
   ```
   - name machine : centos_aria
-  - alamat ip    : 10.10.10.1
+  - alamat ip    : 10.0.2.5
   - mac address  : 08:00:27:3a:fe:41
   - user         : ariafatah
   - date         : 24-03-2024
