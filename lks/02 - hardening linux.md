@@ -147,3 +147,15 @@
   ```
 
 ## Remote Command Exec
+- pastikan validasi input pengguna yang tepat. Ini termasuk memfilter karakter atau kode yang berpotensi berbahaya dan memproses data hanya setelah validasi:
+```
+if (preg_match('/[^a-zA-Z0-9]/', $username) || preg_match('/[^a-zA-Z0-9]/', $password))
+{
+    exit(); 
+}
+```
+
+
+pastikan validasi input pengguna yang tepat. Ini termasuk memfilter karakter atau kode yang berpotensi berbahaya dan memproses data
+
+if (preg_match('/[^a-zA-Z0-9]/', $username) || preg_match('/[^a-zA-Z0-9]/', $password))
