@@ -24,8 +24,22 @@ for(0..100) {
 ```
 perl /usr/share/doc/libapache2-mod-evasive/examples/test.pl
 
-
-
 ## Instalasi Konfigurasi Module ModEvasive
+yum install mod_evasive
+nano /etc/httpd/conf/httpd.conf
+```
+LoadModule evasive20_module modules/mod_evasive24.so
+
+<IfModule mod_evasive24.c>
+    DOSHashTableSize 3097
+    DOSPageCount 2
+    DOSSiteCount 50
+    DOSPageInterval 1
+    DOSSiteInterval 1
+    DOSBlockingPeriod 10
+    DOSEmailNotify you@example.com
+    DOSLogDir "/var/log/httpd/evasive"
+</IfModule>
+```
 
 ## Customisasi Parameter ModEvasive
