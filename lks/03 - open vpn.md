@@ -1,87 +1,99 @@
 # open vpn
 
 ## user vpn
-openvpn namafile.opvn
+- openvpn namafile.opvn
 
-## konfigurasi vpn 3
-yum install epel-release
-yum install openvpn easy-rsa
+## konfigurasi vpn
+### install vpn
+- yum install epel-release
+- yum install openvpn easy-rsa
 
-cd /usr/share/easy-rsa/3.0.3
-cp  cp -rf * /etc/openvpn/easy-rsa/
-cd /etc/openvpn/easy-rsa/
+- cd /usr/share/easy-rsa/3.0.3
+- cp  cp -rf * /etc/openvpn/easy-rsa/
+- cd /etc/openvpn/easy-rsa/
 
-./easyrsa init-pki
-./easyrsa build-ca
-./easyrsa gen-dh
-./easyrsa gen-req node2 nopass
-./easyrsa sign server node2
+- ./easyrsa init-pki
+- ./easyrsa build-ca
+- ./easyrsa gen-dh
+- ./easyrsa gen-req node2 nopass
+- ./easyrsa sign server node2
 
-mkdir /etc/openvpn/keys
-chmod 750 /etc/openvpn/keys/
+- mkdir /etc/openvpn/keys
+- chmod 750 /etc/openvpn/keys/
 
-cp -a /etc/openvpn/easy-rsa/pki/ca.crt /etc/openvpn/keys/
-cp -a /etc/openvpn/easy-rsa/pki/dh.pem /etc/openvpn/keys/dh2048.pem
-cp -a /etc/openvpn/easy-rsa/pki/issued/node2.crt /etc/openvpn/keys/
-cp -a /etc/openvpn/easy-rsa/pki/private/node2.key /etc/openvpn/keys/
+- cp -a /etc/openvpn/easy-rsa/pki/ca.crt /etc/openvpn/keys/
+- cp -a /etc/openvpn/easy-rsa/pki/dh.pem /etc/openvpn/keys/dh2048.pem
+- cp -a /etc/openvpn/easy-rsa/pki/issued/node2.crt /etc/openvpn/keys/
+- cp -a /etc/openvpn/easy-rsa/pki/private/node2.key /etc/openvpn/keys/
 
-## Generate certificates for Client v3
-./easyrsa gen-req deepak nopass
-./easyrsa sign client deepak
+### Generate certificates for Client
+- ./easyrsa gen-req deepak nopass
+- ./easyrsa sign client deepak
 
-cp -a /etc/openvpn/easy-rsa/pki/issued/deepak.crt /etc/openvpn/keys/
-cp -a /etc/openvpn/easy-rsa/pki/private/deepak.key /etc/openvpn/keys/
+- cp -a /etc/openvpn/easy-rsa/pki/issued/deepak.crt /etc/openvpn/keys/
+- cp -a /etc/openvpn/easy-rsa/pki/private/deepak.key /etc/openvpn/keys/
 
-vim /etc/openvpn/server.conf
-```
-port 1194
-proto udp
-dev tun
-comp-lzo
-management 127.0.0.1 1194
-keepalive 10 120
-persist-key
-persist-tun
-ifconfig-pool-persist ipp.txt
-status openvpn-status.log
-verb 3
-server 172.16.0.0 255.255.255.0
-push "route 192.168.0.0 255.255.255.0"
-push "dhcp-option DNS 192.168.0.5"
-push "dhcp-option DOMAIN example.com"
-ca /etc/openvpn/keys/ca.crt
-cert /etc/openvpn/keys/node2.crt
-key /etc/openvpn/keys/node2.key  # This file should be kept secret
-dh /etc/openvpn/keys/dh2048.pem
-```
+- vim /etc/openvpn/server.conf
+  ```
+  port 1194
+  proto udp
+  dev tun
+  comp-lzo
+  management 127.0.0.1 1194
+  keepalive 10 120
+  persist-key
+  persist-tun
+  ifconfig-pool-persist ipp.txt
+  status openvpn-status.log
+  verb 3
+  server 172.16.0.0 255.255.255.0
+  push "route 192.168.0.0 255.255.255.0"
+  push "dhcp-option DNS 192.168.0.5"
+  push "dhcp-option DOMAIN example.com"
+  ca /etc/openvpn/keys/ca.crt
+  cert /etc/openvpn/keys/node2.crt
+  key /etc/openvpn/keys/node2.key  # This file should be kept secret
+  dh /etc/openvpn/keys/dh2048.pem
+  ```
 
-systemctl stop firewalld
-systemctl disable firewalld
-systemctl -f enable openvpn@server
+- systemctl stop firewalld
+- systemctl disable firewalld
+- systemctl -f enable openvpn@server
 
-scp /etc/openvpn/keys/deepak.* node3:/etc/openvpn/
-scp /etc/openvpn/keys/deepak.* ariafatah@192.168.80.200:/home/ariafatah/lks/vpn
-scp /etc/openvpn/keys/ca.crt ariafatah@192.168.80.200:/home/ariafatah/lks/vpn
+### mengirim file ke client
+- scp /etc/openvpn/keys/deepak.* node3:/etc/openvpn/
+- scp /etc/openvpn/keys/deepak.* ariafatah@192.168.80.200:/home/ariafatah/lks/vpn
+- scp /etc/openvpn/keys/ca.crt ariafatah@192.168.80.200:/home/ariafatah/lks/vpn
 
-# client
-chmod 700 deepkay.key
-nano client.ovpn
-```
-client
-dev tun
-proto udp
-remote 192.168.80.188 1194
-resolv-retry infinite
-nobind
-persist-key
-persist-tun
-ca ca.crt
-cert deepak.crt
-key deepak.key
-comp-lzo
-verb 3
-remote-cert-tls server
-```
+- client =>
+  - chmod 700 deepkay.key
+  - nano client.ovpn
+    ```
+    client
+    dev tun
+    proto udp
+    remote 192.168.80.188 1194
+    resolv-retry infinite
+    nobind
+    persist-key
+    persist-tun
+    ca ca.crt
+    cert deepak.crt
+    key deepak.key
+    comp-lzo
+    verb 3
+    remote-cert-tls server
+    ```
+  - openvpn client.ovpn
+
+
+
+
+
+
+
+
+
 
 ## konfigurasi vpn 2
 yum install epel-release

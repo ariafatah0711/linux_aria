@@ -25,30 +25,30 @@ atau
 - yum install libdnet
 - snort -v
 
-#############################
+#######################################################
+- cd /etc/snort/rules
+- touch white_list.rules black_list.rules local.rules
 
-cd /etc/snort/rules
-touch white_list.rules black_list.rules local.rules
+- vi /etc/snort/snort.conf
+  ```
+  step 1 tambahin network nya /24
+    var white = /etc/snort/rules/
+    var black = /etc/snort/rules/
+  step 7 komenenin semua
+  ```
 
-vi /etc/snort/snort.conf
+#######################################################
+- snort -T -c /etc/snort/snort.conf
 
-step 1 tambahin network nya /24
-        var white = /etc/snort/rules/
-        var black = /etc/snort/rules/
-step 7 komenenin semua
+- vi /etc/snort/rules/local.rules
+  ```
+  alert icmp any any -> $HOME_NET any (msg:"ICMP Packets Found"; sid:1001; rev:001;)
+  alert tcp any any -> $HOME_NET any (msg:"TCP SYN flood attack Detected"; sid:1002; rev:001;)
+  alert udp any any -> $HOME_NET any (msg:"DOS tool UDP mode detected"; sid:1003; rev:001;)
+  ```
 
-#############################
-snort -T -c /etc/snort/snort.conf
-
-vi /etc/snort/rules/local.rules
-```
-alert icmp any any -> $HOME_NET any (msg:"ICMP Packets Found"; sid:1001; rev:001;)
-alert tcp any any -> $HOME_NET any (msg:"TCP SYN flood attack Detected"; sid:1002; rev:001;)
-alert udp any any -> $HOME_NET any (msg:"DOS tool UDP mode detected"; sid:1003; rev:001;)
-```
-
-systemctl daemon-reload
-systemctl start snort
-snort -A console -q -c /etc/snort/snort.conf
+- systemctl daemon-reload
+- systemctl start snort
+- snort -A console -q -c /etc/snort/snort.conf
 
 ## penambahan aktifitas rules
