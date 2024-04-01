@@ -7,6 +7,7 @@
 ### install vpn
 - yum install epel-release
 - yum install openvpn easy-rsa
+- mkdir /etc/openvpn/easy-rsa
 
 - cd /usr/share/easy-rsa/3.0.3
 - cp  cp -rf * /etc/openvpn/easy-rsa/
@@ -59,6 +60,7 @@
 - systemctl stop firewalld
 - systemctl disable firewalld
 - systemctl -f enable openvpn@server
+- systemctl start openvpn@server
 
 ### mengirim file ke client
 - scp /etc/openvpn/keys/deepak.* node3:/etc/openvpn/
@@ -87,15 +89,8 @@
   - openvpn client.ovpn
 
 
-
-
-
-
-
-
-
-
-## konfigurasi vpn 2
+##############################################################################################################
+## konfigurasi vpn versi 2
 yum install epel-release
 yum -y install openvpn easy-rsa iptables-services wget
 wget -O /tmp/easyrsa https://github.com/OpenVPN/easy-rsa-old/archive/2.3.3.tar.gz
