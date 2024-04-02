@@ -14,7 +14,7 @@
   ```
   yum update && yum upgrade
   ```
-- hapus beberapa banner, dan version yang digunakan pada sebuah service untuk menjaga kerahasian sebuah servicec yang digunakan
+- hapus beberapa banner, dan version yang digunakan pada sebuah service untuk menjaga kerahasian sebuah service yang digunakan
   - /etc/ssh/sshd_config
   - /etc/httpd/conf/httpd.conf
   - /etc/vsftpd.conf
@@ -51,11 +51,11 @@
   - mengubah port ssh 22 menjadi port 30500
     - nano /etc/ssh/sshd_config
     ```
-
+    port 30500
     ```
-    - semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+    - semanage port -a -t ssh_port_t -p tcp 30500
     - firewall-cmd --permanent --remove-service=ssh
-    - firewall-cmd --permanent --add-port=20000/tcp
+    - firewall-cmd --permanent --add-port=30500/tcp
   - systemctl restart sshd
     
 ## Whitelisting Selinux
