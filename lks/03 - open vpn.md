@@ -86,6 +86,26 @@
     verb 3
     remote-cert-tls server
     ```
+    atau
+        ```
+    client
+    dev tun
+    proto udp
+    remote 192.168.80.188 1194
+    resolv-retry infinite
+    nobind
+    persist-key
+    persist-tun
+    comp-lzo
+    verb 3
+    remote-cert-tls server
+    <ca>
+    </ca>
+    <cert>
+    </cert>
+    <key>
+    </key>
+    ```
   - openvpn client.ovpn
 
 
