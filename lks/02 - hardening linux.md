@@ -71,39 +71,63 @@
   ```
 
 ## CHROOT Shell
-- membuat lokasi chroot
-  - mkdir -p /var/chroot
+- chroot v1
+  - membuat lokasi chroot
+    - mkdir -p /var/chroot
 
-- mengcopy system ke chroot
-  - cp -v /bin/bash /var/chroot/bin
-      - ldd /var/chroot/bin
-      - cp /lib64/~~~ /var/chroot/lib
+  - mengcopy system ke chroot
+    - cp -v /bin/bash /var/chroot/bin
+        - ldd /var/chroot/bin
+        - cp /lib64/~~~ /var/chroot/lib
 
-- konfigurasi 
-    - nano /etc/passwd.chroot
-      ```
-      ariafatah:x:1000:1000::/home/ariafatah:/bin/bash
-      ```
-    - nano /etc/group.chroot
-      ```
-      ariafatah:x:1000:
-      ```
-    - nano /etc/ssh/sshd_config
-      ```
-      Subsystem    sftp       internal-sftp
+  - konfigurasi 
+      - nano /etc/passwd.chroot
+        ```
+        ariafatah:x:1000:1000::/home/ariafatah:/bin/bash
+        ```
+      - nano /etc/group.chroot
+        ```
+        ariafatah:x:1000:
+        ```
+      - nano /etc/ssh/sshd_config
+        ```
+        Subsystem    sftp       internal-sftp
 
-      Match group jail
-            ChrootDirectory /home/jail
-      ```
-      atau
-      ```
-      Match user jail
-            ChrootDirectory /var/chroot
-            #ForceCommand /bin/bash
-            ForceCommand internal-sftp
-      ```
-    - client => 
-      - sftp -P 1026 ariafatah@localhost
+        Match group jail
+              ChrootDirectory /home/jail
+        ```
+        atau
+        ```
+        Match user jail
+              ChrootDirectory /var/chroot
+              #ForceCommand /bin/bash
+              ForceCommand internal-sftp
+        ```
+      - client => 
+        - sftp -P 1026 ariafatah@localhost
+
+- chroot v2
+  - menambahkan user dan membuat system terisolasi
+    - adduser user-chroot
+    - which bash
+      - /bin/bash
+    - ldd /bin/bash
+    
+    - mkdir /home/user-chroot
+      - cd /home/user-chroot
+    - mkdir bin lib lib64
+      - cp -r /bin/bash ./bin/bash
+      - cp -r /lib/* ./lib
+      - cp -r /lib64/* ./lib64
+      - ls
+
+    - menambahkan sebuah perintah
+      - which ls
+        - /bin/ls
+        - cp -r /bin/ls ./bin/ls
+
+    - menjalankan chroot
+      - chroot /home/user-chroot
 
 ## Certificate Shell Login
 - ssh-keygen -t rsa
