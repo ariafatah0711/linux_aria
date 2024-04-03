@@ -10,7 +10,7 @@
 - mkdir /etc/openvpn/easy-rsa
 
 - cd /usr/share/easy-rsa/3.0.3
-- cp  cp -rf * /etc/openvpn/easy-rsa/
+- cp -rf * /etc/openvpn/easy-rsa/
 - cd /etc/openvpn/easy-rsa/
 
 - ./easyrsa init-pki

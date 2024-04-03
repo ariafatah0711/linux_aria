@@ -5,8 +5,6 @@
 - yum install epel-release
 - dnf install https://www.snort.org/downloads/snort/snort-2.9.20-1.centos.x86_64.rpm
 
-- dnf --enablerepo=powertools install libnetfilter_queue-devel
-atau
 - dnf install libnetfilter_queue-devel
 - dnf install gcc-c++ git flex bison zlib zlib-devel pcre libnet tcpdump libnghttp2 wget xz-devel -y
 - dnf install pcre-devel
