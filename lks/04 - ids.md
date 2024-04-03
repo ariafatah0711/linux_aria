@@ -52,6 +52,7 @@
 
 - systemctl daemon-reload
 - snort -A console -q -c /etc/snort/snort.conf
+- snort -A console -q -c /etc/snort/sql.conf
 
 ## penambahan aktifitas rules
 - rules sql injection
@@ -67,4 +68,8 @@
   alert tcp any any -> any 80 (msg: "UNION SELECT SQL Injection"; content: "union" ; sid:1000006; )
   ```
 - rules 
-- rules
+- rules brute force
+  ```
+  alert tcp any any -> $HOME_NET 22 (msg:"SSH Brute Force Attempt";flow:established,to_server;content:"SSH";nocase;offset:0; depth:4;detection_filter:track by_src, count 2, seconds 2;sid:2005; rev:1;)
+  alert tcp $EXTERNAL_NET any -> $HOME_NET 22 (msg:"Possible SSH brute forcing!"; flags: S+; threshold: type both, track by_src, count 5, seconds 30; sid:10000001; rev: 1;)
+  ```

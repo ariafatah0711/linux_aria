@@ -69,6 +69,14 @@
       > SELINUX=enforcing
   sudo reboot
   ```
+- menambahkan folder di luar selinux
+  - mkdir -p /webharbas
+  - ls -ldZ /webharbas
+  - man semanage-fcontext
+  - semanage fcontext -a -t httpd_sys_content_t "/webharbas(/.*)?"
+  - restorecon -R -v /webharbas
+  - ls -ldZ /webharbas
+
 
 ## CHROOT Shell
 - chroot v1
