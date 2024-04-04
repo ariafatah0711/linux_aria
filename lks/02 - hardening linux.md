@@ -31,20 +31,20 @@
     - Terakhir, tekan W (perintah ini akan menyimpan perubahan ke disk).
   - cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb1 
 
-  - cyrptsetup luksOpen /dev/sdb1 sdb1
-    - mkfs.ext4 /dev/mapper/sdb1
-    - tune2fs -m 0 /dev/mapper/sdb1
+  - cyrptsetup luksOpen /dev/sdb1 aria_ext
+    - mkfs.ext4 /dev/mapper/aria_ext
+    - tune2fs -m 0 /dev/mapper/aria_ext
     - mkdir -p /mnt/encrypted
-  - mount /dev/mapper/sdb1 /mnt/encrypted/
+  - mount /dev/mapper/aria_ext /mnt/encrypted/
     - DIDALAM FOLDER INI BISA KITA TAMBAHKAN FILE, DLL
-  - umount /dev/mapper/sdb1
-  - cryptsetup luskClose sdb1
+  - umount /dev/mapper/aria_ext
+  - cryptsetup luskClose aria_ext
 
   - cryptsetup luksOpen /dev/sdb1
     - mount /dev/mapper/sbd1 /mnt/encrypted
 
-  - umount /dev/mapper/sdb1
-    - cryptsetup luksClose sdb1
+  - umount /dev/mapper/aria_ext
+    - cryptsetup luksClose aria_ext
 
 ## Closed Unusual Open Port
 - menutup port dan mengubah port untuk menjaga keamanan
