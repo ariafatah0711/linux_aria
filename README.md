@@ -173,6 +173,13 @@ this is my linux conf, and my file for run linux
   - aply lalu aktifkan dev5 ke swap dan restart
 </details>
 
+<details>
+  <summary><b>tunneling</b></summary>
+
+  - ssh -L <remote_port>:<local_address>:<local_port> <server_tujuan_yang_akan_diambil_portnya> -p <port>
+  - ssh -L 80:127.0.0.1:8080 192.168.1.1
+</details>
+
 <p id="download"></p>
 
 ## 🔨 download
