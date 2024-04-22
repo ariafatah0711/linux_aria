@@ -14,3 +14,6 @@ dig => mencari nama domain beserta ip secara manual
 - &&	Operator ini memungkinkan Anda untuk menggabungkan beberapa perintah bersama-sama dalam satu baris terminal Anda.
 - > Operator ini adalah redirector - artinya kita dapat mengambil output dari perintah (seperti menggunakan cat untuk mengeluarkan file) dan mengarahkannya ke tempat lain.
 - >>	Operator ini melakukan fungsi yang sama dari operator tetapi menambahkan output daripada mengganti (artinya tidak ada yang ditimpa).>
+
+ls
+ll => alternarif ls -al

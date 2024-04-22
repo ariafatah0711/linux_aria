@@ -176,8 +176,20 @@ this is my linux conf, and my file for run linux
 <details>
   <summary><b>tunneling</b></summary>
 
-  - ssh -L <remote_port>:<local_address>:<local_port> <server_tujuan_yang_akan_diambil_portnya> -p <port>
-  - ssh -L 80:127.0.0.1:8080 192.168.1.1
+  - L remote local
+    - ssh -L <remote_port>:<local_address>:<local_port> <user>@<server_tujuan_yang_akan_diambil_portnya> -p <port>
+    - ssh -L 80:127.0.0.1:8080 192.168.1.1
+
+  - R reote jarak jauh
+    - ssh -R <remote_port>:<local_address>:<local_port> <user>@<ip_address> -p <port>
+    - ssh -R 80:127.0.0.1:8080 192.168.1.1
+  
+  -D dynamis ssh proxy
+    - ssh -D <local_port> <username>@<ip_address>
+    - ssh -D 1234 ariafatah@192.168.1.1
+
+    setting firefox lalu cari proxy dan ubah host socks dan masukan ip dan portnya
+    host proxt: 192.168.1.1    1234
 </details>
 
 <p id="download"></p>
