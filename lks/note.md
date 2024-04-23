@@ -23,7 +23,23 @@ sudo apt-get --purge remove xinetd nis yp-tools tftpd atftpd tftpd-hpa telnetd r
 - mendaftarkan sebuah system ke sebuah directory yang nantinya dapat diakses oleh system tersebut ✓
 
 ```
+https://computingforgeeks.com/apparmor-cheat-sheet-for-linux-system-administrators/#google_vignette
+
 aa-status #AppArmor
+
+# enable
+sudo aa-enforce /path/to/profile
+sudo aa-enforce /usr/sbin/httpd
+
+# disable
+sudo aa-complain /path/to/profile
+sudo aa-complain /etc/apparmor.d/usr.sbin.rsyslogd
+
+aa-genprof <nama_file>
+aa-logprof
+
+sudo aa-genprof /usr/bin/scp
+scp ~/test remote_user@remote_IP:~/
 ```
 
 - membuat directory chroot, lalu mencopy file system chroot ✓

@@ -18,6 +18,7 @@ SSH adalah Secure Shell, yaitu sebuah protokol yang memungkinkan kamu untuk meng
 
 - host windows / termux
   - ```ssh user@192.168.1.1 -p 22```
+  - ```ssh user@192.168.1.1 -x "ls; pwd; cd /home/ariafatah; mkdir test"```
 
 # remote with keygen
 - make ssh keygen

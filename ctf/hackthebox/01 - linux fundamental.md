@@ -126,3 +126,32 @@ Fstab File /etc/fstab
 192.168.1.100:/nfs /mnt/nfs nfs defaults 0 0
 ``
 
+######################
+log kernel => /var/log/kern.log
+log system => /var/log/syslog
+log authentication => /var/log/auth.log
+Application logs =>  
+    /var/log/apache2/error.log
+    /var/log/mysql/error.log
+
+Access Log Entry
+```
+Service	Description
+Apache	Access logs are stored in the /var/log/apache2/access.log file (or similar, depending on the distribution).
+Nginx	Access logs are stored in the /var/log/nginx/access.log file (or similar).
+OpenSSH	Access logs are stored in the /var/log/auth.log file on Ubuntu and in /var/log/secure on CentOS/RHEL.
+MySQL	Access logs are stored in the /var/log/mysql/mysql.log file.
+PostgreSQL	Access logs are stored in the /var/log/postgresql/postgresql-version-main.log file.
+Systemd	Access logs are stored in the /var/log/journal/ directory.
+```
+
+Security logs
+```
+/var/log/ufw.log
+/var/log/fail2ban.log
+```
+
+
+#################
+uname -a
+showrev -a
