@@ -15,6 +15,7 @@ Option	Description
 locate *.conf
 
 apropos <comand>
+man -k <command>
 
 ####################
 more <nama_file>
