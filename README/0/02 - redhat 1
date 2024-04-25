@@ -1,0 +1,545 @@
+
+touch file{1..10}.txt
+
+nano /home/ariafatah/show.sh
+```
+echo "test"
+whoami
+```
+cd /tmp
+ln <file_target> <file_baru_yang_dijadikan_link>
+ln /home/ariafatah/show.sh showme
+touch file.txt
+ln -s /home/ariafatah/file.txt showme
+
+ln -s /etc ~/config
+rm -f ~/config
+
+############
+```
+Pola	Korek api
+*	Setiap string nol atau lebih karakter
+?	Setiap karakter tunggal
+[Abc...]	Salah satu karakter dalam kelas tertutup (antara tanda kurung siku)
+[!Abc...]	Salah satu karakter tidak di kelas tertutup
+[^Abc...]	Salah satu karakter tidak di kelas tertutup
+[[:alfa:]]	Karakter alfabet apa pun
+[[:lebih rendah:]]	Karakter huruf kecil apa pun
+[[:atas:]]	Karakter huruf besar apa pun
+[[:alnum:]]	Karakter alfabet atau digit apa pun
+[[:p unct:]]	Karakter apa pun yang dapat dicetak yang bukan spasi atau alfanumerik
+[[:d igit:]]	Setiap digit tunggal dari 0 hingga 9
+[[:spasi:]]	Setiap karakter spasi putih, yang mungkin termasuk tab, baris baru, carriage return, form feed, atau spasi
+```
+
+```
+[user@host glob]$ ls a*
+able  alfa
+[user@host glob]$ ls *a*
+able  alfa  baker  bravo  cast  charlie  delta  easy
+[user@host glob]$ ls [ac]*
+able  alfa  cast  charlie
+
+[user@host glob]$ ls ????
+able  cast  easy  echo
+[user@host glob]$ ls ?????
+baker  bravo  delta
+```
+
+```
+[user@host glob]$ echo {Sunday,Monday,Tuesday,Wednesday}.log
+Sunday.log Monday.log Tuesday.log Wednesday.log
+[user@host glob]$ echo file{1..3}.txt
+file1.txt file2.txt file3.txt
+[user@host glob]$ echo file{a..c}.txt
+filea.txt fileb.txt filec.txt
+[user@host glob]$ echo file{a,b}{1,2}.txt
+filea1.txt filea2.txt fileb1.txt fileb2.txt
+[user@host glob]$ echo file{a{1,2},b,c}.txt
+filea1.txt filea2.txt fileb.txt filec.txt
+```
+
+```
+VARIABLENAME=value
+
+[user@host ~]$ USERNAME=operator
+[user@host ~]$ echo $USERNAME
+operator
+Untuk mencegah kesalahan karena ekspansi shell lainnya, Anda dapat memasukkan nama variabel dalam kurung kurawal, misalnya .${VARIABLENAME}
+
+[user@host ~]$ USERNAME=operator
+[user@host ~]$ echo ${USERNAME}
+operator
+```
+
+```
+[user@host glob]$ echo Today is $(date +%A).
+Today is Wednesday.
+[user@host glob]$ echo The time is $(date +%M) minutes past $(date +%l%p).
+The time is 26 minutes past 11AM.
+
+[user@host glob]$ echo The value of $HOME is your home directory.
+The value of /home/user is your home directory.
+[user@host glob]$ echo The value of \$HOME is your home directory.
+The value of $HOME is your home directory.
+```
+
+man -k passwd
+
+#####################
+
+export var=value # export
+export -n PS1 # unexport
+
+[user@host ~]$ PS1="bash\$ "
+bash$ PS1="[\u@\h \W]\$ "
+PS1='[\u@\h \t \w]$ ' # time
+[user@host ~]$
+
+alias hello='echo "Hello, this is a long string."'
+unalias hello # unalias
+
+###############
+chage -m 0 -M 90 -W 7 -I 14 sysadmin05
+
+```
+[root@host ~]# date +%F 1
+2022-03-10
+[root@host ~]# date -d "+30 days" +%F 2
+2022-04-09
+[root@host ~]# chage -E $(date -d "+30 days" +%F) cloudadmin10 3
+[root@host ~]# chage -l cloudadmin10 | grep "Account expires" 4
+Account expires						: Apr 09, 2022
+
+date -d "+45 days" -u
+```
+
+usermod -L sysadmin03 #lock
+usermod -L -e 2022-08-14 cloudadmin10
+usermod -U sysadmin03 #unlock
+
+usermod -s /sbin/nologin newapp
+su - newapp
+
+This account is currently not available.
+
+########
+nano /etc/login.defsvim
+PASS_MAX_DAYS 180
+PASS_MIN_DAYS   0
+PASS_WARN_AGE   7
+
+#################
+umask 0
+umask 007 #artinyafile baru akan menjadi rw-rw---- # kalo folder jadi drwxrwx---
+umask 027 #artinyafile baru akan menjadi rw-r---- # kalo folder jadi drwxr-x---
+
+
+###################
+```
+Name	Flag	Kernel-defined state name and description
+Running	R	TASK_RUNNING: The process is either executing on a CPU or waiting to run. The process can be executing user routines or kernel routines (system calls), or be queued and ready when in the Running (or Runnable) state.
+Sleeping	
+S	TASK_INTERRUPTIBLE: The process is waiting for some condition: a hardware request, system resource access, or a signal. When an event or signal satisfies the condition, the process returns to Running.
+D	TASK_UNINTERRUPTIBLE: This process is also sleeping, but unlike the state, does not respond to signals. It is used only when process interruption might cause an unpredictable device state.S
+K	TASK_KILLABLE: Same as the uninterruptible state, but modified to allow a waiting task to respond to the signal to kill it (exit completely). Utilities often display DKillable processes as the state.D
+I	TASK_REPORT_IDLE: A subset of state . The kernel does not count these processes when calculating the load average. It is used for kernel threads. The TASK_UNINTERRUPTIBLE and TASK_NOLOAD flags are set. It is similar to TASK_KILLABLE, and is also a subset of state . It accepts fatal signals.DD
+Stopped	
+T	TASK_STOPPED: The process is stopped (suspended), usually by being signaled by a user or another process. The process can be continued (resumed) by another signal to return to running.
+T	TASK_TRACED: A process that is being debugged is also temporarily stopped and shares the state flag.T
+
+Zombie	
+Z	EXIT_ZOMBIE: A child process signals to its parent as it exits. All resources except for the process identity (PID) are released.
+X	EXIT_DEAD: When the parent cleans up (reaps) the remaining child process structure, the process is now released completely. This state cannot be observed in process-listing utilities.
+```
+
+```
+sleep 10000 &
+ps j
+jobs
+bg %1
+```
+
+```
+[student@servera bin]$ jobs
+[1]   Running                 instance network &
+[2]-  Running                 instance interface &
+[3]+  Running                 instance connection &
+
+kill -SIGSTOP %1
+kill -SIGTERM %2
+
+[student@servera bin]$ jobs
+[1]+  Stopped                 instance network
+[2]   Terminated              instance interface
+[3]-  Running                 instance connection &
+
+kill -SIGCONT %1 ## killerd number 2 becausse him terminated
+
+[student@servera bin]$ jobs
+[1]+  Running                 instance network &
+[3]-  Running                 instance connection &
+```
+
+##############
+uptime
+top
+lscpu
+
+##########
+systemctl reload-or-restart sshd.service
+systemctl list-dependencies sshd.service
+
+```
+Perintah	Tugas
+systemctl status UNIT	Melihat informasi mendetail tentang status unit.
+systemctl stop UNIT	Hentikan layanan pada sistem yang sedang berjalan.
+systemctl start UNIT	Mulai layanan pada sistem yang sedang berjalan.
+systemctl restart UNIT	Mulai ulang layanan pada sistem yang sedang berjalan.
+systemctl reload UNIT	Muat ulang file konfigurasi layanan yang sedang berjalan.
+systemctl mask UNIT	Nonaktifkan layanan agar tidak dimulai, baik secara manual maupun saat boot.
+systemctl unmask UNIT	Sediakan layanan bertopeng.
+systemctl enable UNIT	Konfigurasikan layanan untuk memulai saat boot. Gunakan opsi untuk juga memulai layanan.--now
+systemctl disable UNIT	Nonaktifkan layanan dari mulai saat boot. Gunakan opsi untuk juga menghentikan layanan.--now
+```
+
+###################
+w --from #ip yang sedang meremote ssh
+
+eval $(ssh-agent)
+ssh-add .ssh/key-with-pass #jika semisal id_rsa ada passnyua dia ketika kita ingin cobad i akun ini dia tidak perlu memasukan passpharse
+
+cat ~/.ssh/config
+host servera
+     HostName                      servera.example.com
+     User                          usera
+     IdentityFile                  ~/.ssh/id_rsa_servera
+
+host serverb
+     HostName                      serverb.example.com
+     User                          userb
+     IdentityFile                  ~/.ssh/id_rsa_serverb
+
+#####
+nano /etc/ssh/sshd_config
+PermitRootLogin yes #root apakah bisa masuk atau tidak
+PasswordAuthentication yes #apakah jika ingin meremote bisa menggunakan kata sandi
+
+##############
+```
+Alamat atau jaringan IPv6	Maksud	Deskripsi
+::1/128	localhost	IPv6 setara dengan alamat, yang diatur pada antarmuka loopback.127.0.0.1/8
+::	Alamat yang tidak ditentukan	IPv6 setara dengan . Untuk layanan jaringan, ini mungkin menunjukkan bahwa ia mendengarkan di semua alamat IP yang dikonfigurasi.0.0.0.0
+::/0	Rute default (internet IPv6)	IPv6 setara dengan alamat. Rute default dalam tabel perutean cocok dengan jaringan ini; Router untuk jaringan ini adalah tempat semua lalu lintas dikirim tanpa adanya rute yang lebih baik.0.0.0.0/0
+2000::/3	Alamat unicast global	Si Otoritas Nomor yang Ditetapkan Internet (IANA) saat ini mengalokasikan alamat IPv6 "normal" dari ruang ini. Alamat mencakup semua jaringan yang berkisar dari melalui .2000::/163fff::/16
+fd00::/8	Alamat lokal unik (RFC 4193)	IPv6 tidak memiliki padanan langsung dari ruang alamat pribadi RFC 1918, meskipun rentang jaringan ini dekat. Sebuah situs dapat menggunakan jaringan ini untuk mengalokasikan sendiri ruang alamat IP routable pribadi di dalam organisasi. Namun, jaringan ini tidak dapat digunakan di internet global. Situs harus secara acak memilih dari ruang ini, tetapi dapat subnet alokasi ke jaringan normal./48/64
+fe80::/10	Alamat tautan-lokal	Setiap antarmuka IPv6 secara otomatis mengkonfigurasi alamat unicast link-lokal yang hanya berfungsi pada tautan lokal di jaringan. Namun, seluruh jajaran dicadangkan untuk penggunaan di masa mendatang oleh tautan lokal. Topik ini dibahas lebih rinci nanti.fe80::/64fe80::/10
+ff00::/8	Multicast	IPv6 setara dengan alamat. Multicast digunakan untuk mengirimkan ke beberapa host pada saat yang sama, dan sangat penting dalam IPv6 karena tidak memiliki alamat broadcast.224.0.0.0/4
+```
+
+ip link show
+ip addr show ens3
+ip -s link show ens3
+
+ping -c3 192.0.2.254
+ping6 ff02::1%ens4
+ping6 -c 1 fe80::f482:dbff:fe25:6a9f%ens4
+ssh fe80::f482:dbff:fe25:6a9f%ens4
+
+ip route
+ip -6 route
+traceroute
+tracepath access.redhat.com
+tracepath6 2001:db8:0:2::451
+ss -ta
+
+```
+Tabel 11.6. Opsi untuk ss dan netstat
+
+Pilihan	Deskripsi
+-n	Tampilkan angka, bukan nama untuk antarmuka dan port.
+-t	Tampilkan soket TCP.
+-u	Tampilkan soket UDP.
+-l	Hanya tampilkan soket mendengarkan.
+-a	Tampilkan semua soket (mendengarkan dan ditetapkan).
+-p	Tampilkan proses yang menggunakan soket.
+```
+
+########
+```
+Perintah NetworkManager yang Berguna
+Tabel berikut mencantumkan perintah kunci yang dibahas di bagian ini:nmcli
+
+Perintah	Maksud
+nmcli dev status	Tampilkan status NetworkManager dari semua antarmuka jaringan.
+nmcli con show	Cantumkan semua koneksi.
+nmcli con show name	Cantumkan pengaturan saat ini untuk nama koneksi.
+nmcli con add con-name name	Tambahkan dan beri nama profil koneksi baru.
+nmcli con mod name	Ubah nama koneksi.
+nmcli con reload	Muat ulang file konfigurasi, setelah pengeditan file manual.
+nmcli con up name	Aktifkan nama koneksi.
+nmcli dev dis dev	Putuskan sambungan antarmuka, yang juga menonaktifkan koneksi saat ini.
+nmcli con del name	Hapus koneksi yang ditentukan dan file konfigurasinya.
+```
+
+nmcli dev status #status
+nmcli con show
+
+nmcli con add con-name eno2 \ #connect
+nmcli con add con-name eno3 type ethernet ifname eno3 \
+nmcli con add con-name eno4 type ethernet ifname eno4 \
+
+nmcli con show
+nmcli dev disconnect ens3 #disconnect
+
+nmcli con show static-ens3
+=> etc/NetworkManager/system-connections/name.nmconnectionnm-settings
+
+nmcli con mod static-ens3 ipv4.addresses 192.0.2.2/24 \ #mengatur alamat ip baru
+nmcli con mod static-ens3 ipv6.addresses 2001:db8:0:1::a00:1/64 \
+nmcli con mod static-ens3 +ipv4.dns 2.2.2.2
+
+nmcli con reload
+nmcli con del static-ens3
+nmcli gen permissions
+
+```
+nmcli con add con-name static-addr \
+ifname eth0 type ethernet ipv4.method manual ipv4.dns 172.25.250.220 \
+ipv4.addresses 172.25.250.10/24 ipv4.gateway 172.25.250.254
+Connection 'static-addr' (dc519805-48c4-4b31-b9e9-d3631cf9082c) successfully added.
+
+nmcli con mod "Wired connection 1" \
+connection.autoconnect no
+```
+
+```
+nmcli con mod	*.nmconnection arsip	Efek
+ipv4.method manual	
+[ipv4]
+
+method=manual
+
+Konfigurasikan alamat IPv4 secara statis.
+ipv4.method auto	
+[ipv4]
+
+method=auto
+
+Cari pengaturan konfigurasi dari server DHCPv4. Ini menunjukkan alamat statis hanya ketika memiliki informasi dari DHCPv4.
+ipv4.addresses 192.0.2.1/24	
+[ipv4]
+
+address1=192.0.2.1/24
+
+Tetapkan alamat IPv4 statis dan awalan jaringan. Untuk lebih dari satu alamat koneksi, kunci mendefinisikan alamat kedua, dan kunci menentukan alamat ketiga.address2address3
+ipv4.gateway 192.0.2.254	
+[ipv4]
+
+gateway=192.0.2.254
+
+Mengatur gateway default.
+ipv4.dns 8.8.8.8	
+[ipv4]
+
+dns=8.8.8.8
+
+Ubah untuk menggunakan server nama ini./etc/resolv.conf
+ipv4.dns-search example.com	
+[ipv4]
+
+dns-search=example.com
+
+Ubah untuk menggunakan domain ini dalam direktif./etc/resolv.confsearch
+ipv4.ignore-auto-dns true	
+[ipv4]
+
+ignore-auto-dns=true
+
+Abaikan informasi server DNS dari DHCP server.
+ipv6.method manual	
+[ipv6]
+
+method=manual
+
+Konfigurasikan alamat IPv6 secara statis.
+ipv6.method auto	
+[ipv6]
+
+method=auto
+
+Konfigurasikan pengaturan jaringan dengan SLAAC dari iklan router.
+ipv6.method dhcp	
+[ipv6]
+
+method=dhcp
+
+Mengkonfigurasi pengaturan jaringan dengan menggunakan DHCPv6, tetapi tidak dengan menggunakan SLAAC.
+ipv6.addresses 2001:db8::a/64	
+[ipv6]
+
+address1=2001:db8::a/64
+
+Tetapkan alamat IPv6 statis dan awalan jaringan. Saat menggunakan lebih dari satu alamat untuk koneksi, kunci mendefinisikan alamat kedua, dan kunci menentukan alamat ketiga.address2address3
+ipv6.gateway 2001:db8::1	
+[ipv6]
+
+gateway=2001:db8::1
+
+Mengatur gateway default.
+ipv6.dns fde2:6494:1e09:2::d	
+[ipv6]
+
+dns=fde2:6494:1e09:2::d
+
+Ubah untuk menggunakan server nama ini. Sama seperti IPv4./etc/resolv.conf
+ipv6.dns-search example.com	
+[ipv6]
+
+dns-search=example.com
+
+Ubah untuk menggunakan domain ini dalam direktif./etc/resolv.confsearch
+ipv6.ignore-auto-dns true	
+[ipv6]
+
+ignore-auto-dns=true
+
+Abaikan informasi server DNS dari DHCP server.
+connection.autoconnect yes	
+[connection]
+
+autoconnect=true
+
+Aktifkan koneksi ini secara otomatis saat boot.
+connection.id ens3	
+[connection]
+
+id=Main eth0
+
+Nama koneksi ini.
+connection.interface-name ens3	
+[connection]
+
+interface-name=ens3
+
+Koneksi terikat ke antarmuka jaringan dengan nama ini.
+802-3-ethernet.mac-address …​	
+[802-3-ethernet]
+
+mac-address=
+
+Koneksi terikat ke antarmuka jaringan dengan alamat MAC ini.
+```
+
+/etc/NetworkManager/system-connections/
+```
+[connection]
+id=Main eth0
+uuid=27afa607-ee36-43f0-b8c3-9d245cdc4bb3
+type=802-3-ethernet
+autoconnect=true
+
+[ipv4]
+method=manual
+
+[802-3-ethernet]
+mac-address=00:23:5a:47:1f:71
+```
+
+###########
+hostname
+hostnamectl hostname host.example.com
+hostnamectl status
+
+Static hostname: host.example.com
+
+cat /etc/hosts
+127.0.0.1       localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1             localhost localhost.localdomain localhost6 localhost6.localdomain6
+172.25.254.254 classroom.example.com
+172.25.254.254 content.example.com
+
+cat /etc/resolv.conf
+# Generated by NetworkManager
+domain example.com
+search example.com
+nameserver 172.25.254.254
+
+```
+[root@host ~]# nmcli con mod ID ipv4.dns IP
+[root@host ~]# nmcli con down ID
+[root@host ~]# nmcli con up ID
+[root@host ~]# cat /etc/NetworkManager/system-connections/ID
+...output omitted...
+[ipv4]
+...output omitted...
+dns=8.8.8.8;
+...output omitted...
+
+nmcli con mod ID +ipv4.dns IP
+nmcli con mod static-ens3 +ipv6.dns 2001:4860:4860::8888
+
+nmcli con mod "static-ens3" ipv4.ignore-auto-dns yes
+
+dig classroom.example.com
+getent hosts classroom.example.com
+```
+
+############################
+rpm -qa : Daftar semua paket yang diinstal.
+rpm -qf FILENAME : Tentukan paket mana yang menyediakan FILENAME.
+rpm -qi : Dapatkan informasi paket terperinci.
+rpm -ql : Daftar file yang diinstal paket.
+rpm -qc : Daftar hanya file konfigurasi yang diinstal paket.
+rpm -qd : Daftar hanya file dokumentasi yang menginstal paket.
+rpm -q --scripts : Daftar skrip shell yang berjalan sebelum atau setelah Anda menginstal atau menghapus paket.
+rpm -q --changelog : Cantumkan informasi log perubahan untuk paket.
+rpm -qlp : Daftar file yang diinstal paket lokal.
+
+rpm -qf /etc/yum.repos.d
+rpm -q dnf
+rpm -ql dnf
+rpm -ql dnf
+rpm -qc openssh-clients
+
+rpm -ivh podman-4.0.0-6.el9.x86_64.rpm #install paket ke directory local
+rpm2cpio httpd-2.4.51-7.el9_0.x86_64.rpm | cpio -idv #extract paket
+
+rpm2cpio httpd-2.4.51-7.el9_0.x86_64.rpm | cpio -id "*/etc/httpd/conf/httpd.conf" #extract paket dengan tujuan lokasinya
+rpm2cpio httpd-2.4.51-7.el9_0.x86_64.rpm | cpio -tv #verbose
+
+##################
+```
+Task:	Command:
+List installed and available packages by name.	dnf list [NAME-PATTERN]
+List installed and available groups.	dnf group list
+Search for a package by keyword.	dnf search KEYWORD
+Show details of a package.	dnf info PACKAGENAME
+Install a package.	dnf install PACKAGENAME
+Install a package group.	dnf group install GROUPNAME
+Update all packages.	dnf update
+Remove a package.	dnf remove PACKAGENAME
+Display transaction history.	dnf history
+```
+
+dnf group list
+dnf group info <nama>
+dnf group install <name>
+dnf history list
+dnf history info
+dnf history undo
+
+dnf repolist all
+dnf config-manager --enable rhel-9-server-debug-rpms
+
+dnf config-manager \
+--add-repo="https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/"
+Adding repo from: https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/
+
+rpm --import \
+https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9
+
+dnf install \
+https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+
+dnf remove cups
