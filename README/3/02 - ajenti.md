@@ -28,3 +28,7 @@
 - sudo systemctl disable ajenti.service
 - sudo systemctl daemon-reload
 - sudo rm -f /lib/systemd/system/ajenti.service
+
+# redhat
+dnf install cockpit
+systemctl enable --now cockpit.socket

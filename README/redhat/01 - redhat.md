@@ -543,3 +543,38 @@ dnf install \
 https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 
 dnf remove cups
+
+##############
+Type of device	Device naming pattern
+SATA/SAS/USB-attached storage (SCSI driver)	/dev/sda, , , …​/dev/sdb/dev/sdc
+virtio-blk paravirtualized storage (VMs)	/dev/vda, , ,…​/dev/vdb/dev/vdc
+virtio-scsi paravirtualized storage (VMs)	/dev/sda, , , …​/dev/sdb/dev/sdc
+NVMe-attached storage (SSDs)	/dev/nvme0, , …​/dev/nvme1
+SD/MMC/eMMC storage (SD cards)	/dev/mmcblk0, , …​/dev/mmcblk1
+
+df
+df -h
+df -H
+du
+du -h
+
+lsblk
+mount /dev/sda4 /mnt/data
+
+lsblk -fp
+mount UUID="efd314d0-b56e-45db-bbb3-3f32ae98f652" /mnt/data
+
+umount /mnt/data
+lsof /mnt/data
+
+########################
+sudo systemctl enable --now cockpit.socket
+
+
+dnf install sos
+sos report
+sos clean /var/tmp/sosreport-host-2022-03-29-wixbhpz.tar.xz*
+
+insights-client
+subscription-manager register --auto-attach
+insights-client --register
