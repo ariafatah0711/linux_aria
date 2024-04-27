@@ -393,4 +393,268 @@ timedatectl set-ntp false #sync waktu
 timedatectl
 chronyc sources -v
 
-# 
+# archive transfer filie
+```
+-c or --create : Create an archive file.
+-t or --list : List the contents of an archive.
+-x or --extract : Extract an archive.
+
+-v or --verbose : Show the files that are being archived or extracted during the tar operation.
+-f or --file : Follow this option with the archive file name to create or open.
+-p or --preserve-permissions : Preserve the original file permissions when extracting.
+--xattrs : Enable extended attribute support, and store extended file attributes.
+--selinux : Enable SELinux context support, and store SELinux file contexts.
+
+-a or --auto-compress : Use the archive's suffix to determine the algorithm to use.
+-z or --gzip : Use the gzip compression algorithm, which results in a .tar.gz suffix.
+-j or --bzip2 : Use the bzip2 compression algorithm, which results in a .tar.bz2 suffix.
+-J or --xz : Use the xz compression algorithm, which results in a .tar.xz suffix.
+```
+
+tar -cf mybackup.tar myapp1.log myapp2.log myapp3.log #memcompres 3file myapp menjadi mybackup.tar
+tar -tf /root/etc.tar #extract
+tar -xpf /home/user/myscripts.tar #untuk super user untuk menjaga permission
+
+```
+Kompresi GZIP adalah metode tercepat dan lebih awal, dan tersedia secara luas di seluruh platform.
+Kompresi bzip2 membuat arsip yang lebih kecil tetapi kurang tersedia secara luas daripada .gzip
+Kompresi XZ lebih baru, dan menawarkan rasio kompresi terbaik dari metode yang tersedia.
+
+tar -czf /root/etcbackup.tar.gz /etc #biar jadi tar.gz
+tar -cjf /root/logbackup.tar.bz2 /var/log
+tar -cJf /root/sshconfig.tar.xz /etc/ssh
+
+tar -tf /root/etcbackup.tar.gz # untuk extratnya tidak perlu pake z karena dia sudah otomatis
+```
+
+gzip -l file.tar.gz
+
+##
+sftp remoteuser@remotehost
+sftp> help
+sftp> pwd #pwd now
+sftp> lpwd #local directory
+sftp> lcd #change local directory
+
+sftp> mkdir hostbackup
+sftp> cd hostbackup
+sftp> put /etc/hosts
+Uploading /etc/hosts to /home/remoteuser/hostbackup/hosts
+/etc/hosts                                 100%  227     0.2KB/s   00:00
+
+put /etc/hosts #put file
+put -r directory #untuk directory
+get /etc/yum.conf #dapetin file
+
+sftp remoteuser@remotehost:/home/remoteuser/remotefile
+
+## rsync
+```
+-n test
+
+-r, --recursive	Synchronize the whole directory tree recursively
+-l, --links	Synchronize symbolic links
+-p, --perms	Preserve permissions
+-t, --times	Preserve time stamps
+-g, --group	Preserve group ownership
+-o, --owner	Preserve the owner of the files
+-D, --devices	Preserve device files
+
+-A to preserve Access Control Lists (ACLs)
+-X to preserve SELinux file contexts
+```
+
+rsync -av /var/log hosta:/tmp #kirim
+rsync -av hosta:/var/log /tmp
+
+#yang membuat enak rsync jadi ketika kita sudah mengirim dan lalu kita ubah bbrp isi filenya saat dikirim kita tidak akan mengirim semuanya hanya mengirim file yang diubah itu aja
+
+# tuned
+```
+[root@host ~]$ cat /etc/tuned/tuned-main.conf
+...output omitted...
+# Dynamicaly tune devices, if disabled only static tuning will be used.
+dynamic_tuning = 1
+...output omitted...
+# Update interval for dynamic tunings (in seconds).
+# It must be multiply of the sleep_interval.
+update_interval = 10
+...output omitted...
+
+[root@host ~]$ dnf install tuned
+...output omitted...
+[root@host ~]$ systemctl enable --now tuned
+Created symlink /etc/systemd/system/multi-user.target.wants/tuned.service → /usr/lib/systemd/system/tuned.service.
+```
+
+```
+Tuned Profile	Purpose
+balanced	Ideal for systems that require a compromise between power saving and performance.
+powersave	Tunes the system for maximum power saving.
+throughput-performance	Tunes the system for maximum throughput.
+accelerator-performance	Tunes the same as throughput-performance, and also reduces the latency to less than 100 μs.
+latency-performance	Ideal for server systems that require low latency at the expense of power consumption.
+network-throughput	Derived from the throughput-performance profile. Additional network tuning parameters are applied for maximum network throughput.
+network-latency	Derived from the latency-performance profile. Enables additional network tuning parameters to provide low network latency.
+desktop	Derived from the balanced profile. Provides faster response of interactive applications.
+hpc-compute	Derived from the latency-performance profile. Ideal for high-performance computing.
+virtual-guest	Tunes the system for maximum performance if it runs on a virtual machine.
+virtual-host	Tunes the system for maximum performance if it acts as a host for virtual machines.
+intel-sst	Optimized for systems with Intel Speed Select Technology configurations. Use it as an overlay on other profiles.
+optimize-serial-console	Increases responsiveness of the serial console. Use it as an overlay on other profiles.
+```
+
+cd /usr/lib/tuned
+ls => disitu banyak configan defaultnya
+=> lalu cat salah satu confignya
+=> dan jika kita masukan sysctl maka kita bisa lihatr variable yang satt ini sedang dipakaiu apa confignya
+sysctl vm.dirty_ratio
+
+tuned-adm active #config tuned yang sedang aktif
+tuned-adm list
+tuned-adm profile_info network-latency
+tuned-adm recommend
+
+[root@host ~]$ tuned-adm profile throughput-performance #pindah profile
+[root@host ~]$ tuned-adm active
+Current active profile: throughput-performance
+
+tuned-adm off
+tuned-adm active
+
+##
+ps axo pid,comm,nice,cls --sort=-nice
+
+```
+[user@host ~]$ sleep 60 &
+[1] 2667
+[user@host ~]$ ps -o pid,comm,nice 2667
+PID COMMAND          NI
+2667 sleep            0
+
+[user@host ~]$ nice sleep 60 &
+[1] 2736
+[user@host ~]$ ps -o pid,comm,nice 2736
+PID COMMAND          NI
+2736 sleep            10
+
+[user@host ~]$ renice -n 19 2740
+2740 (process ID) old priority 15, new priority 19
+```
+
+# selinux
+/etc/selinux/config
+```
+Enforcing : SELinux enforces the loaded policies. This mode is the default in Red Hat Enterprise Linux.
+Permissive : SELinux loads the policies and is active, but instead of enforcing access control rules, it logs access violations. This mode is helpful for testing and troubleshooting applications and rules.
+Disabled : SELinux is turned off. SELinux violations are not denied or logged. Disabling SELinux is strongly discouraged.
+
+[root@host ~]# getenforce
+Enforcing
+[root@host ~]# setenforce
+usage:  setenforce [ Enforcing | Permissive | 1 | 0 ]
+[root@host ~]# setenforce 0
+[root@host ~]# getenforce
+Permissive
+[root@host ~]# setenforce Enforcing
+[root@host ~]# getenforce
+Enforcing
+```
+
+selinux_user      role  type  level file
+
+```
+ps axZ
+systemctl start httpd
+ps -ZC httpd
+```
+
+##
+```
+[root@host ~]# mkdir /virtual
+[root@host ~]# ls -Zd /virtual
+unconfined_u:object_r:default_t:s0 /virtual
+
+[root@host ~]# chcon -t httpd_sys_content_t /virtual
+[root@host ~]# ls -Zd /virtual
+unconfined_u:object_r:httpd_sys_content_t:s0 /virtual
+
+[root@host ~]# restorecon -v /virtual
+Relabeled /virtual from unconfined_u:object_r:httpd_sys_content_t:s0 to unconfined_u:object_r:default_t:s0
+[root@host ~]# ls -Zd /virtual
+unconfined_u:object_r:default_t:s0 /virtual
+```
+
+semanage fcontext
+Option	Description
+-a, --add	Add a record of the specified object type.
+-d, --delete	Delete a record of the specified object type.
+-l, --list	List records of the specified object type.
+
+semanage fcontext -a -t httpd_sys_content_t '/virtual(/.*)?' #mengubah semua file didalamnya juga
+restorecon -RFvv /virtual
+emanage fcontext -l -C #liat local customizations to the default policy.
+
+##
+getsebool -a
+getsebool httpd_enable_homedirs
+
+[root@host ~]# semanage boolean -l | grep httpd_enable_homedirs
+httpd_enable_homedirs          (off   ,  off)  Allow httpd to enable homedirs
+[root@host ~]# setsebool httpd_enable_homedirs on
+[root@host ~]# semanage boolean -l | grep httpd_enable_homedirs
+httpd_enable_homedirs          (on   ,  off)  Allow httpd to enable homedirs
+[root@host ~]# getsebool httpd_enable_homedirs
+httpd_enable_homedirs --> on
+
+[root@host ~]# semanage boolean -l -C
+setsebool -P httpd_enable_homedirs on
+semanage boolean -l | grep httpd_enable_homedirs
+semanage boolean -l -C
+
+```
+vim /etc/httpd/conf.d/userdir.conf
+#didalama file itu terdapat sebuaah module user untuk membuat sebuah public html jadi usersiapaun bisa menambahkaan fiile pada public_html
+
+<IfModule mod_userdir.c>
+      UserDir public_html
+</IfModule>
+```
+
+echo "This is student content on SERVERA." > public_html/index.html
+chmod 711 ~
+getsebool -a | grep home
+httpd_enable_homedirs --> off
+setsebool -P httpd_enable_homedirs on
+
+#setelah di setting setsebool maka nantinya web serveraa memiliki web user student
+http://servera/~student/index.html 
+
+##
+/var/log/audit/audit.log #log untuk selinux
+sealert -a /var/log/audit/audit.log
+
+```
+[root@host ~]# touch /root/mypage
+[root@host ~]# mv /root/mypage /var/www/html
+[root@host ~]# systemctl start httpd
+[root@host ~]# curl http://localhost/mypage
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+</body></html>
+
+[root@host ~]# tail /var/log/messages
+...output omitted...
+Apr  6 08:44:19 host setroubleshoot[2547]: SELinux is preventing /usr/sbin/httpd from getattr access on the file /var/www/html/mypage. For complete SELinux messages run: sealert -l 95f41f98-6b56-45bc-95da-ce67ec9a9ab7
+...output omitted...
+
+sealert -l 95f41f98-6b56-45bc-95da-ce67ec9a9ab7
+
+ausearch -m AVC -ts recent
+```
+
+#
