@@ -657,4 +657,455 @@ sealert -l 95f41f98-6b56-45bc-95da-ce67ec9a9ab7
 ausearch -m AVC -ts recent
 ```
 
-#
+# parted
+```
+s for sector
+B for byte
+MiB , GiB , or TiB (powers of 2)
+MB , GB , or TB (powers of 10)
+```
+
+parted /dev/vda print
+parted /dev/vda
+parted /dev/vda unit s print
+
+parted /dev/vdb mklabel msdos
+parted /dev/vdb mklabel gpt
+
+## mbr
+```
+parted /dev/vdb
+(parted) mkpart
+Partition type?  primary/extended? primary
+
+File system type?  [ext2]? xfs
+
+parted /dev/vdb help mkpart
+
+Start? 2048s
+
+End? 1000MB
+(parted) quit
+Information: You may need to update /etc/fstab.
+
+[root@host ~]#
+```
+
+udevadm settle
+parted /dev/vdb mkpart primary xfs 2048s 1000MB
+
+## gpt
+parted /dev/vdb mkpart userdata xfs 2048s 1000MB
+udevadm settle
+
+## Delete Partitions
+parted /dev/vdb rm 1
+
+## create file system
+mkfs.xfs /dev/vdb1
+mkfs.ext4 /dev/vdb1
+
+## mount
+mount /dev/vdb1 /mnt
+
+cat /etc/fstab
+systemctl daemon-reload
+lsblk --fs
+
+##
+```
+RAM	Ruang swap	Tukar ruang jika memungkinkan untuk hibernasi
+2 GB atau kurang	RAM dua kali lipat	Tiga kali lipat RAM
+Antara 2 GB dan 8 GB	Sama seperti RAM	RAM dua kali lipat
+Antara 8 GB dan 64 GB	Setidaknya 4 GB	1.5 kali RAM
+Lebih dari 64 GB	Setidaknya 4 GB	Hibernasi tidak dianjurkan
+```
+
+```
+[root@host ~]# parted /dev/vdb
+GNU Parted 3.4
+Using /dev/vdb
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted) print
+Model: Virtio Block Device (virtblk)
+Disk /dev/vdb: 5369MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name  Flags
+ 1      1049kB  1001MB  1000MB               data
+
+(parted) mkpart
+Partition name?  []? swap1
+File system type?  [ext2]? linux-swap
+Start? 1001MB
+End? 1257MB
+(parted) print
+Model: Virtio Block Device (virtblk)
+Disk /dev/vdb: 5369MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system     Name   Flags
+ 1      1049kB  1001MB  1000MB                  data
+ 2      1001MB  1257MB  256MB   linux-swap(v1)  swap1
+
+(parted) quit
+Information: You may need to update /etc/fstab.
+
+[root@host ~]#
+[root@host ~]# udevadm settle
+
+parted /dev/vdb mkpart myswap linux-swap 1001MB 1501MB
+```
+
+```
+mkswap /dev/vdb2
+
+[root@host ~]# free
+              total        used        free      shared  buff/cache   available
+Mem:        1873036      134688     1536436       16748      201912     1576044
+Swap:             0           0           0
+[root@host ~]# swapon /dev/vdb2
+[root@host ~]# free
+              total        used        free      shared  buff/cache   available
+Mem:        1873036      135044     1536040       16748      201952     1575680
+Swap:        249852           0      249852
+```
+
+/etc/fstab
+UUID=39e2667a-9458-42fe-9665-c5c854605881   swap   swap   defaults   0 0
+
+# manage storage stack
+```
+Perangkat fisik
+Volume logis menggunakan perangkat fisik untuk menyimpan data. Perangkat ini mungkin partisi disk, seluruh disk, array RAID, atau disk SAN. Anda harus menginisialisasi perangkat sebagai volume fisik LVM. Volume fisik LVM harus menggunakan seluruh perangkat fisik.
+
+Volume Fisik (PV)
+LVM menggunakan perangkat fisik yang mendasarinya sebagai volume fisik LVM. Alat LVM mengelompokkan volume fisik menjadi Luas Fisik (PE) untuk membentuk potongan kecil data yang bertindak sebagai blok penyimpanan terkecil pada PV.
+
+Grup Volume (VG)
+Grup volume adalah kumpulan penyimpanan yang dibuat dari satu atau lebih PV. Ini adalah ekuivalen fungsional dari seluruh disk dalam penyimpanan fisik. PV harus dialokasikan hanya untuk satu VG. LVM menetapkan ukuran PE secara otomatis, meskipun dimungkinkan untuk menentukannya. VG mungkin terdiri dari ruang yang tidak terpakai dan beberapa volume logis.
+
+Volume Logis (LV)
+Volume logis dibuat dari luas fisik bebas dalam VG, dan disediakan sebagai perangkat penyimpanan untuk aplikasi, pengguna, dan sistem operasi. LV adalah kumpulan Luas Logis (LE), yang memetakan ke luas fisik. Secara default, setiap LE dipetakan ke satu PE. Mengatur opsi LV tertentu mengubah pemetaan ini; misalnya, mirroring menyebabkan setiap LE memetakan ke dua PE.
+```
+
+- Prepare Physical Devices
+```
+[root@host ~]# parted /dev/vdb mklabel gpt mkpart primary 1MiB 769MiB
+...output omitted...
+[root@host ~]# parted /dev/vdb mkpart primary 770MiB 1026MiB
+[root@host ~]# parted /dev/vdb set 1 lvm on
+[root@host ~]# parted /dev/vdb set 2 lvm on
+[root@host ~]# udevadm settle
+```
+
+- Create Physical Volumes
+```
+[root@host ~]# pvcreate /dev/vdb1 /dev/vdb2
+```
+
+- Create a Volume Group
+```
+vgcreate vg01 /dev/vdb1 /dev/vdb2
+```
+
+- Create a Logical Volume
+```
+[root@host ~]# lvcreate -n lv01 -L 300M vg01
+
+lvcreate -n lv01 -L 128M vg01 : create an LV of size 128 MiB, rounded to the next PE.
+lvcreate -n lv01 -l 32 vg01 : create an LV of size 32 PEs at 4 MiB each, total 128 MiB.
+```
+
+## vdo
+dnf install vdo kmod-kvdo
+lvcreate --type vdo --name vdo-lv01 --size 5G vg01
+mkfs -t xfs /dev/vg01/lv01
+
+To make the file system available persistently, add an entry to the /etc/fstab file.
+```
+/dev/vg01/lv01 /mnt/data xfs defaults 0 0
+```
+
+[root@host ~]# mount /mnt/data/
+
+pvdisplay /dev/vdb1
+vgdisplay vg01
+lvdisplay /dev/vg01/lv01
+
+### extend volume
+```
+[root@host ~]# parted /dev/vdb mkpart primary 1072MiB 1648MiB
+...output omitted...
+[root@host ~]# parted /dev/vdb set 3 lvm on
+...output omitted...
+[root@host ~]# udevadm settle
+[root@host ~]# pvcreate /dev/vdb3
+Physical volume "/dev/vdb3" successfully created.
+
+[root@host ~]# vgextend vg01 /dev/vdb3
+
+lvextend -L +500M /dev/vg01/lv01
+
+xfs_growfs /mnt/data/
+
+resize2fs /dev/vg01/lv01
+```
+
+### Extend Swap Space Logical Volumes
+```
+swapoff -v /dev/vg01/swap
+lvextend -L +300M /dev/vg01/swap
+mkswap /dev/vg01/swap
+swapon /dev/vg01/swap
+
+pvmove /dev/vdb3
+vgreduce vg01 /dev/vdb3
+
+umount /mnt/data
+```
+
+```
+### Remove the Logical Volume
+lvremove /dev/vg01/lv01
+
+### Remove the Volume Group
+vgremove vg01
+
+### Remove the Physical Volumes
+pvremove /dev/vdb1 /dev/vdb2
+```
+
+### soal 1
+```
+[root@servera ~]# parted /dev/vdb mklabel gpt
+
+[root@servera ~]# parted /dev/vdb mkpart first 1MiB 258MiB
+[root@servera ~]# parted /dev/vdb set 1 lvm on
+
+[root@servera ~]# parted /dev/vdb mkpart second 258MiB 514MiB
+[root@servera ~]# parted /dev/vdb set 2 lvm on
+```
+
+##
+dnf install stratis-cli stratisd
+systemctl enable --now stratisd
+stratis pool create pool1 /dev/vdb
+stratis pool list
+
+stratis pool add-data pool1 /dev/vdc
+stratis blockdev list pool1
+
+stratis filesystem create pool1 fs1
+stratis filesystem list
+
+stratis filesystem snapshot pool1 fs1 snapshot1
+
+lsblk --output=UUID /dev/stratis/pool1/fs1
+UUID=c7b57190-8fba-463e-8ec8-29c80703d45e /dir1 xfs defaults,x-systemd.requires=stratisd.service 0 0
+
+# networsk attact torage
+```
+Manually by using the mount command.
+Persistently at boot by configuring entries in the /etc/fstab file.
+On demand by configuring an automounter method.
+```
+
+dnf install nfs-utils
+showmount --exports server
+
+mkdir /mountpoint
+mount server:/ /mountpoint
+ls /mountpoint
+
+mkdir /mountpoint
+mount -t nfs -o rw,sync server:/export /mountpoint
+
+vim /etc/fstab
+```
+server:/export  /mountpoint  nfs  rw  0 0
+```
+mount /mountpoint
+lsof  /mountpoint
+
+##
+mount -t nfs servera.lab.example.com:/shares/public /public
+
+vim /etc/fstab
+```
+serverb.lab.example.com:/shares/public  /public  nfs  rw,sync  0 0
+```
+##
+```
+sudo dnf install autofs nfs-utils
+sudo vim /etc/auto.master.d/demo.autofs
+
+/shares  /etc/auto.demo
+
+[user@host ~]$ sudo vim /etc/auto.demo
+work  -rw,sync  serverb:/shares/work
+
+/etc/auto.demo
+
+*  -rw,sync  serverb:/shares/&
+/-  /etc/auto.direct
+/mnt/docs  -rw,sync  serverb:/shares/docs
+
+sudo systemctl enable --now autofs
+```
+
+## external
+```
+vim /etc/auto.master.d/direct.autofs
+/-	/etc/auto.direct
+
+vim /etc/auto.direct
+/external	-rw,sync,fstype=nfs4	serverb.lab.example.com:/shares/direct/external
+```
+
+## internal
+```
+vim /etc/auto.master.d/indirect.autofs
+/internal	/etc/auto.indirect
+
+vim /etc/auto.indirect
+*	-rw,sync,fstype=nfs4	serverb.lab.example.com:/shares/indirect/&
+```
+
+# boot
+```
+Target	Maksud
+graphical.target	Target ini mendukung banyak pengguna, dan menyediakan login berbasis grafis dan teks.
+multi-user.target	Target ini mendukung banyak pengguna, dan hanya menyediakan login berbasis teks.
+rescue.target	Target ini menyediakan sistem pengguna tunggal untuk memungkinkan perbaikan sistem Anda.
+emergency.target	Target ini memulai sistem paling minimal untuk memperbaiki sistem Anda ketika unit gagal memulai.rescue.target
+```
+
+systemctl list-dependencies graphical.target | grep target
+systemctl list-units --type=target --all
+
+systemctl isolate multi-user.target
+systemctl cat graphical.target
+AllowIsolate=yes
+[user@host ~]$ systemctl cat cryptsetup.target
+systemctl get-default
+systemctl set-default graphical.target
+systemctl get-default
+
+systemctl set-default graphical.target
+systemctl isolate graphical.target
+systemctl set-default multi-user.target
+systemctl isolate multi-user.target
+
+boot looder edit
+```
+Ketika menu boot loader muncul, tekan sembarang tombol untuk mengganggu hitungan mundur (kecuali Enter, yang akan memulai boot normal).
+Gunakan tombol kursor untuk menyorot entri boot loader default.
+Tekan e untuk mengedit entri saat ini.
+Dengan menggunakan tombol kursor, navigasikan ke baris yang dimulai dengan .linu
+Tekan Akhiri untuk memindahkan kursor ke akhir baris.
+Tambahkan ke akhir baris
+
+video=640x480 or vga=ask
+
+Tekan Ctrl + x untuk boot dengan menggunakan konfigurasi yang dimodifikasi.
+```
+
+## Reset the Root Password from the Boot Loader
+rd.break #in eufi boot looder
+
+mount -o remount,rw /sysroot
+chroot /sysroot
+passwd root
+touch /.autorelabel
+
+vim /etc/systemd/journald.conf
+Storage=persistent
+
+systemctl restart systemd-journald.service
+
+journalctl -b -1 -p err
+
+## fix error boot looder disk
+```
+[DEPEND] Dependency failed for /mnt/mountfolder
+[DEPEND] Dependency failed for Local File Systems.
+[DEPEND] Dependency failed for Mark need to relabel after reboot.
+...output omitted...
+[  OK  ] Started Emergency Shell.
+[  OK  ] Reached target Emergency Mode.
+...output omitted...
+Give root password for maintenance
+(or press Control-D to continue):
+```
+
+systemd.unit=emergency.target # add in eufi
+
+mount
+mount -o remount,rw /
+mount --all
+mount -a
+systemctl reboot
+
+# netwrok security
+```
+Predefined Zones
+
+Zone name	Default configuration
+trusted	Allow all incoming traffic.
+home	Reject incoming traffic unless related to outgoing traffic or matching the ssh, mdns, ipp-client, samba-client, or dhcpv6-client predefined services.
+internal	Reject incoming traffic unless related to outgoing traffic or matching the ssh, mdns, ipp-client, samba-client, or dhcpv6-client predefined services (same as the home zone to start with).
+work	Reject incoming traffic unless related to outgoing traffic or matching the ssh, ipp-client, or dhcpv6-client predefined services.
+public	Reject incoming traffic unless related to outgoing traffic or matching the ssh or dhcpv6-client predefined services. The default zone for newly added network interfaces.
+external	Reject incoming traffic unless related to outgoing traffic or matching the ssh predefined service. Outgoing IPv4 traffic that is forwarded through this zone is masqueraded to appear that it originated from the IPv4 address of the outgoing network interface.
+dmz	Reject incoming traffic unless related to outgoing traffic or matching the ssh predefined service.
+block	Reject all incoming traffic unless related to outgoing traffic.
+drop	Drop all incoming traffic unless related to outgoing traffic (do not even respond with ICMP errors).
+
+Predefined Services
+
+Service name	Configuration
+ssh	Local SSH server. Traffic to 22/tcp.
+dhcpv6-client	Local DHCPv6 client. Traffic to 546/udp on the fe80::/64 IPv6 network.
+ipp-client	Local IPP printing. Traffic to 631/udp.
+samba-client	Local Windows file and print sharing client. Traffic to 137/udp and 138/udp.
+mdns	Multicast DNS (mDNS) local-link name resolution. Traffic to 5353/udp to the 224.0.0.251 (IPv4) or ff02::fb (IPv6) multicast addresses.
+cockpit	Red Hat Enterprise Linux web-based interface for managing and monitoring your local and remote system. Traffic to 9090 port.
+```
+
+```
+perintah firewall-cmd	Penjelasan
+--get-default-zone	Mengkueri zona default saat ini.
+--set-default-zone=ZONE	Tetapkan zona default. Zona default ini mengubah runtime dan konfigurasi permanen.
+--get-zones	Cantumkan semua zona yang tersedia.
+--get-active-zones	Cantumkan semua zona yang sedang digunakan (dengan antarmuka atau sumber yang terkait dengannya), bersama dengan antarmuka dan informasi sumbernya.
+--add-source=CIDR [--zone=ZONE]	Rutekan semua lalu lintas dari alamat IP atau jaringan/netmask ke zona yang ditentukan. Jika tidak ada opsi yang disediakan, maka zona default digunakan.--zone=
+--remove-source=CIDR [--zone=ZONE]	Hapus aturan yang merutekan semua lalu lintas dari zona yang berasal dari alamat IP atau jaringan. Jika tidak ada opsi yang disediakan, maka zona default digunakan.--zone=
+--add-interface=INTERFACE [--﻿zone=ZONE]	Rutekan semua lalu lintas dari ke zona yang ditentukan. Jika tidak ada opsi yang disediakan, maka zona default digunakan.INTERFACE--zone=
+--change-interface=INTERFACE [--﻿zone=ZONE]	Kaitkan antarmuka dengan ZONE alih-alih zonanya saat ini. Jika tidak ada opsi yang disediakan, maka zona default digunakan.--zone=
+--list-all [--zone=ZONE]	Cantumkan semua antarmuka, sumber, layanan, dan port yang dikonfigurasi untuk . Jika tidak ada opsi yang disediakan, maka zona default digunakan.ZONE--zone=
+--list-all-zones	Ambil semua informasi untuk semua zona (antarmuka, sumber, port, dan layanan).
+--add-service=SERVICE [--﻿zone=ZONE]	Izinkan lalu lintas ke . Jika tidak ada opsi yang disediakan, maka zona default digunakan.SERVICE--zone=
+--add-port=PORT/PROTOCOL [--﻿zone=ZONE]	Izinkan lalu lintas ke port. Jika tidak ada opsi yang disediakan, maka zona default digunakan.PORT/PROTOCOL--zone=
+--remove-service=SERVICE [--﻿zone=ZONE]	Hapus dari daftar yang diizinkan untuk zona tersebut. Jika tidak ada opsi yang disediakan, maka zona default digunakan.SERVICE--zone=
+--remove-port=PORT/PROTOCOL [--﻿zone=ZONE]	Hapus port dari daftar yang diizinkan untuk zona tersebut. Jika tidak ada opsi yang disediakan, maka zona default digunakan.PORT/PROTOCOL--zone=
+--reload	Hapus konfigurasi runtime dan terapkan konfigurasi persisten.
+```
+
+```
+firewall-cmd --get-services
+
+[root@host ~]# firewall-cmd --set-default-zone=dmz
+[root@host ~]# firewall-cmd --permanent --zone=internal \
+--add-source=192.168.0.0/24
+[root@host ~]# firewall-cmd --permanent --zone=internal --add-service=mysql
+[root@host ~]# firewall-cmd --reload
+
+[root@host ~]# firewall-cmd --permanent --zone=public \
+--add-source=172.25.25.11/32
+[root@host ~]# firewall-cmd --reload
+```
