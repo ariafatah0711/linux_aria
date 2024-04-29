@@ -1109,3 +1109,104 @@ firewall-cmd --get-services
 --add-source=172.25.25.11/32
 [root@host ~]# firewall-cmd --reload
 ```
+
+## selinux ports
+grep gopher /etc/services
+
+semanage port -l | grep ftp
+semanage port -l | grep ftp
+semanage port -l | grep -w 70
+
+semanage port -a -t port_label -p tcp|udp PORTNUMBER #add selinux
+semanage port -a -t gopher_port_t -p tcp 71
+semanage port -l -C
+
+dnf -y install selinux-policy-doc
+man -k _selinux
+
+semanage port -d -t gopher_port_t -p tcp 71
+
+```
+semanage port -l -C
+semanage port -l | grep http
+
+http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010
+http_cache_port_t              udp      3130
+http_port_t                    tcp      71, 80, 81, 443, 488, 8008, 8009, 8443, 9000
+pegasus_http_port_t            tcp      5988
+pegasus_https_port_t           tcp      5989
+```
+
+# installation
+```
+#version=RHEL9
+
+# Define system bootloader options
+bootloader --append="console=ttyS0 console=ttyS0,115200n8 no_timer_check net.ifnames=0  crashkernel=auto" --location=mbr --timeout=1 --boot-drive=vda
+
+# Clear and partition disks
+clearpart --all --initlabel
+ignoredisk --only-use=vda
+zerombr
+part / --fstype="xfs" --ondisk=vda --size=10000
+
+# Define installation options
+text
+repo --name="appstream" --baseurl="http://classroom.example.com/content/rhel9.0/x86_64/dvd/AppStream/"
+url --url="http://classroom.example.com/content/rhel9.0/x86_64/dvd/"
+
+# Configure keyboard and language settings
+keyboard --vckeymap=us
+lang en_US
+
+# Set a root password, authselect profile, and selinux policy
+rootpw --plaintext redhat
+authselect select sssd
+selinux --enforcing
+firstboot --disable
+
+# Enable and disable system services
+services --disabled="kdump,rhsmcertd" --enabled="sshd,rngd,chronyd"
+
+# Configure the system timezone and NTP server
+timezone America/New_York --utc
+timesource --ntp-server classroom.example.com
+```
+
+```
+%packages
+
+@core
+chrony
+cloud-init
+dracut-config-generic
+dracut-norescue
+firewalld
+grub2
+kernel
+rsync
+tar
+-plymouth
+
+%end
+
+%post
+
+echo "This system was deployed using Kickstart on $(date)" > /etc/motd
+
+%end
+```
+
+ksvalidator kickstart.cfg #test file
+sudo cp ~/kickstart.cfg /var/www/html/ks-config
+
+##
+dnf group list | grep -i virt
+dnf group info "Virtualization Host"
+dnf group install "Virtualization Host"
+
+virt-host-validate
+virt-install --name demo --memory 4096 --vcpus 2 --disk size=40 --os-type linux --cdrom /root/rhel.iso
+
+dnf install cockpit-machines
+systemctl enable --now cockpit.socket
