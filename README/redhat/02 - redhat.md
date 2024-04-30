@@ -1210,3 +1210,220 @@ virt-install --name demo --memory 4096 --vcpus 2 --disk size=40 --os-type linux 
 
 dnf install cockpit-machines
 systemctl enable --now cockpit.socket
+
+# container
+podman login registry.lab.example.com
+echo $PASSWORDVAR | podman login --username RH134 --password-stdin registry.access.redhat.com
+
+podman login registry.access.redhat.com --get-login
+podman login quay.io --get-login
+
+cat /etc/containers/registries.conf
+
+podman pull ubi
+podman pull registry.access.redhat.com/ubi8/ubi:latest
+
+```
+[[registry]]
+location = "registry.lab.example.com"
+insecure = true
+blocked = false
+```
+
+cat Containerfile
+
+```
+Command	Description
+podman build	Build a container image with a container file.
+podman run	Run a command in a new container.
+podman images	List images in local storage.
+podman ps	Print information about containers.
+podman inspect	Display configuration of a container, image, volume, network, or pod.
+podman pull	Download an image from a registry.
+podman cp	Copy files or directories between a container and the local file system.
+podman exec	Execute a command in a running container.
+podman rm	Remove one or more containers.
+podman rmi	Remove one or more locally stored images.
+podman search	Search a registry for an image.
+```
+
+dnf install container-tools
+dnf info container-tools
+podman info
+podman search python-38
+
+skopeo inspect docker://registry.access.redhat.com/ubi8/python-38
+podman pull registry.access.redhat.com/ubi8/python-38
+
+podman images
+cat Containerfile
+
+podman build -t NAME:TAG DIR
+podman build -t python36:1.0 .
+
+podman images
+
+podman inspect localhost/python36:1.0
+
+podman create --name python36 dd6ca291f097
+podman create --name python36 dd6ca291f097
+podman ps
+podman ps -a
+
+podman start python36
+podman ps
+
+podman run -d --name python38 registry.access.redhat.com/ubi8/python-38 sleep infinity
+podman ps
+
+ps -ax
+podman exec python38 ps -ax
+podman exec python38 sh -c 'ps -ax > /tmp/process-data.log'
+python3 --version
+podman exec python36 python3 --version
+podman exec python38 python3 --version
+
+echo "echo 'hello world'" > /tmp/hello.sh
+
+stat /tmp/hello.sh
+podman exec python38 stat /tmp/hello.sh
+
+podman cp /tmp/hello.sh python38:/tmp/hello.sh
+podman exec python38 bash /tmp/hello.sh
+
+podman rmi registry.access.redhat.com/ubi8/python-38
+podman stop python38
+
+podman rm python38
+podman rmi registry.access.redhat.com/ubi8/python-38
+
+##
+podman run -d registry.lab.example.com/rhel8/mariadb-105 --name db01
+podman ps -a
+podman container logs db01
+skopeo inspect docker://registry.lab.example.com/rhel8/mariadb-105
+
+```
+Variable	Description
+MYSQL_USER	Username for the MySQL account to create
+MYSQL_PASSWORD	Password for the user account
+MYSQL_DATABASE	Database name
+MYSQL_ROOT_PASSWORD	Password for the root user (optional)
+```
+
+podman run -d --name db01 \
+-e MYSQL_USER=student \
+-e MYSQL_PASSWORD=student \
+-e MYSQL_DATABASE=dev_data \
+-e MYSQL_ROOT_PASSWORD=redhat \
+registry.lab.example.com/rhel8/mariadb-105
+
+podman ps
+
+podman unshare cat /proc/self/uid_map
+podman unshare cat /proc/self/gid_map
+
+podman exec -it db01 grep mysql /etc/passwd
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/sbin/nologin
+
+mkdir /home/user/db_data
+podman unshare chown 27:27 /home/user/db_data
+
+podman run -d --name db01 \
+-e MYSQL_USER=student \
+-e MYSQL_PASSWORD=student \
+-e MYSQL_DATABASE=dev_data \
+-e MYSQL_ROOT_PASSWORD=redhat \
+-v /home/user/db_data:/var/lib/mysql \
+registry.lab.example.com/rhel8/mariadb-105
+
+podman container logs db01
+
+ podman run -d --name db01 \
+-e MYSQL_USER=student \
+-e MYSQL_PASSWORD=student \
+-e MYSQL_DATABASE=dev_data \
+-e MYSQL_ROOT_PASSWORD=redhat \
+-v /home/user/db_data:/var/lib/mysql:Z \
+registry.lab.example.com/rhel8/mariadb-105
+
+ls -Z /home/user/
+system_u:object_r:container_file_t:s0:c81,c1009 db_data
+
+podman run -d --name db01 \
+-e MYSQL_USER=student \
+-e MYSQL_PASSWORD=student \
+-e MYSQL_DATABASE=dev_data \
+-e MYSQL_ROOT_PASSWORD=redhat \
+-v /home/user/db_data:/var/lib/mysql:Z \
+-p 13306:3306 \
+registry.lab.example.com/rhel8/mariadb-105
+
+[user@host ~]$ podman port -a
+1c22fd905120	3306/tcp -> 0.0.0.0:13306
+[user@host ~]$ podman port db01
+3306/tcp -> 0.0.0.0:13306
+
+podman info --format {{.Host.NetworkBackend}}
+
+podman network create --gateway 10.87.0.1 \
+--subnet 10.87.0.0/16 db_net
+
+podman run -d --name db01 \
+-e MYSQL_USER=student \
+-e MYSQL_PASSWORD=student \
+-e MYSQL_DATABASE=dev_data \
+-e MYSQL_ROOT_PASSWORD=redhat \
+-v /home/user/db_data:/var/lib/mysql:Z \
+-p 13306:3306 \
+--network db_net \
+registry.lab.example.com/rhel8/mariadb-105
+[user@host ~]$ podman run -d --name client01 \
+--network db_net \
+registry.lab.example.com/ubi8/ubi:latest \
+sleep infinity
+
+[user@host ~]$ podman exec -it db01 dnf install -y iputils iproute
+[user@host ~]$ podman exec -it client01 dnf install -y iputils iproute
+
+podman exec -it db01 ping -c3 client01
+podman exec -it client01 ping -c3 db01
+
+podman exec -it db01 ip a | grep 10.8
+podman exec -it client01 ip a | grep 10.8
+
+podman network create backend
+
+[user@host ~]$ podman network connect backend db01
+[user@host ~]$ podman network connect backend client01
+
+podman inspect db01
+podman inspect client01
+podman exec -it client01 ping -c3 10.89.1.4 | grep 'packet loss'
+podman exec -it client01 ping -c3 10.87.0.3 | grep 'packet loss'
+
+##
+podman run -d --name webserver1 -p 8080:8080 -v \
+~/app-artifacts:/var/www/html:Z registry.access.redhat.com/ubi8/httpd-24
+
+podman generate systemd --name webserver1
+
+podman generate systemd --name webserver1 --new
+
+podman generate systemd --name webserver1 --new --files
+
+mkdir -p ~/.config/systemd/user/
+mv container-webserver1.service ~/.config/systemd/user/
+
+systemctl --user daemon-reload
+[appdev-adm@host ~]$ systemctl --user start container-webserver1.service
+[appdev-adm@host ~]$ systemctl --user status container-webserver1.service
+
+[user@host ~]$ loginctl show-user appdev-adm
+...output omitted...
+Linger=no
+[user@host ~]$ loginctl enable-linger
+[user@host ~]$ loginctl show-user appdev-adm
+...output omitted...
+Linger=yes
+
