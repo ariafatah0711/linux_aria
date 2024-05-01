@@ -1426,4 +1426,3 @@ Linger=no
 [user@host ~]$ loginctl show-user appdev-adm
 ...output omitted...
 Linger=yes
-
