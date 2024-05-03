@@ -103,3 +103,24 @@ public void Page_Load(object sender, EventArgs e)
 }
 ```
 
+##
+```
+To recap from the Intro to Cross-site Scripting room, there are three main types of XSS:
+
+Reflected XSS: This attack relies on the user-controlled input reflected to the user. For instance, if you search for a particular term and the resulting page displays the term you searched for (reflected), the attacker would try to embed a malicious script within the search term.
+
+Stored XSS: This attack relies on the user input stored in the website’s database. For example, if users can write product reviews that are saved in a database (stored) and being displayed to other users, the attacker would try to insert a malicious script in their review so that it gets executed in the browsers of other users.
+
+DOM-based XSS: This attack exploits vulnerabilities within the Document Object Model (DOM) to manipulate existing page elements without needing to be reflected or stored on the server. This vulnerability is the least common among the three.
+```
+
+http://ip:3923
+
+https://localhost:3923/?k304=y%0D%0A%0D%0A%3Cimg+src%3Dcopyparty+onerror%3Dalert(1)%3E
+
+https://security.snyk.io/vuln/SNYK-PYTHON-COPYPARTY-5805368
+
+##
+Tab horizontal (TAB) berada dalam representasi heksadesimal9
+Baris baru (LF) dalam representasi heksadesimalA
+Carriage return (CR) dalam representasi heksadesimalD
