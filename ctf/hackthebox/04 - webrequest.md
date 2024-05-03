@@ -40,3 +40,5 @@ curl -X POST http://<SERVER_IP>:<PORT>/api.php/city/ -d '{"city_name":"HTB_City"
 curl -X PUT http://<SERVER_IP>:<PORT>/api.php/city/london -d '{"city_name":"New_HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'zx
 
 curl -X DELETE http://<SERVER_IP>:<PORT>/api.php/city/New_HTB_City
+
+HTB{crud_4p!_m4n!pul4t0r}
