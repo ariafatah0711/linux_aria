@@ -6,9 +6,10 @@
 - selalu update pakeet secara teratur ✓
 - menghapus banner yang biasanya digunakan untuk mencantumkan version service ☓
 
+- membuat partisi menggunakan fdisk  ✓
+- membuat partisi menggunakan parted  ✓
+- membuat partisi menggunakan gparted  ✓
 - menggunakan crypsetup untuk melakukan encrypt disk ✓
-- mounting menggunakan cli ✓
-- mounting menggunakan gui dengan gparted ☓
 
 - menutup port ssh, lalu ubah ke port 1000-65536 agar tidak mudah teridentifikasi servicenya ✓
 - menghapus service yang sudah tidak aman seperti ftp, telnet, rsh, dll ☓
@@ -44,7 +45,7 @@ scp ~/test remote_user@remote_IP:~/
 
 - membuat directory chroot, lalu mencopy file system chroot ✓
 - uji coba chroot menggunakan chroot ✓
-- mendaftarkan chroot ke service seperti sftp ☓
+- mendaftarkan chroot ke service seperti sftp ✓
 
 - membuat kunci publik dan kunci private menggunakan ssh-keygen ✓
 - mengirim kunci publik ke client, atau mengirim kunci private ke ssh server tujuan ✓
