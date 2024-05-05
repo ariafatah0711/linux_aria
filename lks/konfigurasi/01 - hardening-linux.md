@@ -105,8 +105,9 @@
     - mengirim kunci publik ke client, atau mengirim kunci private ke ssh server tujuan ✓
         - ssh-copy-id user@localhost
             - ssh-copy-id -i .ssh/id_rsa.pub user@localhost
-    - uji coba remote server menggunakan kunci public ✓
+    - uji coba remote server menggunakan kunci private ✓
         - ssh user@localhost
+            - ssh -i .ssh/id_rsa user@localhost
     - configurasi tambahan pada sshd_config agar lebih aman ✓
         - nano /etc/ssh/sshd_config
             ```
@@ -168,3 +169,6 @@
                     deny all;
             }
             ```
+
+## Konfigurasi dan Pengujian Hardening Remote Command Exec (Linux machines)
+- 

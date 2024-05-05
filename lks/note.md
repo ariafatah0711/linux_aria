@@ -12,7 +12,7 @@
 - menggunakan crypsetup untuk melakukan encrypt disk ✓
 
 - menutup port ssh, lalu ubah ke port 1000-65536 agar tidak mudah teridentifikasi servicenya ✓
-- menghapus service yang sudah tidak aman seperti ftp, telnet, rsh, dll ☓
+- menghapus service yang sudah tidak aman seperti ftp, telnet, rsh, dll ✓
 - menggunakan firewall untuk mengijinkan hanya ip address tertentu yang dapat mengakses sebuah service ☓
 
 ```
@@ -50,7 +50,7 @@ scp ~/test remote_user@remote_IP:~/
 
 - membuat kunci publik dan kunci private menggunakan ssh-keygen ✓
 - mengirim kunci publik ke client, atau mengirim kunci private ke ssh server tujuan ✓
-- uji coba remote server menggunakan kunci public ✓
+- uji coba remote server menggunakan kunci private ✓
 - configurasi tambahan pada sshd_config agar lebih aman ✓
 
 - menambahkan configurasi directory listing pada web server apache2 / httpd ✓
@@ -85,12 +85,12 @@ location ~ /.git/ {
 - https://123dok.com/article/konfigurasi-pada-sou-rce-dan-target-database.y92m7xlz ☓
 
 # pengiriman email pgp
-- membuat tanda tangan digital menggunakan paint ✓
+- membuat tanda tangan digital menggunakan paint atau signaturely ✓
 
 - menggunakan gpgfrontend ✓
 - menggunakan thunderbird ✓
 - menggunakan pgptool ☓
-- menggunakan GnuPG ☓
+- menggunakan GnuPG ✓
 
 ```
 sudo apt-get install gnupg2
@@ -107,7 +107,6 @@ gpg -ea -r "designer@domain.com" -o - pesan.txt | mail -s "Subjek Pesan" recipie
 
 - decrypt pesan pgp menggunakan kunci pgp dengan tool gpgfrontend, pgptool ✓
 - decrypt pesan pgp menggunakan kunci pgp dengan tool GnuPG ☓
-- decryp tanpa kunci pgp (mungkin)
 
 # Konfigurasi OpenVPN
 - installasi openvpn, konfigurasi openvpn, dan membuat sertifikat server menggunakan easy-rsa 3.0 ✓
