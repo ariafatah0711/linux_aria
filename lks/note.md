@@ -22,6 +22,7 @@ sudo apt-get --purge remove xinetd nis yp-tools tftpd atftpd tftpd-hpa telnetd r
 
 - mengaktifkan selinux menggunakan setenforce ✓
 - mendaftarkan sebuah system ke sebuah directory yang nantinya dapat diakses oleh system tersebut ✓
+- management selinux port ✓
 
 ```
 https://computingforgeeks.com/apparmor-cheat-sheet-for-linux-system-administrators/#google_vignette
