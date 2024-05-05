@@ -54,8 +54,7 @@ scp ~/test remote_user@remote_IP:~/
 - configurasi tambahan pada sshd_config agar lebih aman ✓
 
 - menambahkan configurasi directory listing pada web server apache2 / httpd ✓
-- menambahkan configurasi directory listing pada web server nginx ☓
-- configurasi tambahan (opsional) ☓
+- menambahkan configurasi directory listing pada web server nginx ✓
 
 ```
 Lighttpd

@@ -46,18 +46,16 @@
         - semanage port -a -t ssh_port_t -p tcp <port_number>
             - semanage port -l | grep ssh
         - systemctl restart sshd
-    - menghapus service yang sudah tidak aman seperti ftp, telnet, rsh, dll ☓
-    - menggunakan firewall untuk mengijinkan hanya ip address tertentu yang dapat mengakses sebuah service ☓
-
-D. Konfigurasi dan Pengujian Hardening Whitelisting Selinux (Linux machines)
-    - mengaktifkan selinux menggunakan setenforce ✓
-    - mendaftarkan sebuah system ke sebuah directory yang nantinya dapat diakses oleh system tersebut ✓
+    - menghapus service yang sudah tidak aman seperti ftp, telnet, rsh, dll ✓
+        - yum erase ftp tftp telnet rsh
+    - menggunakan firewall untuk mengijinkan hanya ip address tertentu yang dapat mengakses sebuah service ✓
+        - 
 
 ## Konfigurasi dan Pengujian Hardening Whitelisting Selinux (Linux machines)
     - mengaktifkan selinux menggunakan setenforce ✓
         - getenforce #show selinux status
-        - setenforce 0 @disable selinux
-            - setenforce 1 @enable selinux
+        - setenforce 0 #disable selinux
+            - setenforce 1 #enable selinux
         - nano /etc/sysconfig/selinux
     - mendaftarkan sebuah system ke sebuah directory yang nantinya dapat diakses oleh system tersebut ✓
         - mkdir /web-harbas
@@ -101,4 +99,72 @@ D. Konfigurasi dan Pengujian Hardening Whitelisting Selinux (Linux machines)
         - ssh -P 10000 user@localhost
 
 ## Konfigurasi dan Pengujian Hardening Certificate Shell Login (Linux machines)
-    - 
+    - membuat kunci publik dan kunci private menggunakan ssh-keygen ✓
+        - ssh-keygen -t rsa
+            - .ssh/id_rsa & .ssh/id_rsa.pub
+    - mengirim kunci publik ke client, atau mengirim kunci private ke ssh server tujuan ✓
+        - ssh-copy-id user@localhost
+            - ssh-copy-id -i .ssh/id_rsa.pub user@localhost
+    - uji coba remote server menggunakan kunci public ✓
+        - ssh user@localhost
+    - configurasi tambahan pada sshd_config agar lebih aman ✓
+        - nano /etc/ssh/sshd_config
+            ```
+            #LoginGraceTime 2m
+            PermitRootLogin no #membatasi akses root login
+            #StrictModes yes
+            MaxAuthTries 4 #membatasi berapa kali batas untuk memasukan password pada saat login ssh
+            #MaxSessions 10
+
+            PubkeyAuthentication yes #mengaktifkan login menggunakan pubkey
+
+            #PasswordAuthentication yes
+            #PermitEmptyPasswords no #password empety / kosong
+            PasswordAuthentication no #menonaktifkan login menggunakan password
+            ```
+
+##  Konfigurasi dan Pengujian Hardening Directory Listing (Linux machines)
+    - menambahkan configurasi directory listing pada web server apache2 / httpd ✓
+        - nano /etc/httpd/conf.d/directory.conf
+            ```
+            <Directory "/web-harbas/linktree/src">
+                    Options -Indexes
+            </Directory>
+
+            <Directory "/web-harbas/linktree/package">
+                    Options -Indexes
+            </Directory>
+
+            <Directory "/web-harbas/linktree/.git">
+                    Options -Indexes
+            </Directory>
+
+            <Directory "/web-harbas/linktree/*.md">
+                    Options -Indexes
+                    Require all denied
+            </Directory>
+            ```
+        - systemctl restart httpd
+    - menambahkan configurasi directory listing pada web server nginx ✓
+        - nano /etc/nginx/nginx.conf
+            ```
+            #autoindex off #mengaktifkan directory listing
+            # ~* => huruf besar huruf kecil tidak peduli 
+
+            location /usr/share/nginx/html/css {
+                    autoindex off;
+            }
+
+            location /usr/share/nginx/html/icon {
+                    autoindex off;
+            }
+
+            location /usr/share/nginx/html/.git {
+                    autoindex off;
+            }
+
+            location ~* /usr/share/nginx/html/.*\.md$ {
+                    autoindex off;
+                    deny all;
+            }
+            ```
