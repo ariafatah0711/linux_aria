@@ -13,7 +13,7 @@
 
 - menutup port ssh, lalu ubah ke port 1000-65536 agar tidak mudah teridentifikasi servicenya ✓
 - menghapus service yang sudah tidak aman seperti ftp, telnet, rsh, dll ✓
-- menggunakan firewall untuk mengijinkan hanya ip address tertentu yang dapat mengakses sebuah service ☓
+- menggunakan firewall untuk mengijinkan hanya ip address tertentu yang dapat mengakses sebuah service ✓
 
 ```
 yum erase xinetd ypserv tftp-server telnet-server rsh-server
@@ -90,7 +90,7 @@ location ~ /.git/ {
 - menggunakan gpgfrontend ✓
 - menggunakan thunderbird ✓
 - menggunakan pgptool ☓
-- menggunakan GnuPG ✓
+- menggunakan GnuPG ☓
 
 ```
 sudo apt-get install gnupg2
@@ -107,6 +107,8 @@ gpg -ea -r "designer@domain.com" -o - pesan.txt | mail -s "Subjek Pesan" recipie
 
 - decrypt pesan pgp menggunakan kunci pgp dengan tool gpgfrontend, pgptool ✓
 - decrypt pesan pgp menggunakan kunci pgp dengan tool GnuPG ☓
+
+- verification menggunakan gpgfrontend ✓
 
 # Konfigurasi OpenVPN
 - installasi openvpn, konfigurasi openvpn, dan membuat sertifikat server menggunakan easy-rsa 3.0 ✓

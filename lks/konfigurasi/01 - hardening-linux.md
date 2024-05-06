@@ -49,7 +49,10 @@
     - menghapus service yang sudah tidak aman seperti ftp, telnet, rsh, dll ✓
         - yum erase ftp tftp telnet rsh
     - menggunakan firewall untuk mengijinkan hanya ip address tertentu yang dapat mengakses sebuah service ✓
-        - 
+        - firewall-cmd --zone=work --add-port=35000/tcp --permanent
+        - firewall-cmd --zone=work --add-source=192.168.80.0/24 --permanent
+        - firewall-cmd --reload
+        - firewall-cmd --list-all-zone
 
 ## Konfigurasi dan Pengujian Hardening Whitelisting Selinux (Linux machines)
     - mengaktifkan selinux menggunakan setenforce ✓
@@ -167,6 +170,7 @@
             location ~* /usr/share/nginx/html/.*\.md$ {
                     autoindex off;
                     deny all;
+                    return 403;
             }
             ```
 

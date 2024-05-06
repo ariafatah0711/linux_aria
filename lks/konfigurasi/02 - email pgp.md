@@ -8,7 +8,7 @@
         - install thunderbird in micrsoft store
     - menggunakan pgptool ☓
         - install in btrowsers (mau nyoba tapi ada warning gitu jadinya belum dicoba)
-    - menggunakan GnuPG ✓
+    - menggunakan GnuPG ☓
         - nano sample.txt
         - gpg -c sample.txt #encrypt
             - scp sample.txt.gpg user@localhost
@@ -23,6 +23,8 @@
             - chmod 600 harbas.crt
         - export key
             - 
+        
+        - gpa
 
 ## Decrypt
     - decrypt pesan pgp menggunakan kunci pgp dengan tool gpgfrontend, pgptool ✓
@@ -31,4 +33,4 @@
         - gpg
 
 ## Verification
-    - 
+    - gpg — verify signature.asc email.txt
