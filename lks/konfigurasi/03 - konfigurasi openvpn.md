@@ -64,12 +64,12 @@
                 dev tun
                 proto udp
                 remote 192.168.80.x 1194
-                resolv-retry-infinite
+                resolv-retry infinite
                 nobind
                 persist-key
                 persist-tun
                 comp-lzo
-                verb 
+                verb 3
                 remote-cert-tls server
                 <ca>
                 --- isi dengan file.ca
