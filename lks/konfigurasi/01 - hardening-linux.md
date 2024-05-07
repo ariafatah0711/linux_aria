@@ -18,6 +18,7 @@
     - membuat partisi menggunakan fdisk  ✓
         - fdisk /dev/sdb
             - m untuk help, o untuk empety disk, n new partisi (p primary, e extend), w untuk write, d untuk delete
+            - +100M
         - mkfs.ext4 #ubah type file system [ext2, ext3, ext4, nfs, xfs]
     - membuat partisi menggunakan parted  ✓
             - parted /dev/sdb

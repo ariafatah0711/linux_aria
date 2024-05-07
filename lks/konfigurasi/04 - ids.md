@@ -7,7 +7,6 @@
             - dnf install libnetfilter_queue-devel
             - dnf install gcc-c++ git flex bison zlib zlib-devel pcre libnet tcpdump libnghttp2 wget xz-devel -y
             - dnf install pcre-devel
-            - dnf install pcre-devel
         - membuat directory snort dan instalasi snort
             - mkdir /root/snort
             - cd /root/snort
