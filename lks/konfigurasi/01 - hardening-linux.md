@@ -183,4 +183,43 @@
     } else {
         echo 'Illegal path specified!';
     }
+
+    // Validasi username dan password
+    if (preg_match('/[^a-zA-Z0-9]/', $username) || preg_match('/[^a-zA-Z0-9]/', $password)) {
+        echo "<p>Username atau password mengandung karakter yang tidak valid. Silakan coba lagi.</p>";
+    } else {
+        // Username dan password valid, lakukan proses login di sini
+        // Misalnya, verifikasi username dan password di database
+        // Jika login berhasil, redirect pengguna ke halaman selanjutnya
+        // Jika login gagal, tampilkan pesan kesalahan
+        echo "<p>Login berhasil!</p>";
+    }
     ```
+
+
+
+# test
+###############
+chage -m 0 -M 90 -W 7 -I 14 sysadmin05
+
+```
+[root@host ~]# date +%F 1
+2022-03-10
+[root@host ~]# date -d "+30 days" +%F 2
+2022-04-09
+[root@host ~]# chage -E $(date -d "+30 days" +%F) cloudadmin10 3
+[root@host ~]# chage -l cloudadmin10 | grep "Account expires" 4
+Account expires						: Apr 09, 2022
+
+date -d "+45 days" -u
+```
+
+usermod -L sysadmin03 #lock
+usermod -L -e 2022-08-14 cloudadmin10
+usermod -U sysadmin03 #unlock
+
+usermod -s /sbin/nologin newapp
+su - newapp
+
+This account is currently not available.
+

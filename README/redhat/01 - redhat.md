@@ -123,6 +123,11 @@ su - newapp
 
 This account is currently not available.
 
+m => min days
+M => max dayas
+w => warn days
+i => inactive days
+
 ########
 nano /etc/login.defsvim
 PASS_MAX_DAYS 180
