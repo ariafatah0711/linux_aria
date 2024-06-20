@@ -31,3 +31,33 @@ docker container rm redis-app # menghapus container
 docker container logs redis-app # logs yang terjadi
 docker container logs -f redis-app # logs secara realtime
 ```
+
+- container exec
+```bash
+docker container exec -i -t redis-app /bin/bash
+
+root@7b4c0acad15d:/# redis-cli 
+
+127.0.0.1:6379> set name "aria"
+OK
+127.0.0.1:6379> get name
+"aria"
+127.0.0.1:6379>
+```
+
+- docker port forwading
+```bash
+docker container create --name nginx-app -p 8080:80 nginx:latest
+docker container start nginx-app
+
+docker container ls
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+15c77bfc9642   nginx:latest   "/docker-entrypoint.…"   16 seconds ago   Up 3 seconds    0.0.0.0:5001->80/tcp, :::5001->80/tcp   nginx-app
+```
+
+- docker env
+```bash
+docker container create --name mongodb-app --publish 27017:27017 --env MONGO_INITDB_ROOT_USERNAME=aria --env MONGO_INITDB_ROOT_PASSWORD:aria  mongo:latest
+
+# untuk mengubah variable user dan password login
+```
