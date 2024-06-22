@@ -83,4 +83,43 @@ CONTAINER ID   NAME         CPU %     MEM USAGE / LIMIT     MEM %     NET I/O   
 15c77bfc9642   nginx-app    0.00%     3.801MiB / 3.018GiB   0.12%     39.5kB / 664B     1.41MB / 4.1kB   3
 ```
 
-- 
+- bind mounts
+```bash
+docker container create --name mongodb-app --mount "type=bind,source=./mongodb,destination=/data/db" --publish 5002:8081 /
+-e ME_CONFIG_MONGODB_ADMINUSERNAME=aria -e ME_CONFIG_MONGODB_ADMINPASSWORD=aria mongo:latest
+
+docker container create --name nginx-linktree -p 8082:80 --mount "type=bind,source=/home/ariafatah/nginx,destination=/usr/share/nginx/html" nginx:latest
+
+# --mount => parameter untuk mounting nya
+
+# type => mount, bind / volumee
+# source => lokasi file/atau folder sistem host
+# destination => lokasi file / folder di dalam container
+# read only (opsional) => jika ada maka fie/folder hanya bisa dibaca di container tidak bisa ditulis
+```
+
+- docker volume
+```bash
+docker volume create nginx
+
+docker container --name nginx-volume -p 8085:80 --mount "type=volume,source=nginx,destination=/usr/share/nginx/html" nginx:latest 
+
+docker container start nginx-volume
+# lalu ubah isi file webnya di /usr/share/nginx/html
+docker container stop nginx-volume
+docker container rm nginx-volume
+# setelah dihapus maka hanya containernya saja yang dihapus tapi data web kita masih ada di volume yang sebelumnya
+```
+
+- docker run
+```bash
+docker container run --rm --name ubuntu \
+--mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup" \
+--mount "type=volume,source=nginx,destination=/data" \
+ubuntu:latest tar cvf /backup/backup-2.tar.gz /data
+
+# --rm => untuk meremove container secara otomatis stelah progam telah selesai digunakan
+# ubuntu:latest => dan agar bisa behenti kita bisa gunakan image ubuntu
+
+# lalu setelah nama image kita bisa tambahkan perintah yang akan dijalankan itu
+```
