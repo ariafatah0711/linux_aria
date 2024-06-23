@@ -112,14 +112,70 @@ docker container rm nginx-volume
 ```
 
 - docker run
+    - backup
+        ```bash
+        docker container run --rm --name ubuntu \
+        --mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup" \
+        --mount "type=volume,source=nginx,destination=/data" \
+        ubuntu:latest tar cvf /backup/backup-2.tar.gz /data
+
+        # --rm => untuk meremove container secara otomatis stelah progam telah selesai digunakan
+        # ubuntu:latest => dan agar bisa behenti kita bisa gunakan image ubuntu
+
+        # lalu setelah nama image kita bisa tambahkan perintah yang akan dijalankan itu
+        ```
+
+    - restore volume
+        ```bash
+        docker volume create nginx-data
+
+        docker container run --rm --name ubuntu \
+        --mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup"
+        --mount "type=volume,source=nginx,destination=/data" ubuntu:latest \
+        bash -c "cd /data && tar xvf /backup/backup-2.tar.gz --strip 1"
+
+        docker container create --name nginx-restore -p 8082:80 --mount "type=volume,source=nginx-data,destination=/usr/share/nginx/html"
+
+        docker container start nginx-data
+        ```
+
+- docker network
 ```bash
-docker container run --rm --name ubuntu \
---mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup" \
---mount "type=volume,source=nginx,destination=/data" \
-ubuntu:latest tar cvf /backup/backup-2.tar.gz /data
+docker netwrok ls #melihat list network
 
-# --rm => untuk meremove container secara otomatis stelah progam telah selesai digunakan
-# ubuntu:latest => dan agar bisa behenti kita bisa gunakan image ubuntu
+docker network create -driver bridge jakarta #membuat network type bridge bernama jakarta
+# -d / --driver
 
-# lalu setelah nama image kita bisa tambahkan perintah yang akan dijalankan itu
+docker network rm jakarta #menghapus network docker yang sudah tidak digunakan
+# dan pastikan hapus container yang sudahh tidak menggunakan networknya
+```
+
+- connect netwrok
+```bash
+docker network create -d bridge mongo-net
+
+docker container create --name mongodb --network mongo-net \
+-e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+-e ME_CONFIG_MONGODB_ADMINPASSWORD=admin \
+mongo:8.0.0-rc4-jammy
+
+docker image pull mongo-express
+
+docker container create --name mongodb-express --network mongo-net \
+-p 8081:8081 \
+-e ME_CONFIG_MONGODB_URL=mongodb://root:admin@mongodb:27017 \
+mongo-express:latest
+
+# mongodb://root:admin@mongo:27017
+# root => user, admin => pass
+# @mongodb => nama container, :27017 => port_container
+
+docker container start mongodb
+docker container start mongodb-express
+
+# go to http://localhost:8081
+
+docker network disconnect mongo-net mongodb
+
+# menghapus network mongo-net pada container mongodb
 ```
