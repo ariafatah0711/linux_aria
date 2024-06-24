@@ -7,34 +7,33 @@ container network => container yang terdapat di dalam network yang sama bisa sal
 docker network create -d bridge mongo-net
 
 docker container create --name mongodb --network mongo-net \
--e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
--e ME_CONFIG_MONGODB_ADMINPASSWORD=admin \
-mongo:8.0.0-rc4-jammy
+-e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo:latest
 
 docker image pull mongo-express
 
-docker container create --name mongodb-express --network mongo-net \
--p 8081:8081 \
--e ME_CONFIG_MONGODB_URL=mongodb://root:admin@mongodb:27017 \
-mongo-express:latest
+docker container create --name mongodb-express --network mongo-net -p 8081:8081 \
+-e ME_CONFIG_MONGODB_URL=mongodb://admin:admin@mongodb:27017 mongo-express:latest
 
 # mongodb://root:admin@mongo:27017
 # root => user, admin => pass
 # @mongodb => nama container, :27017 => port_container
 
-docker container start mongodb
-docker container start mongodb-express
+docker container start mongodb mongodb-express
 
 # go to http://localhost:8081
+
+user: admin
+pass: pass
 ```
 
-- menghapus container dari docker network
+- connection network
 ```bash
 docker network disconnect mongo-net mongodb
-
 # menghapus network mongo-net pada container mongodb
-```
 
+docker network connect mongo-net mongodb
+# menambahkan network pada container mongodb
+```
 
 - more
 ```bash

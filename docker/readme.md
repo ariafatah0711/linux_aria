@@ -148,34 +148,52 @@ docker network create -driver bridge jakarta #membuat network type bridge bernam
 
 docker network rm jakarta #menghapus network docker yang sudah tidak digunakan
 # dan pastikan hapus container yang sudahh tidak menggunakan networknya
+
+docker network connect mongo-net mongodb
+# menambahkan network pada container mongodb
+
+docker network disconnect mongo-net mongodb
+# menghapus network mongo-net pada container mongodb
 ```
 
-- connect netwrok
+- make container with docker network
 ```bash
 docker network create -d bridge mongo-net
 
 docker container create --name mongodb --network mongo-net \
--e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
--e ME_CONFIG_MONGODB_ADMINPASSWORD=admin \
-mongo:8.0.0-rc4-jammy
+-e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo:latest
 
 docker image pull mongo-express
 
-docker container create --name mongodb-express --network mongo-net \
--p 8081:8081 \
--e ME_CONFIG_MONGODB_URL=mongodb://root:admin@mongodb:27017 \
-mongo-express:latest
+docker container create --name mongodb-express --network mongo-net -p 8081:8081 \
+-e ME_CONFIG_MONGODB_URL=mongodb://admin:admin@mongodb:27017 mongo-express:latest
 
 # mongodb://root:admin@mongo:27017
 # root => user, admin => pass
 # @mongodb => nama container, :27017 => port_container
 
-docker container start mongodb
-docker container start mongodb-express
+docker container start mongodb mongodb-express
 
 # go to http://localhost:8081
 
-docker network disconnect mongo-net mongodb
+user: admin
+pass: pass
+```
 
-# menghapus network mongo-net pada container mongodb
+- inspect => melihat detail
+```bash
+docker image inspect nama_image
+docker container inspect nama_container
+docker volume inspect nama_volume
+docker network inspect nama_network
+```
+
+- prune => menghapus yang tidak dipakai
+```bash
+docker image prune
+docker container prune
+docker volume prune
+docker netowrk prune
+
+docker system prune # container, network, image
 ```
