@@ -37,3 +37,53 @@ RUN cat "hello/world.txt"
 ```
 
 - command instruction
+```bash
+FROM alpine:3
+
+# build container
+RUN mkdir hello
+RUN echo "hello WOrld" > "hello/world.txt"
+
+# RUN container
+CMD cat "hello/world.txt"
+```
+
+- label instrucsion (hanya informasi tambahan)
+```bash
+LABEL author="ariafatah"
+LABEL compnay="smk harapan bangsa"
+LABEL name="app1"
+```
+
+- add instrucsion
+```bash
+# build container
+RUN mkdir data_siswa
+ADD add/*.txt data_siswa/
+
+# RUN container
+CMD cat "data_siswa/data-siswa.txt" & cat "data_siswa/umur-siswa.txt"
+```
+
+- copy instrucsion (can with url file, can automatic extract)
+```bash
+RUN mkdir data_siswa
+COPY add/*.txt data_siswa/
+RUN tar xfvz data_siswa/zip.tar.gz
+
+# RUN container
+# build containe
+RUN mkdir data_siswa
+# COPY add/*.txt data_siswa/
+COPY data.tar.gz data_siswa/
+RUN tar xvz -f data_siswa/data.tar.gz -C data_siswa/
+RUN ls data_siswa
+RUN ls
+
+# RUN container
+CMD cat "data_siswa/data-siswa.txt" & cat "data_siswa/umur-siswa.txt"
+```
+
+- .dockerignore
+
+- 
