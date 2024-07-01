@@ -86,4 +86,30 @@ CMD cat "data_siswa/data-siswa.txt" & cat "data_siswa/umur-siswa.txt"
 
 - .dockerignore
 
-- 
+- expose (informasi port)
+```bash
+FROM golang:1.18-alpine
+
+RUN mkdir app
+COPY main.go app
+
+EXPOSE 8080
+
+CMD go run app/main.go
+```
+
+- environment variable instrction
+```bash
+FROM golang:1.18-alpine
+
+ENV APP_PORT=8080
+
+RUN mkdir app
+COPY main.go app/
+
+EXPOSE ${APP_PORT}
+
+CMD go run app/main.go
+```
+
+- volume instruction
