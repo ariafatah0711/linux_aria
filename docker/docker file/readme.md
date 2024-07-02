@@ -113,3 +113,53 @@ CMD go run app/main.go
 ```
 
 - volume instruction
+```bash
+FROM golang:1.18-alpine
+
+ENV APP_PORT=8080
+ENV APP_DATA=/logs
+
+RUN mkdir ${APP_DATA}
+RUN mkdir app
+COPY main.go app
+
+EXPOSE ${APP_PORT}
+VOLUME ${APP_DATA}
+
+CMD go run app/main.go
+```
+
+- working directory
+```bash
+FROM golang:1.18-alpine
+
+WORKDIR /app
+COPY main.go /app
+
+EXPOSE 8080
+CMD go run main.go # sudah tidak perlu pergi ke /app
+```
+
+- user instruction
+```bash
+RUN addgroup -S harbas
+RUN adduser -SDh /app ariafatah harbas
+RUN chown -R ariafatah:harbas /app
+USER ariafatah
+```
+
+- argument instruction
+```bash
+FROM golang:1.18-alpine
+
+ARG APP="main-app"
+
+WORKDIR /app
+COPY main.go .
+RUN mv main.go ${APP}.go
+
+EXPOSE 8080
+
+ENV APP-ENV=${APP}
+CMD ["go", "run", "/app/${APP-ENV}.go"]
+```
