@@ -163,3 +163,48 @@ EXPOSE 8080
 ENV APP-ENV=${APP}
 CMD ["go", "run", "/app/${APP-ENV}.go"]
 ```
+
+- healt check
+```bash
+RUN apk add curl
+RUN mkdir app
+COPY main.go app
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=5s --start-period=5s CMD curl -f http://localhost:8080/health
+
+# OPTIONS
+# --interval=DURATION (default 30s)
+# --timeout=DURATION (default 30s)
+# --start-period=DURATION (default 0s)
+# retries=N (default 3)
+```
+
+- entry point
+```bash
+FROM golang:1.18-alpine
+
+RUN mkdir /app
+COPY main.go /app
+
+EXPOSE 8080
+
+ENTRYPOINT [ "go", "run" ]
+CMD ["/app/main.go"]
+```
+
+- multi stage build
+```bash
+FROM golang:1.18-alpine as builder
+WORKDIR /app
+COPY main.go /app
+RUN go build -o /app/main main.go
+
+FROM alpine:3
+WORKDIR /app
+COPY --from=builder /app/main ./
+CMD /app/main
+```
+
+- 

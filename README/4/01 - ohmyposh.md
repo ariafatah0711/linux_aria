@@ -16,3 +16,11 @@ sudo curl -s https://ohmyposh.dev/install.sh | bash -s -- -d /usr/local/bin
 git clone https://github.com/JanDeDobbeleer/oh-my-posh
 nano .bashrc
 eval "$(oh-my-posh init bash --config ~/craver.omp.json)"
+
+# arch
+```
+sudo pacman -Sy # synch
+pacman -Ss firefox # unzip 
+sudo pacman -S unzip #install
+sudo pacman -R unzip #uninstall
+```
