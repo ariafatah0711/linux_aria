@@ -69,5 +69,52 @@ services:
 
 - environment variable
 ```yaml
-
+environment
+    MONGO_INITDB_ROOT_USERNAME: ariafatah
+    MONGO_INITDB_ROOT_PASSWORD: ariafatah
+    MONGO_INITDB_DATABASE: 
 ```
+
+## bind mount
+- short yntax
+```yaml
+SOURCE:TARGET:MODE
+
+# SOURCE => lokasi di host (bisa gunakan relative path dengan diawali titik atau absolute path)
+# TARGET => lokasi di container
+# MODE => mode bind mount
+    # ro (read only)
+    # rw (read write) default
+
+volumes:
+    - "./data:/data/db"
+```
+
+- long syntax
+    - kita bisa gunakan dalam bentuk nested object di volumes dengan attribute
+```yaml
+type: volume/bind # type mount, (volume/bind)
+source: ./data # target path di container
+target: /data/db # target path di container
+read_only: false # flag read only atau tidak defaultnya false
+
+volumes:
+    - type: bind
+      source: "./data-2"
+      target: "/data/db"
+      read_only: false
+```
+
+## volume
+```yaml
+volumes:
+    mongo-data1:
+        name: mongo-data-1
+    mongo-data-2:
+        name: mongo-data-2
+
+services:
+    mongodb-1:
+```
+
+## network
