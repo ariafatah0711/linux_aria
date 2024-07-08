@@ -24,6 +24,8 @@ docker-compose stop # stop container yang ada pada konfigurasi
 docker-compose down # menghapus container, volume, network (meskipun sedang container berjalan)
 
 docker-compose ls # list docker compose (list berdasarkan nama folder yang berisi docker-compose.yaml yang sudah dibuat)
+
+docker events --filter 'container=nama' # melihat kejadian secara realtime
 ```
 
 - konfigurasi docker-compose.yaml
@@ -106,6 +108,7 @@ volumes:
 ```
 
 ## volume
+- create volume
 ```yaml
 volumes:
     mongo-data1:
@@ -115,6 +118,85 @@ volumes:
 
 services:
     mongodb-1:
+        volumes:
+            - "mongo-data-1:/data/db"
+    mongodb-2:
+        volumes:
+            - type: volume
+                source: mongo-data-2
+                target: "/data/db"
+                read_only: false
 ```
 
 ## network
+```yaml
+networks:
+    network-harbas:
+        name: network-harbas
+        driver: bridge/host/none # type network 
+mongodb-harbas:
+    networks:
+        - network-harbas
+```
+
+## depends on
+```yaml
+services:
+  mongodb-server: # ini
+    image: mongo
+  mongodb-express-web:
+    container_name: mongodb-express-web
+    image: mongo-express
+    depends_on:
+      - mongodb-server # id nya bukan name contianer
+```
+
+## restart
+```yaml
+restart: <option>
+
+# option
+no #default nya tidak pernah restart
+always # selalu restart jika container berhenti
+on-failure # restart jika container error dengan indikasi error ketike exit
+unless-stopped # selalu restart container ketika dihentikan manual
+```
+
+## resource limit
+```yaml
+deploy:
+    resources:
+        reservations:
+            cpus: "0.25"
+            memory: 50M
+        limits:
+            cpus: "0.5"
+            memory: 100M
+```
+
+- melihat cpu, memory dan limit
+```bash
+docker container stats
+```
+
+- contoh
+```yaml
+version: '3.8'
+
+services:
+  nginx-aria-1:
+    container_name: nginx-aria-1
+    image: nginx
+    ports:
+      - target: 80
+        published: 8081
+        protocol: tcp
+    deploy:
+      resources:
+          reservations:
+              cpus: "0.25"
+              memory: 50M
+          limits:
+              cpus: "0.5"
+              memory: 100M
+```
