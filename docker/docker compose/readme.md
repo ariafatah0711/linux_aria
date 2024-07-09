@@ -24,6 +24,7 @@ docker-compose stop # stop container yang ada pada konfigurasi
 docker-compose down # menghapus container, volume, network (meskipun sedang container berjalan)
 
 docker-compose ls # list docker compose (list berdasarkan nama folder yang berisi docker-compose.yaml yang sudah dibuat)
+docker-compose build # hanya melakukan build docker file / image
 
 docker events --filter 'container=nama' # melihat kejadian secara realtime
 ```
@@ -199,4 +200,29 @@ services:
           limits:
               cpus: "0.5"
               memory: 100M
+```
+
+## docker file
+```yaml
+services:
+  app:
+    container_name: app
+    build:
+      context: ./app
+      dockerfile: dockerfile
+    image: "app-golang:1.0.0" # nama image 
+    environment:
+      - "APP_PORT=9000"
+    ports:
+      - "9000:9000"
+
+# context => lokasi folder path berisi dockerfile
+# dockerfil => nama dockerfile
+# image => nama image hasil build
+# args => argument untuk environment docker file
+```
+
+## health check
+```
+
 ```
