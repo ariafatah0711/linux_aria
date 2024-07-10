@@ -5,7 +5,12 @@
 
 - syntax
 ```yaml
-
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 3
+      start_period: 5s
 
 health check
 # test => berisikan cara melakukan test health check

@@ -26,6 +26,12 @@ docker-compose down # menghapus container, volume, network (meskipun sedang cont
 docker-compose ls # list docker compose (list berdasarkan nama folder yang berisi docker-compose.yaml yang sudah dibuat)
 docker-compose build # hanya melakukan build docker file / image
 
+docker compose -f prod.yaml create
+docker compose -f prod.yaml start
+docker compose -f prod.yaml down
+
+docker compose -f docker-compose.yaml -f prod.yaml create
+
 docker events --filter 'container=nama' # melihat kejadian secara realtime
 ```
 
@@ -223,6 +229,46 @@ services:
 ```
 
 ## health check
+```yaml
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 3
+      start_period: 5s
+
+health check
+# test => berisikan cara melakukan test health check
+# interval
+# timeout
+# retries => total retry
+# start_period => waktu mulai
 ```
 
+- extend service
+```yaml
+version: '3.9'
+
+services:
+  app:
+    container_name: app
+    build:
+      context: "./app"
+      dockerfile: Dockerfile
+    image: "app-golang:3.0.0"
+    environment:
+      - "APP_PORT=8080"
+      - "MODE=local"
+    ports:
+      - "8080:8080"
+```
+
+```yaml
+# prod.yaml
+version: '3.9'
+
+services:
+  app:
+    environment:
+      - "MODE=prod"
 ```
