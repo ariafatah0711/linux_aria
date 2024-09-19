@@ -1,0 +1,11 @@
+- kubernetes => 
+
+- sebelum menggunakan kubernetes
+    - dari monolith ke microservices
+        - monolith
+            - saat kita membuat sebuah aplikasi dan semua fitur di buat dalam 1 aplikasi tersebut
+        - microservices
+            - aplikasi di pecah menjadi kecil
+            - dimana tiap aplikasi hanya mengurus satu tugas dengan baik dan semua aplikasi dapat berkomunikasi
+    - dari virtual mechine ke container
+    - 
