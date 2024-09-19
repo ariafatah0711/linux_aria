@@ -216,6 +216,39 @@ this is my linux conf, and my file for run linux
     host proxt: 192.168.1.1    1234
 </details>
 
+<details>
+  <summary><b>Service</b></summary>
+
+  - /etc/init.d (ubuntu, debian)
+    ```
+    sudo /etc/init.d/<nama-service> status
+    sudo /etc/init.d/<nama-service> restart
+    sudo /etc/init.d/<nama-service> stop
+
+    ls /etc/init.d
+    ```
+  - /etc/rc.d/init.d (cent, redhat)
+    ```
+    ls /etc/init.d
+    ```
+  - service
+    ```
+    service --status-all
+    service <nama-service> status
+    service <nama-service> start | restart | stop
+    ```
+  - systemctl
+    ```
+    systemctl daemon-reload
+    systemctl restart <nama-service>
+
+    sudo systemctl enable <nama-service>
+
+    systemctl is-active <nama-service>
+    systemctl list-unit-files --type=service | grep enabled
+    ```
+</details>
+
 <p id="download"></p>
 
 ## 🔨 download
