@@ -249,6 +249,41 @@ this is my linux conf, and my file for run linux
     ```
 </details>
 
+
+<details>
+  <summary><b>netsh windows</b></summary>
+
+  - port forwading with portproxy
+    ```bash
+    # add
+    netsh interface portproxy add v4tov4 listenaddress=<IP_Windows> listenport=<Port_Windows> connectaddress=<IP_Tujuan> connectport=<Port_Tujuan>
+    netsh interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=8080 connectaddress=172.27.139.111 connectport=22
+
+    netsh interface portproxy add v4tov4 listenaddress=192.168.242.228 listenport=8081 connectaddress=172.27.139.111 connectport=8080
+
+    # list
+    netsh interface portproxy show all
+
+    # delete
+    netsh interface portproxy delete v4tov4 listenaddress=<IP_Windows> listenport=<Port_Windows>
+    netsh interface portproxy delete v4tov4 listenaddress=127.0.0.1 listenport=8080
+
+    # reset
+    netsh interface portproxy reset
+    ```
+  - firewall
+    ```bash
+    # add
+    netsh advfirewall firewall add rule name="Allow Port 8081" protocol=TCP dir=in localport=8081 action=allow
+    
+    netsh advfirewall firewall add rule name="Allow Port Range 8081-8090" protocol=TCP dir=in localport=8081-8090 action=allow
+
+
+    # list
+    netsh advfirewall firewall show rule name=all
+    ```
+</details>
+
 <p id="download"></p>
 
 ## 🔨 download
