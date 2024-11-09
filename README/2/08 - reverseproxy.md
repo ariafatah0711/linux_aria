@@ -1,5 +1,6 @@
 # reverse proxy
 
+## nginx
 - edit config
   - ```sudo nano /etc/nginx/sites-available/default```
     ```bash
@@ -43,3 +44,43 @@
 
 - restart
   ```systemctl restart nginx```
+
+## apache2
+- enable modul rate limit
+  ```
+  a2enmod ratelimit
+  ```
+- enable modul proxy
+  ```
+  a2enmod proxy
+  a2enmod proxy_http
+  ```
+- edit config
+  ```
+  <VirtualHost *:3000>
+    ServerName localhost
+
+    # Root folder
+    DocumentRoot /var/www/html
+
+    # Rate limiting dengan mod_ratelimit
+    <Location "/">
+        SetOutputFilter RATE_LIMIT
+        # Batasi kecepatan transfer menjadi 10KB per detik per koneksi
+        SetEnv rate-limit 1024
+    </Location>
+
+    # Proxy ke localhost:8000
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:8000/
+    ProxyPassReverse / http://localhost:8000/
+
+    # Aktifkan modul proxy dan proxy_http
+    ProxyRequests Off
+    <Proxy *>
+        Require all granted
+    </Proxy>
+</VirtualHost>
+  ```
+
+- jika ingin mengganti port apache bisa ganti /etc/apache2/ports.conf dan 000-default.nya

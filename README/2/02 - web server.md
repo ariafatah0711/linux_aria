@@ -122,3 +122,9 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
     Options all -Indexes
     Header always unset X-Powered-By
     ```
+
+# tls host with cerbot
+```
+sudo apt-get install python3-certbot-nginx -y
+sudo certbot --nginx -d <yourdomain.com> -d <www.yourdomain.com>
+```
