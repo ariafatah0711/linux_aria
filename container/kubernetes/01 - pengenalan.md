@@ -1,3 +1,4 @@
+# pengenalan
 - sebelum menggunakan kubernetes
     - dari monolith ke microservices
         - monolith
@@ -18,4 +19,3 @@
         - bisa beruapa json atau yml
     - nanti configurasinya kita upload ke kubernetes master
     - dan akan di jalankan di kubernetes workers
-
