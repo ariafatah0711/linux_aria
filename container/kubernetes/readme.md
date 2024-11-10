@@ -10,11 +10,13 @@ kubectl get pod --all-namespace
 kubectl get pod -o (wide|yaml)
 kubectl get pods --show-labels
 kubectl get (namespaces|namespace|ns)
+kubectl get (rc)
 
 # delete
 kubectl delete pod <namapod> | kubectl delete pod pod1 pod2
 kubectl delete pod <namapod> --namespace <namespace>
 kubectl delete pod -l key=value
+kubectl delete rc 
 
 kubectl delete namespace <namespace>
 kubectl delete pod --all --namespace <namespace>
@@ -63,7 +65,7 @@ kubectl delete namespace <namespace>
 kubectl delete pod --all --namespace <namespace>
 ```
 
-# probe
+# 
 ```
 
 ```
