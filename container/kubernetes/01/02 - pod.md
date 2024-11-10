@@ -45,7 +45,7 @@ spec:
 ```
 
 - create pod
-```
+```bash
 kubectl create -f filepod.yaml
 kubectl create -f filepod.json
 
@@ -57,7 +57,15 @@ kubectl create -f registry.yaml --edit -o json
 ```
 
 - akses pod
-```
+```bash
 kubectl port-forward <namapod> portLocal:portRemote
 kubectl port-forward nginx 8881:80
+```
+
+- delete pod
+```bash
+kubectl delete pod <namapod>
+kubectl delete pod pod1 pod2
+kubectl delete pod <namapod> --namespace <namespace>
+kubectl delete pod -l key=value
 ```
