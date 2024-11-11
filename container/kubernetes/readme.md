@@ -3,6 +3,9 @@
 # info
 kubectl version
 
+# create pod, namespace, etc
+kubectl create -f (filepod.yaml|filepod.json)
+
 # get
 kubectl get (nodes|node|no)
 kubectl get (pods|pod)
@@ -10,13 +13,21 @@ kubectl get pod --all-namespace
 kubectl get pod -o (wide|yaml)
 kubectl get pods --show-labels
 kubectl get (namespaces|namespace|ns)
-kubectl get (rc)
+
+kubectl get rc
+kubectl get rs
+kubectl get daemonsets
+kubectl get job
 
 # delete
 kubectl delete pod <namapod> | kubectl delete pod pod1 pod2
 kubectl delete pod <namapod> --namespace <namespace>
 kubectl delete pod -l key=value
-kubectl delete rc 
+
+kubectl delete rc <name_rc>
+kubectl delete rs <name_rs>
+kubectl delete daemonsets <name_daemonsets>
+kubectl delete job <name_job>
 
 kubectl delete namespace <namespace>
 kubectl delete pod --all --namespace <namespace>
@@ -24,9 +35,10 @@ kubectl delete pod --all --namespace <namespace>
 # describe
 kubectl describe node <nama_node>
 kubectl describe pod <nama_pod>
+## rs|rc|daemonsets
 
-# create pod, namespace, etc
-kubectl create -f (filepod.yaml|filepod.json)
+# logs
+kubectl logs <name_pod>
 
 # port forwarding (hanya di development jika prod tidak digunakan)
 kubectl port-forward <namapod> portLocal:portRemote
@@ -39,6 +51,7 @@ kubectl port-forward <namapod> portLocal:portRemote
 kubectl label pod <nama_pod> env=prod
 kubectl label pod <nama_pod> env=dev --overwrite
 
+kubectl get all
 kubectl get pods -l key
 kubectl get pods -l key=value
 kubectl get pods -l '!key'

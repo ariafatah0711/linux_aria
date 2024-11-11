@@ -72,8 +72,8 @@ spec:
             - containerPort: 80
 ```
 
-- show rc
-```
+- show 
+```bash
 kubectl get rc
 NAME                   READY   STATUS    RESTARTS         AGE
 nginx-rc-bvg5g         1/1     Running   0                108s
@@ -93,7 +93,7 @@ nginx-rc-swrsg         1/1     Running            0              3m25s
     - saat kita menghapus Replication controler, maka secara otomatis pod yang berada di label selector akan ikut terhapus
     - jika kita ingin menghapus replication controler, tanpa menghapus pod yang berada pada label selectornya
         - kita bisa tambahkan option --cascade=false (default true hapus pod)
-```
+```bash
 kubectl delete rc <namerc>
 kubectl delete rc <namerc> --cascade=false
 ```

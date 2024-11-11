@@ -88,6 +88,16 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
+  <summary><b>reinstall package with default configuration</b></summary>
+  
+  - if ur want reset configuration file to default u can
+    ```
+    sudo apt-get purge haproxy
+    sudo apt-get install haproxy
+    ```
+</details>
+
+<details>
   <summary><b>package error</b></summary>
 
   - process id
