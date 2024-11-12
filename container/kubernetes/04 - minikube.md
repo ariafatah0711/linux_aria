@@ -25,3 +25,9 @@ minikube delete
 minikube start --vm-driver=(virtualbox|docker)
 minikube start --vm-driver=virtualbox --cpus=2 --memory=2g --disk-size=20g
 ```
+
+## service
+```
+minikube service <name-service>
+minikube service list
+```

@@ -19,6 +19,9 @@ kubectl get rs
 kubectl get daemonsets
 kubectl get job
 
+kubectl get all
+kubectl get all --namespace <namespace>
+
 # delete
 kubectl delete pod <namapod> | kubectl delete pod pod1 pod2
 kubectl delete pod <namapod> --namespace <namespace>
@@ -31,6 +34,9 @@ kubectl delete job <name_job>
 
 kubectl delete namespace <namespace>
 kubectl delete pod --all --namespace <namespace>
+
+kubectl delete all
+kubectl delete all --all --namespace <namespace>
 
 # describe
 kubectl describe node <nama_node>
@@ -78,7 +84,36 @@ kubectl delete namespace <namespace>
 kubectl delete pod --all --namespace <namespace>
 ```
 
-# 
-```
+# service
+```bash
+kubectl get service
+kubectl delete service <name_servive>
 
+# mengakses service di dalam port
+kubectl exec <name_pod> -it -- /bin/sh
+curl http://cluster-ip:port
+
+# mengakses service
+## with env
+kubectl exec <name_pod> -it -- env | grep -i NGINX
+NGINX_SERVICE_SERVICE_PORT=80
+NGINX_SERVICE_SERVICE_HOST=10.98.205.79
+
+curl $NGINX_SERVICE_SERVICE_HOST:$NGINX_SERVICE_SERVICE_PORT
+
+## with dns
+nama-service.nama-namespace.svc.cluster.local
+curl http://nginx-service.default.svc.cluster.local
+
+## nodePort
+kubectl get node -o wide
+NAME       STATUS   ROLES           AGE     VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                       CONTAINER-RUNTIME
+minikube   Ready    control-plane   3d10h   v1.31.0   192.168.49.2   <none>        Ubuntu 22.04.4 LTS   5.15.153.1-microsoft-standard-WSL2   docker://27.2.0
+
+kubectl get service
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+kubernetes      ClusterIP   10.96.0.1        <none>        443/TCP        5m18s
+nginx-service   NodePort    10.111.219.184   <none>        80:30001/TCP   5m9s
+
+curl 192.168.49.2:30001
 ```
