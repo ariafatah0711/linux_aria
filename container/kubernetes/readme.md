@@ -117,3 +117,9 @@ nginx-service   NodePort    10.111.219.184   <none>        80:30001/TCP   5m9s
 
 curl 192.168.49.2:30001
 ```
+
+# addons
+## ingress
+```
+kubectl get ingress
+```

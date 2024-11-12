@@ -24,10 +24,22 @@ minikube delete
 # menjalankan minikube
 minikube start --vm-driver=(virtualbox|docker)
 minikube start --vm-driver=virtualbox --cpus=2 --memory=2g --disk-size=20g
+
+# ip
+minikube ip
 ```
 
 ## service
 ```
 minikube service <name-service>
 minikube service list
+```
+
+## addons
+```
+minikube addons list
+minikube addons enable ingress
+
+kubectl get pod --namespace kube-system # versi lama 
+kubectl get all --namespace ingress-nginx # versi baru
 ```
