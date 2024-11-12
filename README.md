@@ -85,6 +85,33 @@ this is my linux conf, and my file for run linux
       - change enabled 1 to 0
     - ```yum clean all```
     - ```yum repolist```
+  
+  - mount package with server repo
+    - file repo with server repo
+      ```
+      [BaseOS]
+      name=BaseOS
+      gpgcheck=0
+      enabled=1
+      baseurl==http://10.1.10.211/rhel9.4/BaseOS
+
+      [AppStream]
+      name=AppStream
+      gpgcheck=0
+      enabled=1
+      baseurl=http://10.1.10.211/rhel9.4/AppStream  
+      ```
+    - rhsm
+      - vi /etc/rhsm/rhsm.conf
+        ```
+        manage_repos = 0
+        ```
+    
+    - with dnf
+      ```
+      dnf config-manager --add-repo "http://10.1.10.211/rhel9.4/BaseOS"
+      echo "gpgcheck=0" > /etc/yum.repos.d/10.1.10.211_rhel9.4_BaseOS.repo
+      ```
 </details>
 
 <details>
@@ -256,6 +283,19 @@ this is my linux conf, and my file for run linux
 
     systemctl is-active <nama-service>
     systemctl list-unit-files --type=service | grep enabled
+    ```
+</details>
+
+<details>
+  <summary><b>net-tools</b></summary>
+
+  - net-tools
+    ```bash 
+    netstat -tulpn
+    kill -9 <pid>
+
+    lsof -i tcp:80
+    kill -9 <pid>
     ```
 </details>
 
