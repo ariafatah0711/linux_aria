@@ -18,6 +18,7 @@ kubectl get rc
 kubectl get rs
 kubectl get daemonsets
 kubectl get job
+kubectl get configmaps
 
 kubectl get all
 kubectl get all --namespace <namespace>
@@ -31,6 +32,7 @@ kubectl delete rc <name_rc>
 kubectl delete rs <name_rs>
 kubectl delete daemonsets <name_daemonsets>
 kubectl delete job <name_job>
+kubectl delete configmaps <name_configmap>
 
 kubectl delete namespace <namespace>
 kubectl delete pod --all --namespace <namespace>
@@ -41,6 +43,7 @@ kubectl delete all --all --namespace <namespace>
 # describe
 kubectl describe node <nama_node>
 kubectl describe pod <nama_pod>
+kubectl describe configmap <name_configmap>
 ## rs|rc|daemonsets
 
 # logs
