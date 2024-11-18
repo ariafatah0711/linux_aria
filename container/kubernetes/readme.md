@@ -19,6 +19,7 @@ kubectl get rs
 kubectl get daemonsets
 kubectl get job
 kubectl get configmaps
+kubectl get secrets
 
 kubectl get all
 kubectl get all --namespace <namespace>
@@ -121,14 +122,13 @@ nginx-service   NodePort    10.111.219.184   <none>        80:30001/TCP   5m9s
 curl 192.168.49.2:30001
 ```
 
-# volume
+# 
 ```
-# volume
+kubectl apply -f namafile.yaml
+kubectl get deployments
+kubectl describe deployment <name_deployment>
+kubectl delete deployment <name_deployment>
 ```
-
-
-
-
 
 # addons
 ## ingress
