@@ -11,8 +11,8 @@
 - service akan mendistribusikan ke pod yang ada di belakang secara seimbang (load balance alg: round robin)
     - service akan menggunakan label selector untuk mengetahui pod mana yang ada dibelakang service tersebut
 
-- command
-```
+## command
+```sh
 kubectl create -f config.yaml
 kubectl get service
 kubectl delete service <nameservice>
@@ -20,8 +20,6 @@ kubectl delete service <nameservice>
 # mengakses service di dalam pod
 kubectl exec <name_pod> -it -- /bin/sh
 curl http://cluster-ip:port
-
-
 ```
 
 - config
@@ -36,9 +34,10 @@ spec:
   ports:
   - port: 8080
     targetPort: 80
+```
 
-
-# example
+- example
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -98,8 +97,7 @@ spec:
       nama-service.nama-namespace.svc.cluster.local
       ```
 
-
-- command
+## command
 ```bash
 ## with env
 kubectl exec <name_pod> -it -- env | grep -i NGINX

@@ -1,30 +1,3 @@
-# donward API
-- konfigurasi yang kita set secara manual bisa ditangani dengan baik menggunakan configMap dan secret
-    - namun bagaimana dengan konfigurasi yang dinamis? seperti informasi Pod dan Node?
-    - kuberntes memiliki downward API. Downward API bisa memungkinakan kita mengambil informasi seputar Pod dan Node melalui environment variable
-- jangan bingung dengan kata API, Downward API sendiri bukan RESTful API
-    - ini hanya cara untuk mendapatkan informasi seputar Pod dan Node
-
-## metadata
-- requests.cpu => jumlah CPU yang di request
-- requests.memory => jumlah Memory yang di request
-- limits.cpu => jumlah limit maksimal CPU
-- limits.memory => jumlah limit maksimal Memory
-
-- metadata.name => nama pod
-- metadata.namespace => namespace pod
-- metadata.uid => id pod
-- metadata.labells['<KEY>'] => label pod
-- metadata.annotations['<KEY>'] => anotation pod
-
-- status.podIP => ip address pod
-- spec.serviceAccountName => name service account pod
-- spec.nodeName => nama Node
-- status.nostIP => ip address node
-
-## configuration
-- example
-```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -93,4 +66,3 @@ spec:
     - port: 3000
       targetPort: 3000
       nodePort: 30001
-```

@@ -4,7 +4,8 @@
     - kubernetes juga mendukung environment variable untuk Pod
     - hal ini sangat berguna untuk konfigurasi aplikasi, seperti konfigurasi database, dll
 
-- config
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -23,8 +24,10 @@ spec:
       env:
         - name: ENV_NAME
           value: "ENV VALUE"
+```
 
-# example
+- example
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

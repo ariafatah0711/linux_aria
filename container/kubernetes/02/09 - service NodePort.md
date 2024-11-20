@@ -1,7 +1,7 @@
 # NodePort
 ![alt text](docs/images/image-4.png)
 
-- config
+## configuration
 ```yaml
 apiVersion: v1
 kind: Service
@@ -17,8 +17,10 @@ spec:
     - port: 80
       targetPort: 80
       nodePort: 32767
+```
 
-# example
+- example
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:

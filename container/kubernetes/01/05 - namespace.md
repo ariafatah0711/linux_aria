@@ -9,37 +9,41 @@
     - walaupun berbeda namespace, pod akan tetap bisa saling berkomunikasi dengan pod lain di namespace yang berbeda
 - default namespace yang digunakan kubernetes adalah namespace default
 
-- namspace
-```
-kubectl get (namespaces|namespace|ns)
-kubectl get pod --namespacae <namaspace>
-
-kubectl get pods --namespace kube-system
-```
-
-- config namespace
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
   name: nama-namespace
+```
 
-# example
+- example
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
   name: finance
 ```
 
-- create namespace
+## command
+- get namespace
+```sh
+kubectl get (namespaces|namespace|ns)
+kubectl get pod --namespacae <namaspace>
+
+kubectl get pods --namespace kube-system
 ```
+
+- create namespace
+```sh
 kubectl create -f config.yaml --namespace <namespace>
 
 # example
 ```
 
 - delate namespace
-```bash
+```sh
 # delete namespace beserta resource
 # harus create namespace dulu pakae config.yaml, baru bisa masukin pod ke namespace
 kubectl create -f config.yaml --namespace <namespac/e>

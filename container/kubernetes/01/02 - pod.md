@@ -6,13 +6,9 @@
 - jika kita langsung menggunakan container. nanti kita hanya bisa pake satu spesifik container saja seperti docker makanya kita butuh pod
     - seperti kita ingin scalling aplikasi ke aplikasi yang lainya
 
-```
-kubectl get pod
-kubectl describe pod <nama_pod>
-```
-
-# create pod
-- create configuration file
+## command
+### create pod with configuration file
+- template
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -26,7 +22,7 @@ spec:
         - containerPort: 80
 ```
 
-- example nginx
+- example
 ```yaml
 apiVersion: v1
 kind: pod
@@ -44,6 +40,13 @@ spec:
         #     - containerPort: 80
 ```
 
+### get pod
+```
+kubectl get pod
+kubectl describe pod <nama_pod>
+```
+
+### create Pod, akses Pod, delete Pod
 - create pod
 ```bash
 kubectl create -f filepod.yaml

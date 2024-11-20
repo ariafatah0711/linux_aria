@@ -15,18 +15,7 @@
     - ingress hanya mendukung protokol http
     - sebenernya ingress ini adalah nginx
 
-- command
-```
-minikube addons list
-minikube addons enable ingress
-
-kubectl get pod --namespace kube-system
-kubectl get all --namespace ingress-nginx
-
-kubectl get ingress
-```
-
-- config
+## configuration
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -43,8 +32,10 @@ spec:
             backend:
               serviceName: service-name
               servicePort: 80
+```
 
-# example
+- example
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -102,8 +93,20 @@ spec:
                     number: 80
 ```
 
-- command
+## command
+- add addons, and check addons
+```sh
+minikube addons list
+minikube addons enable ingress
+
+kubectl get pod --namespace kube-system
+kubectl get all --namespace ingress-nginx
+
+kubectl get ingress
 ```
+
+- test ingress
+```sh
 kubectl create -f config.yaml
 
 minikube ip

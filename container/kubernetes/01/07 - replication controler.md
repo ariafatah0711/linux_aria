@@ -10,12 +10,14 @@
 ![alt text](docs/images/image.png)
 ![alt text](docs/images/image-1.png)
 
+## penjelasan
 - isi replication controler
     - Label Selector => sebagai penanda pod ()
     - Replica Count => jumlah pod yang harus berjalan (default 3)
     - Pod Template => template yang digunakan untuk menjalan pod ()
 
-- membuat replication controler
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: ReplicationController
@@ -49,8 +51,10 @@ spec:
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 1
+```
 
-# example
+- example
+```yaml
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -72,6 +76,7 @@ spec:
             - containerPort: 80
 ```
 
+## command
 - show 
 ```bash
 kubectl get rc

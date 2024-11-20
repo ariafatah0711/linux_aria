@@ -1,13 +1,3 @@
-# multi container pod
-- saat kita menggunakan Docker, kita selalu diajarkan bahwa 1 aplikasi adalah 1 container
-    - di kubernetes sedikit berbeda, saat kita deploy aplikasi kita, maka akan disimpan dalam 1 pod
-    - kenapa pod tidak container?
-        - karena sebenarnya di dalam pod kita bisa menambahkan banyak container
-    - ini cocok sekali jika  memang kita butuh aplikasi yang berjalan di beberapa container dan jika ingin scale, harus semua nya ikut scale
-
-## configuration
-- template
-```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -62,4 +52,3 @@ spec:
   containers:
     - name: curl
       image: khannedy/nginx-curl
-```

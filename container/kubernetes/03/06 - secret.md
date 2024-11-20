@@ -13,13 +13,7 @@
 
 - env secret hanya bisa dilihat ketika masuk di container
 
-- command
-```
-kubectl get secrets
-kubectl desciribe secret <secret_name>
-```
-
-- config
+## configuration
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -29,8 +23,10 @@ data:
   ENV: base64(VALUE)
 stringData:
   ENV: VALUE
+```
 
-# example
+- example
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -89,4 +85,10 @@ spec:
     - port: 3000
       targetPort: 3000
       nodePort: 30001
+```
+
+## command
+```sh
+kubectl get secrets
+kubectl desciribe secret <secret_name>
 ```

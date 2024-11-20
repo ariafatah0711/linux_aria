@@ -3,6 +3,8 @@
     - biasanya digunakan untuk menambahkan informasi tambahan dalam ukuran besar
     - annotation bisa menampung informasi sampai 256k
 
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -42,14 +44,15 @@ spec:
         - containerPort: 80
 ```
 
+## command
 - show
-```
+```sh
 kubectl get pods
 kubectl describe pod nginx-with-annotation
 ```
 
 - menambahakan annotation
-```
+```sh
 kubectl annotate pod <namapod> key=value
 kubectl annotate pod <namapod> key=value --overwrite
 ```

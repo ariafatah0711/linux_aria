@@ -6,11 +6,12 @@
 - secara default daemon set akan menjalankan pod di setiap node yang ada di kubernetes cluster 
     - kecuali jika kita meminta hanya jalan di node tertentu
 
-- contoh kasus
+## contoh kasus
     - aplikasi untuk monitoring Node
     - aplikasi untuk mengambil log di Node
 
-- config
+## configuration
+- template
 ```yaml
 apiVersion: apps/v1
 kind: DaemonSet
@@ -36,8 +37,10 @@ spec:
           image: image-name
           ports:
             - containerPort: 80
+```
 
-# example
+- example
+```yaml
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -63,8 +66,8 @@ spec:
             - containerPort: 80
 ```
 
-- command
-```
+## command
+```sh
 kubectl get daemonsets
 kubectl delete daemonsetes <nama_daemonsets>
 ```

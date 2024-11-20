@@ -2,7 +2,7 @@
 - sebelum fokus Replication Controler, Replication set
 - 3 kali pengecekan
 
-# pengecekan
+## pengecekan
 - liveness
     - mengecek kapan perlu merestart pod
     - misal saat liveness probe pada pod tidak meresponse kubelet akan otomatis me restart pod
@@ -15,12 +15,13 @@
     - startup probe cocok untuk pod yang membutuhkan proses startup lama
         - ini dapat diguanakn untuk memastikan pod tidak mati oleh kubelet sesbelum sesuai berjalan sempurna
 
-# mekanisme pengecekan probe
+## mekanisme pengecekan probe
 - HTTP get (untuk web)
 - TCP Socket (untuk tcp)
 - command exec (menggunakan exec)
 
-- configuration
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -65,8 +66,10 @@ spec:
         timeoutSeconds: 1
         successThreshold: 1
         failureThreshold: 3
+```
 
-# example
+- example
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -89,6 +92,7 @@ spec:
         failureThreshold: 4
 ```
 
+## penjelasan
 - option
     - initialDelaySeconds => waktu tunggu sebelum pengecekan / setelah container jalan (defaultnya 0)
     - periodSeconds => periode / seberapa sering waktu pengecekan dilakukan (default 10)
@@ -96,6 +100,7 @@ spec:
     - successTreshold => minimum dianggap sukses setelah berstatus failure (default 1)
     - failureTreshold => minimun dianggap gagal (default 3)
 
+## command
 - show kubectl probe
 ```
 kubectl describe pod

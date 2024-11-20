@@ -6,7 +6,7 @@
 ![alt text](docs/images/image-5.png)
 ![alt text](docs/images/image-6.png)
 
-- config
+## configuration
 ```yaml
 apiVersion: v1
 kind: Service

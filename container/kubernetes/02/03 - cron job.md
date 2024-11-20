@@ -13,7 +13,8 @@
 
 - cronjob expresion => https://crontab.guru/
 
-- config
+## configuration
+- template
 ```yaml
 apiVersion: batch/v1beta1
 kind: CronJob
@@ -38,8 +39,10 @@ spec:
               image: image-name
               ports:
                 - containerPort: 80
+```
 
-# example
+- example
+```yaml
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -64,8 +67,8 @@ spec:
 
 - ketika gunakan cronjob kita perlu namabahins scedhuler dan jobTemplates
 
-- command
-```
+## command
+```sh
 kubectl get cronjobs
 kubectl delete cronjobs <name_cronjobs>
 ```

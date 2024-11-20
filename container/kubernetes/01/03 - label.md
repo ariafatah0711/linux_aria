@@ -5,6 +5,8 @@
         - seperti Replication Controler, Replication Set, service
 - masukin label harus sederhana tidak boleh ada spasi
 
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -40,14 +42,15 @@ spec:
         - containerPort: 80
 ```
 
+## command
 - show pod label
-```
+```sh
 kubectl get pods --show-labels
 ```
 
 - menambahkan atau mengubah label di pod
     - namun tidak disarankan karena nanti beda sama configuration filenya
-```
+```sh
 # add label
 kubectl label pod nginx env=prod
 
@@ -56,7 +59,7 @@ kubectl label pod nginx env=dev --overwrite
 ```
 
 - mencari label di pod
-```
+```sh
 kubectl get pods -l key
 kubectl get pods -l key=value
 kubectl get pods -l '!key'

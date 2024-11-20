@@ -5,8 +5,8 @@
 - replication set hampir mirip dengan replication controler
     - namun di replication set memiliki kemampuan label selector yang lebih expressive dibandingkan replication controler
 
-
-- config
+## configuration
+- template
 ```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
@@ -32,8 +32,10 @@ spec:
         image: image-name
         ports:
         - containerPort: 80
+```
 
-# example
+- example
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -56,7 +58,8 @@ spec:
         - containerPort: 80
 ```
 
-- command
+## command
+- Replication Set
 ```
 kubectl get rs
 kubectl delete rs <name_rs>
@@ -69,7 +72,9 @@ kubectl delete rs <name_rs>
         - NotIn => value label tidak boleh ada di value in
         - Exits => label harus ada
         - NotExis => label tidak boleh ada
-- example
+
+## configuration
+- template
 ```yaml
 spec:
   replicas: 3
@@ -93,8 +98,10 @@ spec:
         image: image-name
         ports:
         - containerPort: 80
+```
 
-# example
+- example
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:

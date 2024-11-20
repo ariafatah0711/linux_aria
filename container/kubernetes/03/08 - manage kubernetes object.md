@@ -25,6 +25,7 @@ kubectl delelte -f namafile.yaml
 # membuat atau mengupdate kubernetes object
 kubectl apply -f namafile.yaml
 ```
+
 - saat menggunakan declarative management, file konfigurasi akan disimpan di dalam annotations object
     - hal ini sangat bermanfaat saat menggunakan object Deployment
     - rata rata sekarang kebanyakan Declarative Management lebih sering digunakan dibandingkan imperative management

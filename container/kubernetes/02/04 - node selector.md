@@ -3,7 +3,8 @@
     - misal node yang memiliki GPU, atau dengan hardisk SSD
     - dengan node selector, kita bisa meminta kubernetes untuk menjalankan pod pada node tertentu
 
-- config
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -17,8 +18,10 @@ spec:
       image: image-name
       ports:
         - containerPort: 80
+```
 
-# example
+- example
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -33,8 +36,8 @@ spec:
         - containerPort: 80
 ```
 
-- command
-```
+## command
+```sh
 kubectl create -f config.yaml
 kubectl label node <name_node> key=value
 kubectl get label --show-labels

@@ -1,6 +1,8 @@
 # all
+- untuk melihat semua object kubernetes
 
-```
+## command
+```sh
 kubectl get all
 kubectl get all --namespace <namespace>
 

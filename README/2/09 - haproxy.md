@@ -80,3 +80,32 @@ backend app
     server  app2 127.0.0.1:8082 check backup
     server  app3 127.0.0.1:8083 check backup
 ```
+
+# error
+- config error
+```
+defaults
+    errorfile 503 /etc/haproxy/error/503.http
+
+frontend fe
+    errorfiles err
+    http-response return  status 404  default-errorfiles  if { status 404 }
+
+http-errors err
+    errorfile 404 /etc/haproxy/error/404.http
+```
+- error config 404.http
+```
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html>
+   <body>
+      <h1>403 Forbidden</h1>
+      <p>Sorry, but you are not authorized to view this page.</p>
+   </body>
+</html>
+```

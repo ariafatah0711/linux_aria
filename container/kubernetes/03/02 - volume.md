@@ -10,7 +10,8 @@
 - nfs => network file system
 - dll
 
-- config
+## configuration
+- template
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -32,7 +33,10 @@ spec:
       volumeMounts:
         - mountPath: /app/volume
           name: volume-name
+```
 
+- example
+```yaml
 # example
 apiVersion: v1
 kind: Pod

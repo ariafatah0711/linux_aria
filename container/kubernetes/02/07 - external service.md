@@ -8,6 +8,7 @@
     - NodePort
     - LoadBalancer
 
+## configuration
 - service-with-endpoint
 ```yaml
 apiVersion: v1
@@ -79,7 +80,7 @@ spec:
       image: khannedy/nginx-curl
 ```
 
-- command
-```
+## command
+```sh
 curl example-service.default.svc.cluster.local
 ```

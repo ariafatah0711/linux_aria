@@ -16,15 +16,8 @@
     - yang mana ReplicaSet akan secara otomatis membuat Pod
 - membuat Deployment hampir sama seperti membuat ReplicationSet
 
-## command
-```
-kubectl apply -f deployment.yaml
-kubectl get deployments
-kubectl describe deployment <name_deployment>
-kubectl delete deployment <name_deployment>
-```
-
-## config
+## configuration
+- template
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -59,8 +52,10 @@ spec:
           failureThreshold: 3
           successThreshold: 1
           timeoutSeconds: 1
+```
 
-## example
+- example
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -98,4 +93,12 @@ spec:
     - port: 3000
       targetPort: 3000
       nodePort: 30001
+```
+
+## command
+```sh
+kubectl apply -f deployment.yaml
+kubectl get deployments
+kubectl describe deployment <name_deployment>
+kubectl delete deployment <name_deployment>
 ```

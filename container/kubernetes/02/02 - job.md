@@ -6,12 +6,13 @@
     - maka secara otomatis pod akan dijalankan ulang
 - berbeda dengan job, pod akan mati jika pekerjaanya selesai
 
-- contoh
+## contoh
     - aplikasi untuk backup atau resource database
     - aplikasi untuk import export data
     - aplikasi untuk menjalankan process batch
 
-- config
+## configuration
+- template
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -35,8 +36,10 @@ spec:
           image: image-name
           ports:
             - containerPort: 80
+```
 
-# example
+- example
+```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -52,12 +55,13 @@ spec:
           image: khannedy/nodejs-job
 ```
 
+## penjelasan
 - completions => berapa kali pod akan aktif (default 1)
 - parallelism => berapa banyak pod yang berjalan pada 1 waktu (default 1)
 - restartPolicy: Never => harus never agar berhenti, jika always akan aktif terus
 
-- command
-```
+## command
+```sh
 kubectl get job
 kubectl delete job <name_job>
 

@@ -3,6 +3,7 @@
 - node bisa berbentuk dalam vm atau mesin fisik
 - di dalam Node selalu terdapat kubelet, kubeproxy, dan container manager
 
+## command
 ```
 # melihat semua nodes yang ada pada cluster
 kubectl get nodes

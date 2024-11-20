@@ -12,14 +12,8 @@
 
 ![alt text](docs/images/image.png)
 
-- command
-```bash
-kubectl get configmaps
-kubectl describe configmap <name_configmap>
-kubectl delete configmaps <name_configmap>
-```
-
-- config
+## configuaration
+- example
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -77,4 +71,11 @@ spec:
     - port: 3000
       targetPort: 3000
       nodePort: 30001
+```
+
+## command
+```bash
+kubectl get configmaps
+kubectl describe configmap <name_configmap>
+kubectl delete configmaps <name_configmap>
 ```

@@ -93,7 +93,7 @@ this is my linux conf, and my file for run linux
       name=BaseOS
       gpgcheck=0
       enabled=1
-      baseurl==http://10.1.10.211/rhel9.4/BaseOS
+      baseurl=http://10.1.10.211/rhel9.4/BaseOS
 
       [AppStream]
       name=AppStream
