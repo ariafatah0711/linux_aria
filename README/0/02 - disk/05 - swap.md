@@ -1,0 +1,77 @@
+# swap
+- recomended
+    - < 2gb => 2 x amount of ram
+    - 2gb - 8gb => sama kaya ram yang digunakan
+    - 8gb - 64gb => at least 4gb
+    - > 64gb => at least 4gb
+- untuk swap sendiri tidak semua nya harus dipakai
+    - beberapa seperti kubernetes tidak boleh menggunakan swap
+
+# swap partition
+- swap yang menggunakan partition
+- command
+```
+free -h
+blkid
+```
+
+## fdisk
+```
+# create partition
+fdisk /dev/vdb
+
+n
+- p,default,default
+p
+# (default 83)
+
+### change id 
+t => type change
+- l => list
+-- swap is 82
+- 82
+
+### format with mkswap
+partprobe # ketika partitionya gak muncul setelah di create
+mkswap /dev/vdb1
+```
+
+## add swap partition
+### temporery
+- swapon /dev/vdb1
+
+### persistance
+- vi /etc/fstab
+  ```
+  /dev/sdc2               swap                    swap    defaults        0 0
+  ```
+
+## remove swap
+```
+swapoff /dev/sdc2
+# dont forget remove the /etc/fstab
+```
+
+# file
+- swap partition by file
+- command
+```
+dd if=/dev/zero of=/swapfile bs=1024 count=65536
+mkswap /swapfile
+chmod 0600 /swapfile
+
+swapon /swapfile
+### OR
+vi /etc/fstab
+######
+/swapfile none swap defaults 0 0
+or
+/swapfile swap swap defaults 0 0
+######
+```
+
+- dd => create file
+- if => input
+- of => output
+- bs =>
+- count => ukuran
