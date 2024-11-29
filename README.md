@@ -135,6 +135,27 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
+  <summary><b>users</b></summary>
+
+  - show users active
+    ```
+    w
+    who
+    users
+    ps u
+    ```
+  - kill
+    ```
+    pkill -u <user>
+    pkill -t <tty>
+
+    pkill -KILL -t pts/1
+    
+    kill -SIGKILL <pid>
+    ```
+</details>
+
+<details>
   <summary><b>package error</b></summary>
 
   - process id

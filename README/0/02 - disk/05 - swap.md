@@ -10,13 +10,13 @@
 # swap partition
 - swap yang menggunakan partition
 - command
-```
+```bash
 free -h
 blkid
 ```
 
 ## fdisk
-```
+```bash
 # create partition
 fdisk /dev/vdb
 
@@ -34,7 +34,7 @@ t => type change
 ### format with mkswap
 partprobe # ketika partitionya gak muncul setelah di create
 mkswap /dev/vdb1
-```
+```bash
 
 ## add swap partition
 ### temporery
@@ -42,12 +42,12 @@ mkswap /dev/vdb1
 
 ### persistance
 - vi /etc/fstab
-  ```
+  ```bash
   /dev/sdc2               swap                    swap    defaults        0 0
   ```
 
 ## remove swap
-```
+```bash
 swapoff /dev/sdc2
 # dont forget remove the /etc/fstab
 ```
@@ -55,7 +55,7 @@ swapoff /dev/sdc2
 # file
 - swap partition by file
 - command
-```
+```bash
 dd if=/dev/zero of=/swapfile bs=1024 count=65536
 mkswap /swapfile
 chmod 0600 /swapfile
