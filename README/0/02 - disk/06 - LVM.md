@@ -84,3 +84,63 @@ mkfs.xfs -f /dev/vg1/lv-2
 mount /dev/vg1/lv-1 /home/ariafatah/lv1
 mount /dev/vg1/lv-2 /home/ariafatah/lv2
 ```
+
+# LVM extend
+## extend
+- create more partiton
+- make pvcreate
+```bash
+pvcreate /dev/vdc1
+pvs
+
+# extend vg
+vgextend vg1 /dev/vdc1
+vgs
+
+# extend lv
+lvextend <path_lv> -l <size_pe>
+lvextend /dev/vg1/lv-1 -l +50
+
+# resize (ketika di resize maka harus masukin size semuanya bukan pake +)
+lvresize <path-lv> -l <size_pe>
+lvresize /dev/vg1/lv-1 -l 50
+
+lvresize /dev/vg1/lv-2 -L 500
+
+lvs
+```
+
+## resize file system
+- untuk memformat type partition yang belum tambah ()
+```bash
+# ext4, ext3, ext2
+resize2fs <path_dev_lv>
+resize2fs /dev/vg1/lv-1
+
+# xfs
+xfs_growfs <path_dev_lv>
+xfs_growfs /dev/vg1/lv-2
+```
+
+## add repo for extend
+```bash
+# pvcreate
+# vgextend
+
+# lvextend
+lvextend /dev/centos/root -l +100%FREE # add 100% alocation
+```
+
+# lvm snapshoot
+- minimal harus ada sisa 10% size dari vg nya jika ingin membuat snapshoot
+```bash
+# create snap
+lvcreate -L 10M -s -n lv-1-snap1 vg1/lv-1
+
+## rever / rollback
+## harus di unmount terlebih dahulu
+umount /home/ariafatah/lv1
+
+lvconvert --merge vg1/lv-1-snap1
+# after merge lv-1-snap1 akan hilang karena di merge ke lvmaster yaitu lv-1
+```
