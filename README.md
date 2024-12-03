@@ -46,6 +46,31 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
+  <summary><b>lsb, hostnamectl</b></summary>
+
+  - info
+    ```bash
+    lsb_release -a
+    cat /etc/os-release
+
+    lsb_release -d
+    lsb_release -c
+    lsb_release -r
+    lsb_release -i
+
+    uname -a
+    uname -i
+
+    cat /etc/issue
+    ```
+  - hostanme
+    ```bash
+    hostnamectl set-hostname <new_hostname>
+    vi /etc/hostname
+    ```
+</details>
+
+<details>
   <summary><b>ubuntu</b></summary>
 
   - install ubuntu
