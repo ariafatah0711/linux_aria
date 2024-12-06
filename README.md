@@ -73,6 +73,20 @@ this is my linux conf, and my file for run linux
 <details>
   <summary><b>ubuntu</b></summary>
 
+  - ftp
+  ```bash
+  sftp user@ip
+  > lls
+  > lcd
+  > get
+  > put file.txt
+  > put -R folder
+  ```
+</details>
+
+<details>
+  <summary><b>ubuntu</b></summary>
+
   - install ubuntu
 </details>
 
@@ -89,7 +103,7 @@ this is my linux conf, and my file for run linux
     - make folder /mnt/disc/ ```mkdir -p /mnt/disc/```
     - mount repository ```mount /dev/sr0 /mnt/disc/```
     - make file repository conf with ```vi /etc/yum.repos.d/rhel9dvd.repo```
-      ```
+      ```bash
       [BaseOS]
       name=BaseOS Package Red Hat Enterprise Linux 9
       metadata_expire=-1
