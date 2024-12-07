@@ -46,6 +46,8 @@ chr(0x48) + chr(0x41) + chr(0x4c) + chr(0x4f) # HALO
 '48414c4f'.decode("hex") # 'HALO'
 '\x48\x41\x4c\x4f' # 'HALO'
 
+# chr itu singkatan character
+
 '8090ffad1201'.decode("hex") # '\x80\x90\xff\xad\x12\x01'
   # karena non printable
 print '8090ffad1201'.decode("hex") # ����
