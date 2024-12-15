@@ -1,15 +1,16 @@
-depends on => urutan container
-    - saat membuat file docker compose yang berisi banyak container
+# depends
+- depends on => urutan container
+  - saat membuat file docker compose yang berisi banyak container
     - kadang kita membuat container yang butuh container lain sebelum berjalan
-        - atau sederhananya kita ingin ada urutan contaienr berjalan
+      - atau sederhananya kita ingin ada urutan contaienr berjalan
     - secara default, docker compose akan menjalankan semua container secara bersamaan,
-        - tanpa ada urutan pasti
+      - tanpa ada urutan pasti
     - kita bisa membuat urutan menjalankan container dengan menggunakan attribute depends_on
     - kita bisa sebutkan pada container, bahwa container ini hanya bisa berjalan, 
-        - kalo contaienr yang sudah berjalan
+      - kalo contaienr yang sudah berjalan
     - kita bisa sebutkan satu atau lebih container lainya pada attribute depends_on
 
-- syntax
+## syntax
 ```yaml
 services:
   mongodb-server: # ini
@@ -21,7 +22,7 @@ services:
       - mongodb-server # id nya bukan name contianer
 ```
 
-- contoh
+## contoh
 ```yaml
 version: 3.9
 

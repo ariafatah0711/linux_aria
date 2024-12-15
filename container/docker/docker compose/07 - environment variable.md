@@ -1,5 +1,4 @@
-- environment variable
-
+# environment variable
 ```yaml
 environment:
     MONGO_INITDB_ROOT_USERNAME: ariafatah

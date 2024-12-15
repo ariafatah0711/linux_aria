@@ -1,8 +1,9 @@
+# yaml
 - yaml => sebuah jenis file yang biasa digunakan untuk menyimpan konfigurasi
-    - yaml mirip seprti json, hanya saja tidak menggunakan huruf kurang kurawal
-    - yaml akan memiliki attribute dan value
+  - yaml mirip seprti json, hanya saja tidak menggunakan huruf kurang kurawal
+  - yaml akan memiliki attribute dan value
 
-- contoh yaml
+## contoh yaml
 ```yaml
 # yaml
 firstName: aria; # titik kona tidak wajib
@@ -24,7 +25,7 @@ wellet: # array nested object
       mount: 530000
 ```
 
-- contoh json
+## contoh json
 ```json
 {
     "firstName": "aria",

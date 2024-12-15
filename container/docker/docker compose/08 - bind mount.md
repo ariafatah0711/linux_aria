@@ -1,8 +1,9 @@
+## bind mount
 - bind mount
-    - kita bisa gunakan attributes volumes di services
-    - kita bisa tamabahkan satu atau lebih bind mount jika perlu
+  - kita bisa gunakan attributes volumes di services
+  - kita bisa tamabahkan satu atau lebih bind mount jika perlu
 
-- short yntax
+## short yntax
 ```yaml
 SOURCE:TARGET:MODE
 
@@ -16,22 +17,22 @@ volumes:
     - "./data:/data/db"
 ```
 
-- long syntax
-    - kita bisa gunakan dalam bentuk nested object di volumes dengan attribute
-```yaml
-type: volume/bind # type mount, (volume/bind)
-source: ./data # target path di container
-target: /data/db # target path di container
-read_only: false # flag read only atau tidak defaultnya false
+## long syntax
+- kita bisa gunakan dalam bentuk nested object di volumes dengan attribute
+  ```yaml
+  type: volume/bind # type mount, (volume/bind)
+  source: ./data # target path di container
+  target: /data/db # target path di container
+  read_only: false # flag read only atau tidak defaultnya false
 
-volumes:
-    - type: bind
-      source: "./data-2"
-      target: "/data/db"
-      read_only: false
-```
+  volumes:
+      - type: bind
+        source: "./data-2"
+        target: "/data/db"
+        read_only: false
+  ```
 
-- contoh
+## contoh
 ```yaml
 version: '3.8'
 

@@ -1,9 +1,10 @@
+# health check
 - docker health check => secara default container yang dibuat, baik itu secara manual ataupun menggunakan docker compose
-    - pasti akan selalu menggunakan health check yang dibuat di docker file
-    - namun, jika kita ingin mengubah health check tersebut, itu juga bisa dilakukan
-    - kita bisa ubah di file konfigurasi docker compose pada attribute healthcheck di service
+  - pasti akan selalu menggunakan health check yang dibuat di docker file
+  - namun, jika kita ingin mengubah health check tersebut, itu juga bisa dilakukan
+  - kita bisa ubah di file konfigurasi docker compose pada attribute healthcheck di service
 
-- syntax
+## syntax
 ```yaml
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
@@ -20,7 +21,7 @@ health check
 # start_period => waktu mulai
 ```
 
-- contoh
+## contoh
 ```yaml
 version: '3.8'
 

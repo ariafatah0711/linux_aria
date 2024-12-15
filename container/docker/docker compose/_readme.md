@@ -1,17 +1,18 @@
+## docker coompose
 - docker compose => aplikasi yang digunakan untuk mendefiniskan dan menjalankan multiple Docker Container Secara sekaligus
-```bash
-DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-mkdir -p $DOCKER_CONFIG/cli-plugins
-curl -SL https://github.com/docker/compose/releases/download/v2.29.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+  ```bash
+  DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+  mkdir -p $DOCKER_CONFIG/cli-plugins
+  curl -SL https://github.com/docker/compose/releases/download/v2.29.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
-chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
-# or
-sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+  chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+  # or
+  sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
-docker compose version
-```
+  docker compose version
+  ```
 
-- perintah compose
+## perintah compose
 ```bash
 # docker-compose or docker compose
 
@@ -35,48 +36,52 @@ docker compose -f docker-compose.yaml -f prod.yaml create
 docker events --filter 'container=nama' # melihat kejadian secara realtime
 ```
 
+## konfigurasi
 - konfigurasi docker-compose.yaml
-```yaml
-version: "3.18"
+  ```yaml
+  version: "3.18"
 
-services:
-  nginx-aria:
-    container_name: nginx-aria
-    image: nginx:latest
-```
+  services:
+    nginx-aria:
+      container_name: nginx-aria
+      image: nginx:latest
+  ```
 
+### port
 - port => kita bisa mengekspose port di container keluar menggunakan port forwading
-    - kita bisa melakukan hal tersebut di konfigurasi file docker compose dengan menggunakan attributes port
-        - short syntax => kita bisa gunakan syntax pendek yang berisi string 
-            - ```HOST:CONTAINER``` misal ````8080:80```
-        - long syntax => syntax panjang yang bisa kiat buat dalam bentuk object
-            ```yaml
-            target: <port didalam container>
-            published: <port yang digunakan di host>
-            protocol: <jenis port (TCP/UDP)>
-            mode: <host untuk port di tiap node, atau ingress untuk swarm mode>
-            # karena kita tidak menggunakan docker swarm. jadi kita cukup gunakan nilai host
-            ```
-```yaml
-# docker-compose.yaml
-version: "3.18"
+  - kita bisa melakukan hal tersebut di konfigurasi file docker compose dengan menggunakan attributes port
+    - short syntax => kita bisa gunakan syntax pendek yang berisi string 
+      - ```HOST:CONTAINER``` misal ````8080:80```
+    - long syntax => syntax panjang yang bisa kiat buat dalam bentuk object
+      ```yaml
+      target: <port didalam container>
+      published: <port yang digunakan di host>
+      protocol: <jenis port (TCP/UDP)>
+      mode: <host untuk port di tiap node, atau ingress untuk swarm mode>
+      # karena kita tidak menggunakan docker swarm. jadi kita cukup gunakan nilai host
+      ```
 
-services:
-  nginx-aria-1:
-    container_name: nginx-aria-1
-    image: nginx
-    ports:
-      - target: 80
-        published: 8081
-        protocol: tcp
-  nginx-aria-2:
-    container_name: nginx-aria-2
-    image: nginx
-    ports:
-      - "8082:80"
-```
+- contoh
+  ```yaml
+  # docker-compose.yaml
+  version: "3.18"
 
-- environment variable
+  services:
+    nginx-aria-1:
+      container_name: nginx-aria-1
+      image: nginx
+      ports:
+        - target: 80
+          published: 8081
+          protocol: tcp
+    nginx-aria-2:
+      container_name: nginx-aria-2
+      image: nginx
+      ports:
+        - "8082:80"
+  ```
+
+### environment variable
 ```yaml
 environment
     MONGO_INITDB_ROOT_USERNAME: ariafatah
@@ -84,38 +89,37 @@ environment
     MONGO_INITDB_DATABASE: 
 ```
 
-## bind mount
+### bind mount
 - short yntax
-```yaml
-SOURCE:TARGET:MODE
+  ```yaml
+  SOURCE:TARGET:MODE
 
-# SOURCE => lokasi di host (bisa gunakan relative path dengan diawali titik atau absolute path)
-# TARGET => lokasi di container
-# MODE => mode bind mount
-    # ro (read only)
-    # rw (read write) default
+  # SOURCE => lokasi di host (bisa gunakan relative path dengan diawali titik atau absolute path)
+  # TARGET => lokasi di container
+  # MODE => mode bind mount
+      # ro (read only)
+      # rw (read write) default
 
-volumes:
-    - "./data:/data/db"
-```
+  volumes:
+      - "./data:/data/db"
+  ```
 
 - long syntax
-    - kita bisa gunakan dalam bentuk nested object di volumes dengan attribute
-```yaml
-type: volume/bind # type mount, (volume/bind)
-source: ./data # target path di container
-target: /data/db # target path di container
-read_only: false # flag read only atau tidak defaultnya false
+  - kita bisa gunakan dalam bentuk nested object di volumes dengan attribute
+    ```yaml
+    type: volume/bind # type mount, (volume/bind)
+    source: ./data # target path di container
+    target: /data/db # target path di container
+    read_only: false # flag read only atau tidak defaultnya false
 
-volumes:
-    - type: bind
-      source: "./data-2"
-      target: "/data/db"
-      read_only: false
-```
+    volumes:
+        - type: bind
+          source: "./data-2"
+          target: "/data/db"
+          read_only: false
+    ```
 
 ## volume
-- create volume
 ```yaml
 volumes:
     mongo-data1:
@@ -182,31 +186,31 @@ deploy:
 ```
 
 - melihat cpu, memory dan limit
-```bash
-docker container stats
-```
+  ```bash
+  docker container stats
+  ```
 
 - contoh
-```yaml
-version: '3.8'
+  ```yaml
+  version: '3.8'
 
-services:
-  nginx-aria-1:
-    container_name: nginx-aria-1
-    image: nginx
-    ports:
-      - target: 80
-        published: 8081
-        protocol: tcp
-    deploy:
-      resources:
-          reservations:
-              cpus: "0.25"
-              memory: 50M
-          limits:
-              cpus: "0.5"
-              memory: 100M
-```
+  services:
+    nginx-aria-1:
+      container_name: nginx-aria-1
+      image: nginx
+      ports:
+        - target: 80
+          published: 8081
+          protocol: tcp
+      deploy:
+        resources:
+            reservations:
+                cpus: "0.25"
+                memory: 50M
+            limits:
+                cpus: "0.5"
+                memory: 100M
+  ```
 
 ## docker file
 ```yaml
@@ -245,7 +249,7 @@ health check
 # start_period => waktu mulai
 ```
 
-- extend service
+## extend service
 ```yaml
 version: '3.9'
 
@@ -263,12 +267,13 @@ services:
       - "8080:8080"
 ```
 
-```yaml
-# prod.yaml
-version: '3.9'
+- contoh
+  ```yaml
+  # prod.yaml
+  version: '3.9'
 
-services:
-  app:
-    environment:
-      - "MODE=prod"
-```
+  services:
+    app:
+      environment:
+        - "MODE=prod"
+  ```

@@ -1,7 +1,8 @@
+# volume
 - volume => docker compose juga bisa digunakan untuk membuat volume
-    - kita bisa gunakan attribute volume
+  - kita bisa gunakan attribute volume
 
-- syntax
+## syntax
 ```yaml
 volumes:
     mongo-data1:
@@ -14,10 +15,10 @@ services:
 ```
 
 - menggunakan volume kita bisa gunakan bind mount dengan ketentuan
-    - pada short cyntax kita bisa ganti source dengan nama volume
-    - dan long syntax menjadi nama volume
+  - pada short cyntax kita bisa ganti source dengan nama volume
+  - dan long syntax menjadi nama volume
 
-- syntax
+## syntax
 ```yaml
 volumes:
     - "mongo-data-1:/data/db"
@@ -29,7 +30,7 @@ volumes:
       read_only: false
 ```
 
-- contoh
+## contoh
 ```yaml
 version: '3.8'
 
@@ -68,6 +69,6 @@ volumes:
 ```
 
 - menghapus volume
-    - saat kita menggunakan perintah docker compose down yang hanya dihapus hanyalah container dan network saja
-    - volume tidak akan dihapus hal ini agar jangan samapi kita tidak sengaja menghapus volume
-    - jika kita ingin menghapus volume kita bisa lakukan manual dengan perintah docker volume rm nama_volume
+  - saat kita menggunakan perintah docker compose down yang hanya dihapus hanyalah container dan network saja
+  - volume tidak akan dihapus hal ini agar jangan samapi kita tidak sengaja menghapus volume
+  - jika kita ingin menghapus volume kita bisa lakukan manual dengan perintah docker volume rm nama_volume

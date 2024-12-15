@@ -1,10 +1,11 @@
+# restart
 - restart
-    - secara default, saat container mati, maka docker tidak akan menjalankan lagi containernya
-        - kita harus menjalankan lagi containernya secara manual
-    - kita bisa memaksa sebuah contaienr untuk selalu melakukan restart jika misal terjadi masalah pada contaienr
-        - kita bisa tambahkan attribute restart, dengan beberapa value
+  - secara default, saat container mati, maka docker tidak akan menjalankan lagi containernya
+    - kita harus menjalankan lagi containernya secara manual
+  - kita bisa memaksa sebuah contaienr untuk selalu melakukan restart jika misal terjadi masalah pada contaienr
+    - kita bisa tambahkan attribute restart, dengan beberapa value
 
-- syntax
+## syntax
 ```yaml
 restart: <option>
 
