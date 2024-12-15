@@ -31,6 +31,99 @@ this is my linux conf, and my file for run linux
 # 📄 File List
 
 <details>
+<summary><b>linux\basics</b></summary>
+<ul>
+ <li><a href='linux/basics/00%20-%20shorcut.md'>00 - shorcut</a></li>
+ <li><a href='linux/basics/01%20-%20NOC,%20NMS,%20CMS.md'>01 - NOC, NMS, CMS</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\customizations</b></summary>
+<ul>
+ <li><a href='linux/customizations/01%20-%20ohmyposh.md'>01 - ohmyposh</a></li>
+ <li><a href='linux/customizations/02%20-%20neovim.md'>02 - neovim</a></li>
+ <li><a href='linux/customizations/03%20-%20wsl.md'>03 - wsl</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\disk management</b></summary>
+<ul>
+ <li><a href='linux/disk%20management/01-%20disk.md'>01- disk</a></li>
+ <li><a href='linux/disk%20management/02%20-%20fdisk_MBR.md'>02 - fdisk_MBR</a></li>
+ <li><a href='linux/disk%20management/03%20-%20gdisk-GPT.md'>03 - gdisk-GPT</a></li>
+ <li><a href='linux/disk%20management/04%20-%20filesystem.md'>04 - filesystem</a></li>
+ <li><a href='linux/disk%20management/05%20-%20swap.md'>05 - swap</a></li>
+ <li><a href='linux/disk%20management/06%20-%20LVM.md'>06 - LVM</a></li>
+ <li><a href='linux/disk%20management/07%20-%20encrpytion%20disk.md'>07 - encrpytion disk</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\distro</b></summary>
+<ul>
+ <li><a href='linux/distro/arch_archinstall.md'>arch_archinstall</a></li>
+ <li><a href='linux/distro/arch_hyprland.md'>arch_hyprland</a></li>
+ <li><a href='linux/distro/arch_pacman.md'>arch_pacman</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\more-tools</b></summary>
+<ul>
+ <li><a href='linux/more-tools/01%20-%20ajenti.md'>01 - ajenti</a></li>
+ <li><a href='linux/more-tools/02%20-%20freeipa%20un.md'>02 - freeipa un</a></li>
+ <li><a href='linux/more-tools/03%20-%20briker.md'>03 - briker</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\networking</b></summary>
+<ul>
+ <li><a href='linux/networking/01%20-%20remote%20server.md'>01 - remote server</a></li>
+ <li><a href='linux/networking/02%20-%20dhcp%20server.md'>02 - dhcp server</a></li>
+ <li><a href='linux/networking/03%20-%20file%20server.md'>03 - file server</a></li>
+ <li><a href='linux/networking/04%20-%20ftp%20server.md'>04 - ftp server</a></li>
+ <li><a href='linux/networking/05%20-%20dns%20server.md'>05 - dns server</a></li>
+ <li><a href='linux/networking/06%20-%20vpn.md'>06 - vpn</a></li>
+ <li><a href='linux/networking/07%20-%20reverseproxy.md'>07 - reverseproxy</a></li>
+ <li><a href='linux/networking/08%20-%20haproxy.md'>08 - haproxy</a></li>
+ <li><a href='linux/networking/09%20-%20remote%20gui%20(vnc).md'>09 - remote gui (vnc)</a></li>
+ <li><a href='linux/networking/10%20-%20ids.md'>10 - ids</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\server-configurations</b></summary>
+<ul>
+ <li><a href='linux/server-configurations/01%20-%20web%20server.md'>01 - web server</a></li>
+ <li><a href='linux/server-configurations/02%20-%20database%20server.md'>02 - database server</a></li>
+ <li><a href='linux/server-configurations/03%20-%20mail%20server%20un.md'>03 - mail server un</a></li>
+ <li><a href='linux/server-configurations/04%20-%20xampp_wordpress.md'>04 - xampp_wordpress</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>redhat</b></summary>
+<ul>
+ <li><a href='redhat/01%20-%20RH104.md'>01 - RH104</a></li>
+ <li><a href='redhat/02%20-%20RH124.md'>02 - RH124</a></li>
+ <li><a href='redhat/03%20-%20RH134.md'>03 - RH134</a></li>
+ <li><a href='redhat/05%20-%20DO188.md'>05 - DO188</a></li>
+ <li><a href='redhat/06%20-%20DO180.md'>06 - DO180</a></li>
+</ul>
+
+</details>
+
+<details>
 <summary><b>container\docker\docker compose</b></summary>
 <ul>
  <li><a href='container/docker/docker%20compose/01%20-%20pengenalan.md'>01 - pengenalan</a></li>
@@ -188,129 +281,6 @@ this is my linux conf, and my file for run linux
 <summary><b>container\podman</b></summary>
 <ul>
  <li><a href='container/podman/01%20-%20pengenalan.md'>01 - pengenalan</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>linux\basics</b></summary>
-<ul>
- <li><a href='linux/basics/00%20-%20shorcut.md'>00 - shorcut</a></li>
- <li><a href='linux/basics/01%20-%20NOC,%20NMS,%20CMS.md'>01 - NOC, NMS, CMS</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>linux\customizations</b></summary>
-<ul>
- <li><a href='linux/customizations/01%20-%20ohmyposh.md'>01 - ohmyposh</a></li>
- <li><a href='linux/customizations/02%20-%20neovim.md'>02 - neovim</a></li>
- <li><a href='linux/customizations/03%20-%20wsl.md'>03 - wsl</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>linux\disk management</b></summary>
-<ul>
- <li><a href='linux/disk%20management/01-%20disk.md'>01- disk</a></li>
- <li><a href='linux/disk%20management/02%20-%20fdisk_MBR.md'>02 - fdisk_MBR</a></li>
- <li><a href='linux/disk%20management/03%20-%20gdisk-GPT.md'>03 - gdisk-GPT</a></li>
- <li><a href='linux/disk%20management/04%20-%20filesystem.md'>04 - filesystem</a></li>
- <li><a href='linux/disk%20management/05%20-%20swap.md'>05 - swap</a></li>
- <li><a href='linux/disk%20management/06%20-%20LVM.md'>06 - LVM</a></li>
- <li><a href='linux/disk%20management/07%20-%20encrpytion%20disk.md'>07 - encrpytion disk</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>linux\distro</b></summary>
-<ul>
- <li><a href='linux/distro/arch_archinstall.md'>arch_archinstall</a></li>
- <li><a href='linux/distro/arch_hyprland.md'>arch_hyprland</a></li>
- <li><a href='linux/distro/arch_pacman.md'>arch_pacman</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>linux\more-tools</b></summary>
-<ul>
- <li><a href='linux/more-tools/01%20-%20ajenti.md'>01 - ajenti</a></li>
- <li><a href='linux/more-tools/02%20-%20freeipa%20un.md'>02 - freeipa un</a></li>
- <li><a href='linux/more-tools/03%20-%20briker.md'>03 - briker</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>linux\networking</b></summary>
-<ul>
- <li><a href='linux/networking/01%20-%20remote%20server.md'>01 - remote server</a></li>
- <li><a href='linux/networking/02%20-%20dhcp%20server.md'>02 - dhcp server</a></li>
- <li><a href='linux/networking/03%20-%20file%20server.md'>03 - file server</a></li>
- <li><a href='linux/networking/04%20-%20ftp%20server.md'>04 - ftp server</a></li>
- <li><a href='linux/networking/05%20-%20dns%20server.md'>05 - dns server</a></li>
- <li><a href='linux/networking/06%20-%20vpn.md'>06 - vpn</a></li>
- <li><a href='linux/networking/07%20-%20reverseproxy.md'>07 - reverseproxy</a></li>
- <li><a href='linux/networking/08%20-%20haproxy.md'>08 - haproxy</a></li>
- <li><a href='linux/networking/09%20-%20remote%20gui%20(vnc).md'>09 - remote gui (vnc)</a></li>
- <li><a href='linux/networking/10%20-%20ids.md'>10 - ids</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>linux\server-configurations</b></summary>
-<ul>
- <li><a href='linux/server-configurations/01%20-%20web%20server.md'>01 - web server</a></li>
- <li><a href='linux/server-configurations/02%20-%20database%20server.md'>02 - database server</a></li>
- <li><a href='linux/server-configurations/03%20-%20mail%20server%20un.md'>03 - mail server un</a></li>
- <li><a href='linux/server-configurations/04%20-%20xampp_wordpress.md'>04 - xampp_wordpress</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>lks</b></summary>
-<ul>
- <li><a href='lks/note.md'>note</a></li>
- <li><a href='lks/tambahan.md'>tambahan</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>lks\konfigurasi</b></summary>
-<ul>
- <li><a href='lks/konfigurasi/01%20-%20hardening-linux.md'>01 - hardening-linux</a></li>
- <li><a href='lks/konfigurasi/02%20-%20email%20pgp.md'>02 - email pgp</a></li>
- <li><a href='lks/konfigurasi/03%20-%20konfigurasi%20openvpn.md'>03 - konfigurasi openvpn</a></li>
- <li><a href='lks/konfigurasi/04%20-%20ids.md'>04 - ids</a></li>
- <li><a href='lks/konfigurasi/05%20-%20modevasive.md'>05 - modevasive</a></li>
- <li><a href='lks/konfigurasi/06%20-%20header%20security.md'>06 - header security</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>lks\lab</b></summary>
-<ul>
- <li><a href='lks/lab/lfi%20to%20rce.md'>lfi to rce</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>redhat</b></summary>
-<ul>
- <li><a href='redhat/01%20-%20RH104.md'>01 - RH104</a></li>
- <li><a href='redhat/02%20-%20RH124.md'>02 - RH124</a></li>
- <li><a href='redhat/03%20-%20RH134.md'>03 - RH134</a></li>
- <li><a href='redhat/05%20-%20DO188.md'>05 - DO188</a></li>
- <li><a href='redhat/06%20-%20DO180.md'>06 - DO180</a></li>
 </ul>
 
 </details>
