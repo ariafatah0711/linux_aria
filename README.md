@@ -196,6 +196,17 @@ this is my linux conf, and my file for run linux
 <summary><b>linux\basics</b></summary>
 <ul>
  <li><a href='linux/basics/00%20-%20shorcut.md'>00 - shorcut</a></li>
+ <li><a href='linux/basics/01%20-%20NOC,%20NMS,%20CMS.md'>01 - NOC, NMS, CMS</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\customizations</b></summary>
+<ul>
+ <li><a href='linux/customizations/01%20-%20ohmyposh.md'>01 - ohmyposh</a></li>
+ <li><a href='linux/customizations/02%20-%20neovim.md'>02 - neovim</a></li>
+ <li><a href='linux/customizations/03%20-%20wsl.md'>03 - wsl</a></li>
 </ul>
 
 </details>
@@ -215,6 +226,26 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
+<summary><b>linux\distro</b></summary>
+<ul>
+ <li><a href='linux/distro/arch_archinstall.md'>arch_archinstall</a></li>
+ <li><a href='linux/distro/arch_hyprland.md'>arch_hyprland</a></li>
+ <li><a href='linux/distro/arch_pacman.md'>arch_pacman</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\more-tools</b></summary>
+<ul>
+ <li><a href='linux/more-tools/01%20-%20ajenti.md'>01 - ajenti</a></li>
+ <li><a href='linux/more-tools/02%20-%20freeipa%20un.md'>02 - freeipa un</a></li>
+ <li><a href='linux/more-tools/03%20-%20briker.md'>03 - briker</a></li>
+</ul>
+
+</details>
+
+<details>
 <summary><b>linux\networking</b></summary>
 <ul>
  <li><a href='linux/networking/01%20-%20remote%20server.md'>01 - remote server</a></li>
@@ -225,6 +256,8 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/networking/06%20-%20vpn.md'>06 - vpn</a></li>
  <li><a href='linux/networking/07%20-%20reverseproxy.md'>07 - reverseproxy</a></li>
  <li><a href='linux/networking/08%20-%20haproxy.md'>08 - haproxy</a></li>
+ <li><a href='linux/networking/09%20-%20remote%20gui%20(vnc).md'>09 - remote gui (vnc)</a></li>
+ <li><a href='linux/networking/10%20-%20ids.md'>10 - ids</a></li>
 </ul>
 
 </details>
@@ -235,6 +268,7 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/server-configurations/01%20-%20web%20server.md'>01 - web server</a></li>
  <li><a href='linux/server-configurations/02%20-%20database%20server.md'>02 - database server</a></li>
  <li><a href='linux/server-configurations/03%20-%20mail%20server%20un.md'>03 - mail server un</a></li>
+ <li><a href='linux/server-configurations/04%20-%20xampp_wordpress.md'>04 - xampp_wordpress</a></li>
 </ul>
 
 </details>
@@ -270,83 +304,26 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
-<summary><b>readme</b></summary>
+<summary><b>redhat</b></summary>
 <ul>
- <li><a href='readme/readme.md'>readme</a></li>
+ <li><a href='redhat/01%20-%20RH104.md'>01 - RH104</a></li>
+ <li><a href='redhat/02%20-%20RH124.md'>02 - RH124</a></li>
+ <li><a href='redhat/03%20-%20RH134.md'>03 - RH134</a></li>
+ <li><a href='redhat/05%20-%20DO188.md'>05 - DO188</a></li>
+ <li><a href='redhat/06%20-%20DO180.md'>06 - DO180</a></li>
 </ul>
 
 </details>
 
 <details>
-<summary><b>readme\1</b></summary>
+<summary><b>udemy\linux_dasar</b></summary>
 <ul>
- <li><a href='readme/1/04%20-%20ids.md'>04 - ids</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\3</b></summary>
-<ul>
- <li><a href='readme/3/01%20-%20vnc%20server.md'>01 - vnc server</a></li>
- <li><a href='readme/3/02%20-%20ajenti.md'>02 - ajenti</a></li>
- <li><a href='readme/3/03%20-%20freeipa.md'>03 - freeipa</a></li>
- <li><a href='readme/3/04%20-%20briker.md'>04 - briker</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\4</b></summary>
-<ul>
- <li><a href='readme/4/01%20-%20ohmyposh.md'>01 - ohmyposh</a></li>
- <li><a href='readme/4/02%20-%20neovim.md'>02 - neovim</a></li>
- <li><a href='readme/4/03%20-%20glazewm.md'>03 - glazewm</a></li>
- <li><a href='readme/4/04%20-%20wsl2.md'>04 - wsl2</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\arch</b></summary>
-<ul>
- <li><a href='readme/arch/arch-install.md'>arch-install</a></li>
- <li><a href='readme/arch/hyprland.md'>hyprland</a></li>
- <li><a href='readme/arch/pacman.md'>pacman</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\redhat</b></summary>
-<ul>
- <li><a href='readme/redhat/01%20-%20RH104.md'>01 - RH104</a></li>
- <li><a href='readme/redhat/02%20-%20RH124.md'>02 - RH124</a></li>
- <li><a href='readme/redhat/03%20-%20RH134.md'>03 - RH134</a></li>
- <li><a href='readme/redhat/05%20-%20DO188.md'>05 - DO188</a></li>
- <li><a href='readme/redhat/06%20-%20DO180.md'>06 - DO180</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\udemy\linux_dasar</b></summary>
-<ul>
- <li><a href='readme/udemy/linux_dasar/1.md'>1</a></li>
- <li><a href='readme/udemy/linux_dasar/2.md'>2</a></li>
- <li><a href='readme/udemy/linux_dasar/3.md'>3</a></li>
- <li><a href='readme/udemy/linux_dasar/4.md'>4</a></li>
- <li><a href='readme/udemy/linux_dasar/nano-vim.md'>nano-vim</a></li>
- <li><a href='readme/udemy/linux_dasar/soal.md'>soal</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\ujian</b></summary>
-<ul>
- <li><a href='readme/ujian/UKK_P3_2024.md'>UKK_P3_2024</a></li>
- <li><a href='readme/ujian/a.md'>a</a></li>
+ <li><a href='udemy/linux_dasar/1.md'>1</a></li>
+ <li><a href='udemy/linux_dasar/2.md'>2</a></li>
+ <li><a href='udemy/linux_dasar/3.md'>3</a></li>
+ <li><a href='udemy/linux_dasar/4.md'>4</a></li>
+ <li><a href='udemy/linux_dasar/nano-vim.md'>nano-vim</a></li>
+ <li><a href='udemy/linux_dasar/soal.md'>soal</a></li>
 </ul>
 
 </details>

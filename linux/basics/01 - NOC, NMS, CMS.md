@@ -2,16 +2,14 @@
 ## pengertian
 - merupakan (Network Operations Center) Managed Services
 - merujuk pada layanan yang disediakan oleh penyedia layanan atau perusahaan IT 
-    - untuk mengelola, memantau, dan merawat infrastruktur jaringan serta sistem teknologi informasi klien mereka.
+  - untuk mengelola, memantau, dan merawat infrastruktur jaringan serta sistem teknologi informasi klien mereka.
 - Layanan ini umumnya ditawarkan kepada perusahaan atau organisasi yang ingin mengandalkan penyedia layanan eksternal 
-    - untuk mengelola dan menjaga kinerja sistem jaringan dan TI mereka.
+  - untuk mengelola dan menjaga kinerja sistem jaringan dan TI mereka.
 
 ## apa yang dilakukan NOC 
 - Tim NOC siap untuk menangani masalah yang terjadi, baik itu gangguan kecil maupun insiden besar. 
-    - Mereka memberikan respons cepat dan mengatasi masalah tersebut secepat mungkin untuk menjaga kinerja jaringan.
-
+  - Mereka memberikan respons cepat dan mengatasi masalah tersebut secepat mungkin untuk menjaga kinerja jaringan.
 - Tidak boleh lebih dari 15 menit untuk merespon Klien
-
 - Proaktif dalam memberikan informasi dan update secara berkala minimal 30 menit sekali sampai 2 jam sekali
 
 # NMS
@@ -22,15 +20,15 @@
 
 ## Fungsi Network Monitoring System
 - pemantauan ketersedian
-    - NMS memantau status ketersediaan perangkat jaringan, seperti router, switch, server, dan perangkat lainnya. Ini membantu mengidentifikasi perangkat yang mungkin sedang offline atau tidak merespons.
+  - NMS memantau status ketersediaan perangkat jaringan, seperti router, switch, server, dan perangkat lainnya. Ini membantu mengidentifikasi perangkat yang mungkin sedang offline atau tidak merespons.
 - pemantauan kinerja
-    - NMS memantau kinerja perangkat jaringan, termasuk penggunaan CPU, memori, disk, dan sumber daya lainnya. Informasi ini membantu mengidentifikasi masalah kinerja yang mungkin mempengaruhi performa jaringan.
+  - NMS memantau kinerja perangkat jaringan, termasuk penggunaan CPU, memori, disk, dan sumber daya lainnya. Informasi ini membantu mengidentifikasi masalah kinerja yang mungkin mempengaruhi performa jaringan.
 - pemantauan lalu lintas
-    - NMS menganalisis lalu lintas jaringan untuk mengidentifikasi pola, tren, dan aktivitas aneh. Ini membantu mendeteksi potensi serangan, mengukur penggunaan bandwidth, dan mengoptimalkan alokasi sumber daya
+  - NMS menganalisis lalu lintas jaringan untuk mengidentifikasi pola, tren, dan aktivitas aneh. Ini membantu mendeteksi potensi serangan, mengukur penggunaan bandwidth, dan mengoptimalkan alokasi sumber daya
 - pemantauan keamanan
-    - NMS dapat mendeteksi aktivitas mencurigakan atau serangan terhadap jaringan, seperti serangan DDoS, peretasan, atau malware. Ini membantu dalam merespons dan melindungi jaringan dari ancaman keamanan.
+  - NMS dapat mendeteksi aktivitas mencurigakan atau serangan terhadap jaringan, seperti serangan DDoS, peretasan, atau malware. Ini membantu dalam merespons dan melindungi jaringan dari ancaman keamanan.
 - management perangkat
-    - NMS memungkinkan administrator untuk mengelola perangkat jaringan, termasuk konfigurasi, pembaruan perangkat lunak, dan manajemen perangkat keras.
+  - NMS memungkinkan administrator untuk mengelola perangkat jaringan, termasuk konfigurasi, pembaruan perangkat lunak, dan manajemen perangkat keras.
 - pelaporan dan analis
 - notifikasi dan alarm
 - pemanatauan kulaitas layanan (QOS)
@@ -41,17 +39,17 @@
 
 ## contoh perangkat lunak NOS
 - Zabbix
-    - Zabbix adalah platform NMS open-source yang kuat. Ini menyediakan pemantauan kinerja, pelaporan, serta fitur pelacakan keamanan dan analisis data.
+  - Zabbix adalah platform NMS open-source yang kuat. Ini menyediakan pemantauan kinerja, pelaporan, serta fitur pelacakan keamanan dan analisis data.
 - Nagios
-    - Nagios adalah salah satu NMS open-source yang populer. Ini dapat memantau host, layanan, serta jaringan, dan memberikan notifikasi dalam waktu nyata melalui email, pesan teks, atau platform lainnya.
+  - Nagios adalah salah satu NMS open-source yang populer. Ini dapat memantau host, layanan, serta jaringan, dan memberikan notifikasi dalam waktu nyata melalui email, pesan teks, atau platform lainnya.
 - Cisco Prime Infrastructure
-    - Ini adalah solusi NMS yang dikembangkan oleh Cisco untuk memantau dan mengelola jaringan dengan perangkat Cisco.
+  - Ini adalah solusi NMS yang dikembangkan oleh Cisco untuk memantau dan mengelola jaringan dengan perangkat Cisco.
 - Wireshark
-    - Meskipun lebih fokus pada analisis lalu lintas, Wireshark juga dapat digunakan sebagai alat pemantauan jaringan untuk memeriksa paket lalu lintas secara mendetail.
+  - Meskipun lebih fokus pada analisis lalu lintas, Wireshark juga dapat digunakan sebagai alat pemantauan jaringan untuk memeriksa paket lalu lintas secara mendetail.
 - PRTG Network Monitor
-    - PRTG adalah NMS berbasis perangkat lunak yang memiliki antarmuka yang ramah pengguna dan dapat memantau berbagai tipe perangkat dan lalu lintas jaringan.
+  - PRTG adalah NMS berbasis perangkat lunak yang memiliki antarmuka yang ramah pengguna dan dapat memantau berbagai tipe perangkat dan lalu lintas jaringan.
 - IBM Tivoli Netcool
-    - Solusi pemantauan jaringan yang mencakup pemantauan kinerja, pelaporan, serta manajemen peristiwa dan insiden.
+  - Solusi pemantauan jaringan yang mencakup pemantauan kinerja, pelaporan, serta manajemen peristiwa dan insiden.
 -  LogicMonitor
 - SolarWinds Network Performance Monitor
 - Dynatrace
