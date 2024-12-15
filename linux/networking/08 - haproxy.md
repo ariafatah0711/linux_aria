@@ -1,13 +1,16 @@
 # ha proxy
-- install
-```sudo apt install haproxy```
-- config
-```
-vi /etc/haproxy/haproxy.cfg
-```
+- High Availability Proxy
 
+# haproxy
+- install
+  - ```sudo apt install haproxy```
+
+- config
+  - ```vi /etc/haproxy/haproxy.cfg```
+
+# configuration haproxy
 ## template
-```
+```bash
 frontend fe
         bind *:80
         default_backend be
@@ -19,22 +22,21 @@ backend be
 ```
 
 ## backup, check
-```
+```bash
 backend be
         server server1 127.0.0.1:8081 check maxconn 30
         server server2 127.0.0.1:8082 backup
 ```
 
 ## weight => berapa kali koneksi di satu sever
-```
+```bash
 backend be
     server  app1 127.0.0.1:8081 check weight 3
     server  app1_ 127.0.0.1:8082 check weight 1
 ```
 
-# frontend acl
 ## acl
-```
+```bash
 frontend fe
     bind *:80
     use_backend app-a if { path /a } || { path_beg /a/ }
@@ -59,8 +61,8 @@ backend ig
     server ig_aria 127.0.0.1:8000/main.html check
 ```
 
-- stats
-```
+## stats
+```bash
 frontend stats
         bind *:8080 # Listening port. A different port can also be used.
         mode http
@@ -71,8 +73,8 @@ frontend stats
         # stats auth admin:admin # Login credentials
 ```
 
-- backups with many backup
-```
+## backups with many backup
+```bash
 backend app
     balance     roundrobin
     option      allbackups
@@ -81,9 +83,9 @@ backend app
     server  app3 127.0.0.1:8083 check backup
 ```
 
-# error
-- config error
-```
+## http response status
+### config error
+```bash
 defaults
     errorfile 503 /etc/haproxy/error/503.http
 
@@ -94,8 +96,9 @@ frontend fe
 http-errors err
     errorfile 404 /etc/haproxy/error/404.http
 ```
-- error config 404.http
-```
+
+### error config 404.http
+```bash
 HTTP/1.1 403 Forbidden
 Cache-Control: no-cache
 Connection: close

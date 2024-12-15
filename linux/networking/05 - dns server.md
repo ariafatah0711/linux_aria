@@ -1,8 +1,8 @@
-# dns server :53
+# dns server
+- DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nama host agar lebih efisien dan mudah diingat
+- menggunakan port 553
 
-DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nama host agar lebih efisien dan mudah diingat
-
-## ubuntu
+## bind9 (ubuntu)
 - install bind9
   - ```apt install bind9```
 
@@ -10,7 +10,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
   - go to bind config```cd /etc/bind/```
   - make backup conf```cp named.conf.local named.conf.local.old```
   - ```nano named.conf.local```
-    ```
+    ```bash
     zone "ariafatah.com" {
         type master;
         file "/etc/bind/db.forward";
@@ -24,7 +24,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
   - make file forward(mengaggabungkan)
     - ```cp db.local db.forward```
     - ```nano db.forward```
-      ```
+      ```conf
       $TTL    604800
       @       IN      SOA     ariafatah.com. root.ariafatah.com. (
                                   2         ; Serial
@@ -43,7 +43,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
   - make file reverse(mengubah)
     - ```cp db.255 db.reverse```
     - ```nano db.reverse```
-      ```
+      ```conf
       $TTL    604800
       @       IN      SOA     ariafatah.com. root.ariafatah.com. (
                                   1         ; Serial
@@ -58,7 +58,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
       ```
   - change interface port
     - ```nano /etc/resolv.conf```
-      ```
+      ```conf
       #nameserver 127.0.0.53
       #options edns0 trust-ad
       #search .
@@ -83,7 +83,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
 
 - config named.conf
   - ```vi /etc/named.conf```
-    ```
+    ```bash
     options {
         listen-on port 53 { 127.0.0.1; 11.11.11.1; };
         listen-on-v6 port 53 { ::1; };
@@ -100,7 +100,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
     ```
   - ```vi /etc/named.rfc1912.zones```
     u can use forward.zone or db.forward
-    ```
+    ```bash
       zone "ariafatah.id" IN {
         type master;
         file "forward.zone";
@@ -118,7 +118,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
   - ```cp named.localhost forward.zone```
   - ```cp named.localhost reverse.zone```
   - ```vi /var/named/forward.zone```
-    ```
+    ```conf
     $TTL 86400
     @       IN      SOA     ns1.ariafatah.id       admin.ariafatah.id (
                     2010010101 ; Serial
@@ -136,7 +136,7 @@ DNS server adalah server yang digunakan sebagai penerjemah IP Addressmenjadi nam
     ssh     IN      A       11.11.11.1
     ```
   - ```vi /var/named/reverse.conf```
-    ```
+    ```conf
     $TTL 86400
     @       IN      SOA     ns1.ariafatah.id.      admin.ariafatah.id. (
                     2010010101 ; Serial

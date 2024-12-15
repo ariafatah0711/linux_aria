@@ -209,6 +209,7 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/disk management/04 - filesystem.html'>04 - filesystem</a></li>
  <li><a href='linux/disk management/05 - swap.html'>05 - swap</a></li>
  <li><a href='linux/disk management/06 - LVM.html'>06 - LVM</a></li>
+ <li><a href='linux/disk management/07 - encrpytion disk.html'>07 - encrpytion disk</a></li>
 </ul>
 
 </details>
@@ -218,8 +219,22 @@ this is my linux conf, and my file for run linux
 <ul>
  <li><a href='linux/networking/01 - remote server.html'>01 - remote server</a></li>
  <li><a href='linux/networking/02 - dhcp server.html'>02 - dhcp server</a></li>
- <li><a href='linux/networking/02 - ftp server.html'>02 - ftp server</a></li>
  <li><a href='linux/networking/03 - file server.html'>03 - file server</a></li>
+ <li><a href='linux/networking/04 - ftp server.html'>04 - ftp server</a></li>
+ <li><a href='linux/networking/05 - dns server.html'>05 - dns server</a></li>
+ <li><a href='linux/networking/06 - vpn.html'>06 - vpn</a></li>
+ <li><a href='linux/networking/07 - reverseproxy.html'>07 - reverseproxy</a></li>
+ <li><a href='linux/networking/08 - haproxy.html'>08 - haproxy</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\server-configurations</b></summary>
+<ul>
+ <li><a href='linux/server-configurations/01 - web server.html'>01 - web server</a></li>
+ <li><a href='linux/server-configurations/02 - database server.html'>02 - database server</a></li>
+ <li><a href='linux/server-configurations/03 - mail server un.html'>03 - mail server un</a></li>
 </ul>
 
 </details>
@@ -265,22 +280,7 @@ this is my linux conf, and my file for run linux
 <details>
 <summary><b>readme\1</b></summary>
 <ul>
- <li><a href='readme/1/04 - encrpytion disk.html'>04 - encrpytion disk</a></li>
  <li><a href='readme/1/04 - ids.html'>04 - ids</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\2</b></summary>
-<ul>
- <li><a href='readme/2/02 - web server.html'>02 - web server</a></li>
- <li><a href='readme/2/03 - dns server.html'>03 - dns server</a></li>
- <li><a href='readme/2/04 - database server.html'>04 - database server</a></li>
- <li><a href='readme/2/05 - mail server un.html'>05 - mail server un</a></li>
- <li><a href='readme/2/06 - vpn.html'>06 - vpn</a></li>
- <li><a href='readme/2/08 - reverseproxy.html'>08 - reverseproxy</a></li>
- <li><a href='readme/2/09 - haproxy.html'>09 - haproxy</a></li>
 </ul>
 
 </details>

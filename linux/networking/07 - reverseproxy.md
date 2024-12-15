@@ -1,6 +1,8 @@
 # reverse proxy
+- Reverse proxy bekerja sebagai perantara antara klien dan server, menerima permintaan klien dan menentukan server terbaik untuk mengelola respon tersebut. 
+- Setelah menerima permintaan, reverse proxy memproses lalu lintas untuk meningkatkan keamanan dan efisiensi.
 
-## nginx
+# nginx
 - edit config
   - ```sudo nano /etc/nginx/sites-available/default```
     ```bash
@@ -45,18 +47,18 @@
 - restart
   ```systemctl restart nginx```
 
-## apache2
+# apache2
 - enable modul rate limit
-  ```
+  ```bash
   a2enmod ratelimit
   ```
 - enable modul proxy
-  ```
+  ```bash
   a2enmod proxy
   a2enmod proxy_http
   ```
 - edit config
-  ```
+  ```bash
   <VirtualHost *:3000>
     ServerName localhost
 

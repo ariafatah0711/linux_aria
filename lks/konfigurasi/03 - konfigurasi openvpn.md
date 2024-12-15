@@ -90,5 +90,5 @@ remote-cert-tls server
         - sudo openvpn client1.ovpn
 
 ## Uji Konektifitas OpenVP
-    - melakukan konektivitas dengan konfigurasi ip 10.10.10.0 ✓
-    - melakukan konektivitas dengan konfigurasi ip 127.16.16.0 (yang ini belum bisa ga tau kenapa kayaknya karena subnetmasknya salah) ☓
+- melakukan konektivitas dengan konfigurasi ip 10.10.10.0 ✓
+- melakukan konektivitas dengan konfigurasi ip 127.16.16.0 (yang ini belum bisa ga tau kenapa kayaknya karena subnetmasknya salah) ☓

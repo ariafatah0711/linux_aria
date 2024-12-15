@@ -1,8 +1,8 @@
-# web server :80/http, 443/https
+# web server
+- Web server adalah sebuah software (perangkat lunak) yang memberikan layanan berupa data. Berfungsi untuk menerima permintaan HTTP atau HTTPS dari klien atau kita kenal dengan web browser (Chrome, Firefox).
+- port 80/http, 443/https
 
-Web server adalah sebuah software (perangkat lunak) yang memberikan layanan berupa data. Berfungsi untuk menerima permintaan HTTP atau HTTPS dari klien atau kita kenal dengan web browser (Chrome, Firefox).
-
-## ubuntu
+## apache2 HTTPS (ubuntu)
 - install apache2
   - ```apt install apache2 openssl```
   - ```a2enmod ssl```
@@ -21,7 +21,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
   - change configuration apache2
     - ```cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/ariafatah.com-ssl.conf```
     - ```nano /etc/apache2/sites-available/ariafatah.com-ssl.conf```
-      ```
+      ```bash
       ServerAdmin ariafatah999@gmail.com
       ServerName ariafatah.com
       ServerAlias www.ariafatah.com
@@ -39,7 +39,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
   - check ur host windows browser and go ip address / dns
     - click learn more / advance and click accept
 
-## red hat
+## nginx (red hat)
 - install nginx
   - ```mount /dev/sr0 /mnt/disc```
   - ```yum install nginx```
@@ -50,7 +50,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
     - add ur file / repositroy
   - go to directory config nginx, or edit file in /etc/nginx/nginx.conf
     - ```vi /etc/nginx/nginx.conf```
-      ```
+      ```bash
         listen       80;
         listen       [::]:80;
         server_name  _;
@@ -64,7 +64,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
   - ```firewall-cmd --permanent --add-port={80/tcp,443/tcp}```
   - ```firewall-cmd --reload```
 
-### redhat p2
+### nginx custom path
 - add folder in any directory
   - ```cd /var/www/```
   - ```git clone https://agithub.com/riafatah0711/linktree.git```
@@ -74,7 +74,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
 - add new port
   - ```cd /etc/nginx/conf.d/```
   - ```vi linktree.conf```
-    ```
+    ```bash
     server {
         listen 1010;
         listen [::]:1010;
@@ -101,7 +101,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
 ## centos
 - yum install apache
   - nano /etc/apache2/sites-avaible/conf
-    ```
+    ```bash
     <Directory /usr/local/apache2/htdocs/dontlistme>
       Options -Indexes
     </Directory>
@@ -115,7 +115,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
     IndexOptions ShowForbiddenShowForbidden
     ```
 
-    ```
+    ```bash
     ServerTokens Prod
     ServerSignature Off
     TraceEnable Off
@@ -124,7 +124,7 @@ Web server adalah sebuah software (perangkat lunak) yang memberikan layanan beru
     ```
 
 # tls host with cerbot
-```
+```bash
 sudo apt-get install python3-certbot-nginx -y
 sudo certbot --nginx -d <yourdomain.com> -d <www.yourdomain.com>
 ```

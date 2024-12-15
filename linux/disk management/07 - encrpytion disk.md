@@ -1,6 +1,7 @@
 # enkripsi disk
 
 ## cryptsetup
+### create partition
 - lsblk
 - fdisk /dev/sdb
   - Tekan O dan tekan Enter (membuat tabel partisi baru).
@@ -8,6 +9,8 @@
   - Tekan P dan tekan Enter (membuat partisi primer).
   - Kemudian tekan 1 dan tekan Enter (membuatnya sebagai partisi pertama).
   - Terakhir, tekan W (perintah ini akan menyimpan perubahan ke disk).
+
+### encrypt the partition
 - cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb1 
 
 - cyrptsetup luksOpen /dev/sdb1 sdb1
@@ -21,7 +24,6 @@
 
 - cryptsetup luksOpen /dev/sdb1
   - mount /dev/mapper/sbd1 /mnt/encrypted
-- umount /dev/mapper/sdb1
 - cryptsetup luksClose sdb1
 
 #################################################################################
@@ -43,7 +45,6 @@
   - cryptsetup luksClose my_drive
 
 ## veracrypt
-
 - veracrypt --version
 - veracrypt --text --create
   - Enter volume path: /dev/sdb1
