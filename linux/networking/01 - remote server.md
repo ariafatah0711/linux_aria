@@ -83,4 +83,4 @@ scp path_to_path/.ssh/id.rsa.pub user@server:/home/user/.ssh/windows.keys
     PasswordAuthentication no
     ```
 - firewall
-  ```sudo firewall-cmd --add-port=1026/tcp --permanent successsudo firewall-cmd --remove-service=ssh --permanent success```
+  - ```sudo firewall-cmd --add-port=1026/tcp --permanent successsudo firewall-cmd --remove-service=ssh --permanent success```

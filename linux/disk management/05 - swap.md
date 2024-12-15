@@ -1,9 +1,11 @@
 # swap
 ## recomended
+```
 - < 2gb => 2 x amount of ram
 - 2gb - 8gb => sama kaya ram yang digunakan
 - 8gb - 64gb => at least 4gb
 - > 64gb => at least 4gb
+```
 
 - untuk swap sendiri tidak semua nya harus dipakai
   - beberapa seperti kubernetes tidak boleh menggunakan swap

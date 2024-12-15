@@ -30,16 +30,16 @@
 - untuk create lvm sebenernya bisa tanpa buat partition
   - namun best practice nya perlu dibuat dulu
 - add partition with type lvm
-```bash
-fdisk /dev/vdb
-# create partition full
-n
-- p, (default)
+  ```bash
+  fdisk /dev/vdb
+  # create partition full
+  n
+  - p, (default)
 
-# change the type for lvm
-t
-- 8e
-```
+  # change the type for lvm
+  t
+  - 8e
+  ```
 
 ### pv
 ```bash

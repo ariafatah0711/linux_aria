@@ -11,13 +11,15 @@
   - go to root directory html ```cd /var/www/```
     - and change make ur new folder and add ur file index.html, and sytle
   - ssl config
-    - ```openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /etc/ssl/private/ariafatah.com.key -out /etc/ssl/certs/ariafatah.com.crt```
-      - county(negara) : IN
-      - province(provinsi) : Jawa Barat
-      - city(kota) : Depok
-      - organitation name(nama organisasi): smk_hb
-      - common name: ariafatah.com
-      - email address: ariafatah999@gmail.com
+    ```bash
+    openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /etc/ssl/private/ariafatah.com.key -out /etc/ssl/certs/ariafatah.com.crt
+    # county(negara) : IN
+    # province(provinsi) : Jawa Barat
+    # city(kota) : Depok
+    # organitation name(nama organisasi): smk_hb
+    # common name: ariafatah.com
+    # email address: ariafatah999@gmail.com
+    ```
   - change configuration apache2
     - ```cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/ariafatah.com-ssl.conf```
     - ```nano /etc/apache2/sites-available/ariafatah.com-ssl.conf```

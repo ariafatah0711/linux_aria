@@ -82,7 +82,7 @@
     <Proxy *>
         Require all granted
     </Proxy>
-</VirtualHost>
+  </VirtualHost>
   ```
 
 - jika ingin mengganti port apache bisa ganti /etc/apache2/ports.conf dan 000-default.nya

@@ -40,9 +40,9 @@ vncserver
 ```
 ## configuration
 - change pass
-  ```vncpasswd```
+  - ```vncpasswd```
 - kill
-  ```vncserver -kill :1```
+  - ```vncserver -kill :1```
 - config
   - ```mv ~/.vnc/xstartup ~/.vnc/xstartup.bak```
   - ```nano ~/.vnc/xstartup```

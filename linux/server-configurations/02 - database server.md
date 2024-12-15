@@ -60,7 +60,6 @@
         ```
 
 - install phpmyadmin manual instalation
-  - ```p```
 
 # sql command
 ## databases
