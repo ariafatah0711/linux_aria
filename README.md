@@ -34,7 +34,14 @@ this is my linux conf, and my file for run linux
 <summary><b>linux\basics</b></summary>
 <ul>
  <li><a href='linux/basics/00%20-%20shorcut.md'>00 - shorcut</a></li>
- <li><a href='linux/basics/01%20-%20NOC,%20NMS,%20CMS.md'>01 - NOC, NMS, CMS</a></li>
+ <li><a href='linux/basics/firewall.md'>firewall</a></li>
+ <li><a href='linux/basics/manage%20file.md'>manage file</a></li>
+ <li><a href='linux/basics/manage%20network.md'>manage network</a></li>
+ <li><a href='linux/basics/manage%20user.md'>manage user</a></li>
+ <li><a href='linux/basics/package.md'>package</a></li>
+ <li><a href='linux/basics/services.md'>services</a></li>
+ <li><a href='linux/basics/tunneling.md'>tunneling</a></li>
+ <li><a href='linux/basics/vbox_upgrade_disk.md'>vbox_upgrade_disk</a></li>
 </ul>
 
 </details>
@@ -69,6 +76,8 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/distro/arch_archinstall.md'>arch_archinstall</a></li>
  <li><a href='linux/distro/arch_hyprland.md'>arch_hyprland</a></li>
  <li><a href='linux/distro/arch_pacman.md'>arch_pacman</a></li>
+ <li><a href='linux/distro/debian_repo%20un.md'>debian_repo un</a></li>
+ <li><a href='linux/distro/redhat_repository.md'>redhat_repository</a></li>
 </ul>
 
 </details>
