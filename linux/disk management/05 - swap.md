@@ -1,15 +1,17 @@
 # swap
-- recomended
-    - < 2gb => 2 x amount of ram
-    - 2gb - 8gb => sama kaya ram yang digunakan
-    - 8gb - 64gb => at least 4gb
-    - > 64gb => at least 4gb
+## recomended
+- < 2gb => 2 x amount of ram
+- 2gb - 8gb => sama kaya ram yang digunakan
+- 8gb - 64gb => at least 4gb
+- > 64gb => at least 4gb
+
 - untuk swap sendiri tidak semua nya harus dipakai
-    - beberapa seperti kubernetes tidak boleh menggunakan swap
+  - beberapa seperti kubernetes tidak boleh menggunakan swap
 
 # swap partition
 - swap yang menggunakan partition
-- command
+
+## command
 ```bash
 free -h
 blkid
@@ -54,7 +56,8 @@ swapoff /dev/sdc2
 
 # file
 - swap partition by file
-- command
+
+## command
 ```bash
 dd if=/dev/zero of=/swapfile bs=1024 count=65536
 mkswap /swapfile

@@ -122,7 +122,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/kubernetes/00/02 - arsitektur kubernetes.html'>02 - arsitektur kubernetes</a></li>
  <li><a href='container/kubernetes/00/03 - menginstall kubernetes.html'>03 - menginstall kubernetes</a></li>
  <li><a href='container/kubernetes/00/04 - minikube.html'>04 - minikube</a></li>
- <li><a href='container/kubernetes/00/readme.html'>readme</a></li>
+ <li><a href='container/kubernetes/00/__readme__.html'>__readme__</a></li>
 </ul>
 
 </details>
@@ -193,6 +193,68 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
+<summary><b>linux\basics</b></summary>
+<ul>
+ <li><a href='linux/basics/00 - shorcut.html'>00 - shorcut</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\disk management</b></summary>
+<ul>
+ <li><a href='linux/disk management/01- disk.html'>01- disk</a></li>
+ <li><a href='linux/disk management/02 - fdisk_MBR.html'>02 - fdisk_MBR</a></li>
+ <li><a href='linux/disk management/03 - gdisk-GPT.html'>03 - gdisk-GPT</a></li>
+ <li><a href='linux/disk management/04 - filesystem.html'>04 - filesystem</a></li>
+ <li><a href='linux/disk management/05 - swap.html'>05 - swap</a></li>
+ <li><a href='linux/disk management/06 - LVM.html'>06 - LVM</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\networking</b></summary>
+<ul>
+ <li><a href='linux/networking/01 - remote server.html'>01 - remote server</a></li>
+ <li><a href='linux/networking/02 - dhcp server.html'>02 - dhcp server</a></li>
+ <li><a href='linux/networking/02 - ftp server.html'>02 - ftp server</a></li>
+ <li><a href='linux/networking/03 - file server.html'>03 - file server</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>lks</b></summary>
+<ul>
+ <li><a href='lks/note.html'>note</a></li>
+ <li><a href='lks/tambahan.html'>tambahan</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>lks\konfigurasi</b></summary>
+<ul>
+ <li><a href='lks/konfigurasi/01 - hardening-linux.html'>01 - hardening-linux</a></li>
+ <li><a href='lks/konfigurasi/02 - email pgp.html'>02 - email pgp</a></li>
+ <li><a href='lks/konfigurasi/03 - konfigurasi openvpn.html'>03 - konfigurasi openvpn</a></li>
+ <li><a href='lks/konfigurasi/04 - ids.html'>04 - ids</a></li>
+ <li><a href='lks/konfigurasi/05 - modevasive.html'>05 - modevasive</a></li>
+ <li><a href='lks/konfigurasi/06 - header security.html'>06 - header security</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>lks\lab</b></summary>
+<ul>
+ <li><a href='lks/lab/lfi to rce.html'>lfi to rce</a></li>
+</ul>
+
+</details>
+
+<details>
 <summary><b>readme</b></summary>
 <ul>
  <li><a href='readme/readme.html'>readme</a></li>
@@ -201,33 +263,8 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
-<summary><b>readme\0</b></summary>
-<ul>
- <li><a href='readme/0/00 - shorcut.html'>00 - shorcut</a></li>
- <li><a href='readme/0/01 - basic.html'>01 - basic</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>readme\0\02 - disk</b></summary>
-<ul>
- <li><a href='readme/0/02 - disk/01- disk.html'>01- disk</a></li>
- <li><a href='readme/0/02 - disk/02 - fdisk_MBR.html'>02 - fdisk_MBR</a></li>
- <li><a href='readme/0/02 - disk/03 - gdisk-GPT.html'>03 - gdisk-GPT</a></li>
- <li><a href='readme/0/02 - disk/04 - filesystem.html'>04 - filesystem</a></li>
- <li><a href='readme/0/02 - disk/05 - swap.html'>05 - swap</a></li>
- <li><a href='readme/0/02 - disk/06 - LVM.html'>06 - LVM</a></li>
-</ul>
-
-</details>
-
-<details>
 <summary><b>readme\1</b></summary>
 <ul>
- <li><a href='readme/1/01 - remote server.html'>01 - remote server</a></li>
- <li><a href='readme/1/02 - ftp server.html'>02 - ftp server</a></li>
- <li><a href='readme/1/03 - file server.html'>03 - file server</a></li>
  <li><a href='readme/1/04 - encrpytion disk.html'>04 - encrpytion disk</a></li>
  <li><a href='readme/1/04 - ids.html'>04 - ids</a></li>
 </ul>
@@ -237,13 +274,11 @@ this is my linux conf, and my file for run linux
 <details>
 <summary><b>readme\2</b></summary>
 <ul>
- <li><a href='readme/2/01 - dhcp server.html'>01 - dhcp server</a></li>
  <li><a href='readme/2/02 - web server.html'>02 - web server</a></li>
  <li><a href='readme/2/03 - dns server.html'>03 - dns server</a></li>
  <li><a href='readme/2/04 - database server.html'>04 - database server</a></li>
- <li><a href='readme/2/05 - mail server.html'>05 - mail server</a></li>
+ <li><a href='readme/2/05 - mail server un.html'>05 - mail server un</a></li>
  <li><a href='readme/2/06 - vpn.html'>06 - vpn</a></li>
- <li><a href='readme/2/07 - docker.html'>07 - docker</a></li>
  <li><a href='readme/2/08 - reverseproxy.html'>08 - reverseproxy</a></li>
  <li><a href='readme/2/09 - haproxy.html'>09 - haproxy</a></li>
 </ul>

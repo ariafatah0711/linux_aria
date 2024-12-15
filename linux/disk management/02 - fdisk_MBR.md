@@ -1,6 +1,6 @@
 # fdisk
-- command
-```
+## command
+```bash
 fdisk /dev/vdb
 
 ###
@@ -24,7 +24,7 @@ w => write
 
 # create MBR
 ## create primary and extended
-```sh
+```bash
 fdisk /dev/vdb
 
 ### create primary
@@ -64,6 +64,6 @@ w
 ```
 
 ## show partition
-```sh
+```bash
 lsblk
 ```

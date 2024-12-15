@@ -1,7 +1,7 @@
 # file system
 ## mkfs
-- command
-```sh
+### command
+```bash
 ## format
 mkfs.ext4 /dev/vdb1
 mkfs.xfs /dev/vdc1
@@ -18,7 +18,7 @@ mount -av # all, verbose
 
 # mounting
 ## temporery (sementara) => ketika di reboot akan hilang
-```sh
+```bash
 ## create dir
 mkdir -p /home/disk-vdb1
 mkdir -p /home/disk-vdb2
@@ -31,7 +31,7 @@ umount /home/disk-vdb1
 ```
 
 ## persistance (permanent)
-```sh
+```bash
 vi /etc/fstab
 
 ####

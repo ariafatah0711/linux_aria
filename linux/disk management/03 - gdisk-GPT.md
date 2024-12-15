@@ -1,6 +1,6 @@
 # gdisk
-- command
-```
+## command
+```bash
 gdisk /dev/vdc
 
 ###
