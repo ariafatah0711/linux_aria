@@ -5,6 +5,7 @@ My file bash, and configurate for linux
 <p align="center">
   <a href="#introduction">introduction</a> •
   <a href="#table-of-contents">table of contents</a> •
+  <a href="#file-list">file_list</a> •
   <a href="#download">Download</a> •
   <a href="#related">Related</a> •
   <a href="#license">License</a>
@@ -115,20 +116,13 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
-<summary><b>container\kubernetes</b></summary>
-<ul>
- <li><a href='container/kubernetes/readme.html'>readme</a></li>
-</ul>
-
-</details>
-
-<details>
 <summary><b>container\kubernetes\00</b></summary>
 <ul>
  <li><a href='container/kubernetes/00/01 - pengenalan.html'>01 - pengenalan</a></li>
  <li><a href='container/kubernetes/00/02 - arsitektur kubernetes.html'>02 - arsitektur kubernetes</a></li>
  <li><a href='container/kubernetes/00/03 - menginstall kubernetes.html'>03 - menginstall kubernetes</a></li>
  <li><a href='container/kubernetes/00/04 - minikube.html'>04 - minikube</a></li>
+ <li><a href='container/kubernetes/00/readme.html'>readme</a></li>
 </ul>
 
 </details>

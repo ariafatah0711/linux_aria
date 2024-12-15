@@ -1,8 +1,9 @@
 # LoadBalancer
 - cloud Provider seperti google cloud, atau aws biasanya memiliki Cloud Load balancer
-    - kubernetes bisa menggunakan LoadBalancer bawaan dari cloud provider sebagai cara untuk mengekspose service
-    - LoadBalancer akan melakukan load balancer request ke NodePort
-    - sayangnya service Loadbalancer ini tidak bisa di test di local seperti menggunakan minikube
+  - kubernetes bisa menggunakan LoadBalancer bawaan dari cloud provider sebagai cara untuk mengekspose service
+  - LoadBalancer akan melakukan load balancer request ke NodePort
+  - sayangnya service Loadbalancer ini tidak bisa di test di local seperti menggunakan minikube
+
 ![alt text](docs/images/image-5.png)
 ![alt text](docs/images/image-6.png)
 

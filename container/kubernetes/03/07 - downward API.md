@@ -1,9 +1,9 @@
 # donward API
 - konfigurasi yang kita set secara manual bisa ditangani dengan baik menggunakan configMap dan secret
-    - namun bagaimana dengan konfigurasi yang dinamis? seperti informasi Pod dan Node?
-    - kuberntes memiliki downward API. Downward API bisa memungkinakan kita mengambil informasi seputar Pod dan Node melalui environment variable
+  - namun bagaimana dengan konfigurasi yang dinamis? seperti informasi Pod dan Node?
+  - kuberntes memiliki downward API. Downward API bisa memungkinakan kita mengambil informasi seputar Pod dan Node melalui environment variable
 - jangan bingung dengan kata API, Downward API sendiri bukan RESTful API
-    - ini hanya cara untuk mendapatkan informasi seputar Pod dan Node
+  - ini hanya cara untuk mendapatkan informasi seputar Pod dan Node
 
 ## metadata
 - requests.cpu => jumlah CPU yang di request

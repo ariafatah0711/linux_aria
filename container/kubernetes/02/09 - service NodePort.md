@@ -20,45 +20,45 @@ spec:
 ```
 
 - example
-```yaml
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: nginx
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      name: nginx
-  template:
-    metadata:
-      name: nginx
-      labels:
-        name: nginx
-    spec:
-      containers:
-        - name: nginx
-          image: nginx
-          ports:
-            - containerPort: 80
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-service
-spec:
-  type: NodePort
-  selector:
+  ```yaml
+  apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
     name: nginx
-  ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30001
-```
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        name: nginx
+    template:
+      metadata:
+        name: nginx
+        labels:
+          name: nginx
+      spec:
+        containers:
+          - name: nginx
+            image: nginx
+            ports:
+              - containerPort: 80
 
-- command
+  ---
+
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: nginx-service
+  spec:
+    type: NodePort
+    selector:
+      name: nginx
+    ports:
+      - port: 80
+        targetPort: 80
+        nodePort: 30001
+  ```
+
+## command
 ```bash
 minikube service <name-service>
 minikube service list

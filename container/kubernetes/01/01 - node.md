@@ -4,7 +4,7 @@
 - di dalam Node selalu terdapat kubelet, kubeproxy, dan container manager
 
 ## command
-```
+```bash
 # melihat semua nodes yang ada pada cluster
 kubectl get nodes
 kubectl get node

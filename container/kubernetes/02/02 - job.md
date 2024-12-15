@@ -1,59 +1,59 @@
 # job
 - sebelumnya kita hanya membahasa tentang pod yang berjalan tanpa berhenti
-    - tapi ada kalanya kita butuh menjalankan perintah yang hanya berjalan sekali lalu berhenti
+  - tapi ada kalanya kita butuh menjalankan perintah yang hanya berjalan sekali lalu berhenti
 - job => resource di kubernetes yang digunakan untuk menjalankan pod yang hanya butuh berjalan sekali lalu berhenti
 - pada replication controler, replication set dan daemon set, jika pod mati
-    - maka secara otomatis pod akan dijalankan ulang
+  - maka secara otomatis pod akan dijalankan ulang
 - berbeda dengan job, pod akan mati jika pekerjaanya selesai
 
 ## contoh
-    - aplikasi untuk backup atau resource database
-    - aplikasi untuk import export data
-    - aplikasi untuk menjalankan process batch
+- aplikasi untuk backup atau resource database
+- aplikasi untuk import export data
+- aplikasi untuk menjalankan process batch
 
 ## configuration
 - template
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: job-name
-spec:
-  completions: 5
-  parallelism: 2
-  selector:
-    matchLabels:
-      abel-key1: label-value1
-  template:
-    metadata:
-      name: pod-name
-      labels:
-        label-key1: label-value1
-    spec:
-      restartPolicy: Never
-      containers:
-        - name: container-name
-          image: image-name
-          ports:
-            - containerPort: 80
-```
+  ```yaml
+  apiVersion: batch/v1
+  kind: Job
+  metadata:
+    name: job-name
+  spec:
+    completions: 5
+    parallelism: 2
+    selector:
+      matchLabels:
+        abel-key1: label-value1
+    template:
+      metadata:
+        name: pod-name
+        labels:
+          label-key1: label-value1
+      spec:
+        restartPolicy: Never
+        containers:
+          - name: container-name
+            image: image-name
+            ports:
+              - containerPort: 80
+  ```
 
 - example
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: nodejs-job
-spec:
-  completions: 4
-  parallelism: 2
-  template:
-    spec:
-      restartPolicy: Never
-      containers:
-        - name: nodejs-job
-          image: khannedy/nodejs-job
-```
+  ```yaml
+  apiVersion: batch/v1
+  kind: Job
+  metadata:
+    name: nodejs-job
+  spec:
+    completions: 4
+    parallelism: 2
+    template:
+      spec:
+        restartPolicy: Never
+        containers:
+          - name: nodejs-job
+            image: khannedy/nodejs-job
+  ```
 
 ## penjelasan
 - completions => berapa kali pod akan aktif (default 1)

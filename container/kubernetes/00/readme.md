@@ -54,8 +54,8 @@ kubectl logs <name_pod>
 kubectl port-forward <namapod> portLocal:portRemote
 ```
 
-## label, annotation, namespace
-- pod bisa diganti dengan ()
+# label, annotation, namespace
+## pod bisa diganti dengan ()
 ```bash
 # add label, changem and find label
 kubectl label pod <nama_pod> env=prod
@@ -122,8 +122,8 @@ nginx-service   NodePort    10.111.219.184   <none>        80:30001/TCP   5m9s
 curl 192.168.49.2:30001
 ```
 
-# 
-```
+# ...
+```bash
 kubectl apply -f namafile.yaml
 kubectl get deployments
 kubectl describe deployment <name_deployment>
@@ -132,6 +132,6 @@ kubectl delete deployment <name_deployment>
 
 # addons
 ## ingress
-```
+```bash
 kubectl get ingress
 ```

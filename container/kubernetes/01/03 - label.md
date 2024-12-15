@@ -1,8 +1,8 @@
 # label
 - digunakan untuk memberi tanda pada pod, mengorganisir pod
-    - memberi informasi tambahan pada pod
-    - label tidak hanya digunakan untuk pod, tapi pada semua resources di kubernetes
-        - seperti Replication Controler, Replication Set, service
+  - memberi informasi tambahan pada pod
+  - label tidak hanya digunakan untuk pod, tapi pada semua resources di kubernetes
+    - seperti Replication Controler, Replication Set, service
 - masukin label harus sederhana tidak boleh ada spasi
 
 ## configuration
@@ -44,22 +44,22 @@ spec:
 
 ## command
 - show pod label
-```sh
-kubectl get pods --show-labels
-```
+  ```bash
+  kubectl get pods --show-labels
+  ```
 
 - menambahkan atau mengubah label di pod
-    - namun tidak disarankan karena nanti beda sama configuration filenya
-```sh
-# add label
-kubectl label pod nginx env=prod
+- namun tidak disarankan karena nanti beda sama configuration filenya
+  ```bash
+  # add label
+  kubectl label pod nginx env=prod
 
-# change label
-kubectl label pod nginx env=dev --overwrite
-```
+  # change label
+  kubectl label pod nginx env=dev --overwrite
+  ```
 
 - mencari label di pod
-```sh
+```bash
 kubectl get pods -l key
 kubectl get pods -l key=value
 kubectl get pods -l '!key'
