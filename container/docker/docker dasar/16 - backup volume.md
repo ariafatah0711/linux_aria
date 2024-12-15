@@ -1,16 +1,16 @@
+# backup volume
 - backup volume => memanfaatkan container untuk melakukan backup data yang ada di dalam volume ke dalam archive seperti zip atau tar.gz
 
 - tahapan melakukan backup
-    - matikan container yang menggunakan volume yang ingin kita backup
-    - buat container baru dengan dua mount
-        - volume yang ingin kita backup,
-        - bind mount folder dari sistem host
-    - lakukan backup menggunakan container dengan cara meng archive isi volume dan simpan di bind moumt folder
-    - isi file backup sekarang ada di folder sistem host
-    - delete container yang ingin kita gunakan untuk melakukan backup
+  - matikan container yang menggunakan volume yang ingin kita backup
+  - buat container baru dengan dua mount
+    - volume yang ingin kita backup,
+    - bind mount folder dari sistem host
+  - lakukan backup menggunakan container dengan cara meng archive isi volume dan simpan di bind moumt folder
+  - isi file backup sekarang ada di folder sistem host
+  - delete container yang ingin kita gunakan untuk melakukan backup
 
-
-- contoh
+## contoh
 ```bash
 docker container stop nginx-volume
 

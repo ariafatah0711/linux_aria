@@ -1,7 +1,8 @@
+# docker container stats
 - docker container stats => melihatt detail resouce penggunaan dari tiap container
-    - dengan ini kita bisa melihat container mana yang paling banyak memakan cpu / memory
+  - dengan ini kita bisa melihat container mana yang paling banyak memakan cpu / memory
 
-- contaienr stats
+## contaienr stats
 ```bash
 docker container stats
 

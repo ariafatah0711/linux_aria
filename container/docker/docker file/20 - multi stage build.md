@@ -1,11 +1,12 @@
+# multi stage build
 - multi stage build => dimana ddalam docker file, kita bisa membuat beberapa build stage atau tahapn build
-    - kita bisa gunakan beberapa intruksi FROM
-        - setiap intruksi FROM artinya adalah build stage
-    - hal build stage terakhir adalah build stage yang akan dijadikan sebagai image
-        - artinya kita bisa memanfaatkan docker build stage
-        - untuk mealkukan kode progam golang kita lalu dipindahkan ke image selanjutnya
+  - kita bisa gunakan beberapa intruksi FROM
+    - setiap intruksi FROM artinya adalah build stage
+  - hal build stage terakhir adalah build stage yang akan dijadikan sebagai image
+    - artinya kita bisa memanfaatkan docker build stage
+    - untuk mealkukan kode progam golang kita lalu dipindahkan ke image selanjutnya
 
-- builder
+## builder
 ```bash
 FROM golang:1.18-alpine as builder
 
@@ -13,7 +14,7 @@ FROM alpine:3
 COPY --from=builder /app/main ./
 ```
 
-- contoh
+## contoh
 ```bash
 FROM golang:1.18-alpine as builder
 WORKDIR /app
@@ -25,5 +26,3 @@ WORKDIR /app
 COPY --from=builder /app/main ./
 CMD /app/main
 ```
-
-- 

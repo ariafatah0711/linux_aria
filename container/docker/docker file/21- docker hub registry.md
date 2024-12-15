@@ -1,4 +1,4 @@
-- docker hub registry
+# docker hub registry
 ```bash
 docker login registry-1.docker.io -u ariafatah
 pass :
@@ -8,7 +8,7 @@ docker -u ariafatah
 pass :
 ```
 
-- push
-```
+## push
+```bash
 docker push ariafatah/image:tag
 ```

@@ -1,7 +1,8 @@
+# container exec
 - container exec => mengeksekusi kode progam yang terdapat dalam containerya
-    - ini bisa digunakan masuk ke container juga
+  - ini bisa digunakan masuk ke container juga
 
-- masuk container
+## masuk container
 ```bash
 docker container exec -i -t containerid/containername /bin/bash
 # i => interaktif (menjaga input tetap aktif)
@@ -9,7 +10,7 @@ docker container exec -i -t containerid/containername /bin/bash
 # /bin/bash => kode progam yang terdapat dalam container
 ```
 
-- contoh
+## contoh
 ```bash
 docker container exec -i -t redis-app /bin/bash
 

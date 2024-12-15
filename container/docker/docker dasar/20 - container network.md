@@ -1,8 +1,9 @@
-container network => container yang terdapat di dalam network yang sama bisa saling berkomunikasi (tergantung jenis driver network nya)
-    - dengan cara menambahkan container ke network
-    - container bisa mengakses container lain dengan menyebutkan hostname dari container yaitu nama_container nya
+# container network
+- container network => container yang terdapat di dalam network yang sama bisa saling berkomunikasi (tergantung jenis driver network nya)
+  - dengan cara menambahkan container ke network
+  - container bisa mengakses container lain dengan menyebutkan hostname dari container yaitu nama_container nya
 
-- langkah langkah
+## langkah langkah
 ```bash
 docker network create -d bridge mongo-net
 
@@ -26,7 +27,7 @@ user: admin
 pass: pass
 ```
 
-- connection network
+## connection network
 ```bash
 docker network disconnect mongo-net mongodb
 # menghapus network mongo-net pada container mongodb
@@ -35,7 +36,7 @@ docker network connect mongo-net mongodb
 # menambahkan network pada container mongodb
 ```
 
-- more
+## more
 ```bash
 docker volume create --name net-main
 docker volume create --name net-data

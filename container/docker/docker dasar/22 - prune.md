@@ -1,6 +1,7 @@
+# prune
 - prune => membersihkan hal hal yang tidak digunakan secara otomatis di docker
 
-- penggunaan
+## command
 ```bash
 docker image prune
 docker container prune

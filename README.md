@@ -49,7 +49,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker%20compose/15%20-%20docker%20file.md'>15 - docker file</a></li>
  <li><a href='container/docker/docker%20compose/16%20-%20health%20check.md'>16 - health check</a></li>
  <li><a href='container/docker/docker%20compose/17%20-%20extends%20service.md'>17 - extends service</a></li>
- <li><a href='container/docker/docker%20compose/_readme.md'>_readme</a></li>
+ <li><a href='container/docker/docker%20compose/README.md'>README</a></li>
 </ul>
 
 </details>
@@ -79,7 +79,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker%20dasar/20%20-%20container%20network.md'>20 - container network</a></li>
  <li><a href='container/docker/docker%20dasar/21%20-%20inspect.md'>21 - inspect</a></li>
  <li><a href='container/docker/docker%20dasar/22%20-%20prune.md'>22 - prune</a></li>
- <li><a href='container/docker/docker%20dasar/readme.md'>readme</a></li>
+ <li><a href='container/docker/docker%20dasar/README.md'>README</a></li>
 </ul>
 
 </details>
@@ -104,12 +104,12 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker%20file/15%20-%20working%20directory%20instruction.md'>15 - working directory instruction</a></li>
  <li><a href='container/docker/docker%20file/16%20-%20user%20instruction.md'>16 - user instruction</a></li>
  <li><a href='container/docker/docker%20file/17%20-%20argument%20instruction.md'>17 - argument instruction</a></li>
- <li><a href='container/docker/docker%20file/18%20-%20healt%20check.md'>18 - healt check</a></li>
+ <li><a href='container/docker/docker%20file/18%20-%20health%20check.md'>18 - health check</a></li>
  <li><a href='container/docker/docker%20file/19%20-%20entrypoint.md'>19 - entrypoint</a></li>
  <li><a href='container/docker/docker%20file/20%20-%20multi%20stage%20build.md'>20 - multi stage build</a></li>
  <li><a href='container/docker/docker%20file/21-%20docker%20hub%20registry.md'>21- docker hub registry</a></li>
  <li><a href='container/docker/docker%20file/22%20-%20digital%20ocean%20container%20registery.md'>22 - digital ocean container registery</a></li>
- <li><a href='container/docker/docker%20file/readme.md'>readme</a></li>
+ <li><a href='container/docker/docker%20file/README.md'>README</a></li>
 </ul>
 
 </details>

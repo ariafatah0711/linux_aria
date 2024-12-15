@@ -1,20 +1,21 @@
+# container resource
 - container resource limit => memberikan resource limit pada containernya
-    - dengan ini kita bisa menjaga agar container tidak memakan banyak resource yang dapat menggagu container lain
+  - dengan ini kita bisa menjaga agar container tidak memakan banyak resource yang dapat menggagu container lain
 
 - memory => menentukan jumlah memory
-```bash
-# --memory <ukuran>
-# <ukuran> => b (bytes), k (kilo bytes), m (mega bytes), g (giga bytes),
-# misal --memory 100m => 100mb
-```
+  ```bash
+  # --memory <ukuran>
+  # <ukuran> => b (bytes), k (kilo bytes), m (mega bytes), g (giga bytes),
+  # misal --memory 100m => 100mb
+  ```
 
 - cpus
-```bash
-# --cpus <ukuran>
-# <ukuran> => 1.5 (satu setengan cpu core)
-```
+  ```bash
+  # --cpus <ukuran>
+  # <ukuran> => 1.5 (satu setengan cpu core)
+  ```
 
-- menambahkan resource limt
+## menambahkan resource limt
 ```bash
 docker container create --name smallnginx --publish 8081:80 --memory 100m --cpus 0.5 nginx:latest
 

@@ -1,9 +1,9 @@
-- docker
+# docker dasar
 ```bash
 docker --version
 ```
 
-- image
+# image
 ```bash
 docker iamge ls # show docker image
 
@@ -11,7 +11,7 @@ docker image pull redis:latest # pull docker image
 docker image rm redis:latest # remove docker image
 ```
 
-- container
+# container
 ```bash
 docker container ls -a # semua container
 docker container ls # hanya container yang sedang berjalan
@@ -26,13 +26,13 @@ docker container stop redis-app # stop container
 docker container rm redis-app # menghapus container
 ```
 
-- container logs
+# container logs
 ```bash
 docker container logs redis-app # logs yang terjadi
 docker container logs -f redis-app # logs secara realtime
 ```
 
-- container exec
+# container exec
 ```bash
 docker container exec -i -t redis-app /bin/bash
 
@@ -45,7 +45,7 @@ OK
 127.0.0.1:6379>
 ```
 
-- docker port forwading
+# docker port forwading
 ```bash
 docker container create --name nginx-app -p 8080:80 nginx:latest
 docker container start nginx-app
@@ -55,14 +55,14 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 15c77bfc9642   nginx:latest   "/docker-entrypoint.…"   16 seconds ago   Up 3 seconds    0.0.0.0:5001->80/tcp, :::5001->80/tcp   nginx-app
 ```
 
-- docker env
+# docker env
 ```bash
 docker container create --name mongodb-app --publish 27017:27017 --env MONGO_INITDB_ROOT_USERNAME=aria --env MONGO_INITDB_ROOT_PASSWORD:aria  mongo:latest
 
 # untuk mengubah variable user dan password login
 ```
 
-- container stats
+# container stats
 ```bash
 docker container stats
 
@@ -71,7 +71,7 @@ CONTAINER ID   NAME        CPU %     MEM USAGE / LIMIT     MEM %     NET I/O    
 7b4c0acad15d   redis-app   0.26%     10.17MiB / 3.018GiB   0.33%     14.4kB / 0B   7.63MB / 0B      6
 ```
 
-- container resource limit
+# container resource limit
 ```bash
 docker container create --name smallnginx --publish 8081:80 --memory 100m --cpus 0.5 nginx:latest
 
@@ -83,7 +83,7 @@ CONTAINER ID   NAME         CPU %     MEM USAGE / LIMIT     MEM %     NET I/O   
 15c77bfc9642   nginx-app    0.00%     3.801MiB / 3.018GiB   0.12%     39.5kB / 664B     1.41MB / 4.1kB   3
 ```
 
-- bind mounts
+# bind mounts
 ```bash
 docker container create --name mongodb-app --mount "type=bind,source=./mongodb,destination=/data/db" --publish 5002:8081 /
 -e ME_CONFIG_MONGODB_ADMINUSERNAME=aria -e ME_CONFIG_MONGODB_ADMINPASSWORD=aria mongo:latest
@@ -98,7 +98,7 @@ docker container create --name nginx-linktree -p 8082:80 --mount "type=bind,sour
 # read only (opsional) => jika ada maka fie/folder hanya bisa dibaca di container tidak bisa ditulis
 ```
 
-- docker volume
+# docker volume
 ```bash
 docker volume create nginx
 
@@ -111,35 +111,34 @@ docker container rm nginx-volume
 # setelah dihapus maka hanya containernya saja yang dihapus tapi data web kita masih ada di volume yang sebelumnya
 ```
 
-- docker run
-    - backup
-        ```bash
-        docker container run --rm --name ubuntu \
-        --mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup" \
-        --mount "type=volume,source=nginx,destination=/data" \
-        ubuntu:latest tar cvf /backup/backup-2.tar.gz /data
+# docker run
+- backup
+  ```bash
+  docker container run --rm --name ubuntu \
+  --mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup" \
+  --mount "type=volume,source=nginx,destination=/data" \
+  ubuntu:latest tar cvf /backup/backup-2.tar.gz /data
 
-        # --rm => untuk meremove container secara otomatis stelah progam telah selesai digunakan
-        # ubuntu:latest => dan agar bisa behenti kita bisa gunakan image ubuntu
+  # --rm => untuk meremove container secara otomatis stelah progam telah selesai digunakan
+  # ubuntu:latest => dan agar bisa behenti kita bisa gunakan image ubuntu
 
-        # lalu setelah nama image kita bisa tambahkan perintah yang akan dijalankan itu
-        ```
+  # lalu setelah nama image kita bisa tambahkan perintah yang akan dijalankan itu
+  ```
+- restore volume
+  ```bash
+  docker volume create nginx-data
 
-    - restore volume
-        ```bash
-        docker volume create nginx-data
+  docker container run --rm --name ubuntu \
+  --mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup"
+  --mount "type=volume,source=nginx,destination=/data" ubuntu:latest \
+  bash -c "cd /data && tar xvf /backup/backup-2.tar.gz --strip 1"
 
-        docker container run --rm --name ubuntu \
-        --mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup"
-        --mount "type=volume,source=nginx,destination=/data" ubuntu:latest \
-        bash -c "cd /data && tar xvf /backup/backup-2.tar.gz --strip 1"
+  docker container create --name nginx-restore -p 8082:80 --mount "type=volume,source=nginx-data,destination=/usr/share/nginx/html"
 
-        docker container create --name nginx-restore -p 8082:80 --mount "type=volume,source=nginx-data,destination=/usr/share/nginx/html"
+  docker container start nginx-data
+  ```
 
-        docker container start nginx-data
-        ```
-
-- docker network
+# docker network
 ```bash
 docker netwrok ls #melihat list network
 
@@ -156,7 +155,7 @@ docker network disconnect mongo-net mongodb
 # menghapus network mongo-net pada container mongodb
 ```
 
-- make container with docker network
+## make container with docker network
 ```bash
 docker network create -d bridge mongo-net
 
@@ -180,7 +179,7 @@ user: admin
 pass: pass
 ```
 
-- inspect => melihat detail
+# inspect => melihat detail
 ```bash
 docker image inspect nama_image
 docker container inspect nama_container
@@ -188,7 +187,7 @@ docker volume inspect nama_volume
 docker network inspect nama_network
 ```
 
-- prune => menghapus yang tidak dipakai
+# prune => menghapus yang tidak dipakai
 ```bash
 docker image prune
 docker container prune

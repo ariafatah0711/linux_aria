@@ -49,7 +49,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker compose/15 - docker file.html'>15 - docker file</a></li>
  <li><a href='container/docker/docker compose/16 - health check.html'>16 - health check</a></li>
  <li><a href='container/docker/docker compose/17 - extends service.html'>17 - extends service</a></li>
- <li><a href='container/docker/docker compose/_readme.html'>_readme</a></li>
+ <li><a href='container/docker/docker compose/README.html'>README</a></li>
 </ul>
 
 </details>
@@ -79,7 +79,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker dasar/20 - container network.html'>20 - container network</a></li>
  <li><a href='container/docker/docker dasar/21 - inspect.html'>21 - inspect</a></li>
  <li><a href='container/docker/docker dasar/22 - prune.html'>22 - prune</a></li>
- <li><a href='container/docker/docker dasar/readme.html'>readme</a></li>
+ <li><a href='container/docker/docker dasar/README.html'>README</a></li>
 </ul>
 
 </details>
@@ -104,12 +104,12 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker file/15 - working directory instruction.html'>15 - working directory instruction</a></li>
  <li><a href='container/docker/docker file/16 - user instruction.html'>16 - user instruction</a></li>
  <li><a href='container/docker/docker file/17 - argument instruction.html'>17 - argument instruction</a></li>
- <li><a href='container/docker/docker file/18 - healt check.html'>18 - healt check</a></li>
+ <li><a href='container/docker/docker file/18 - health check.html'>18 - health check</a></li>
  <li><a href='container/docker/docker file/19 - entrypoint.html'>19 - entrypoint</a></li>
  <li><a href='container/docker/docker file/20 - multi stage build.html'>20 - multi stage build</a></li>
  <li><a href='container/docker/docker file/21- docker hub registry.html'>21- docker hub registry</a></li>
  <li><a href='container/docker/docker file/22 - digital ocean container registery.html'>22 - digital ocean container registery</a></li>
- <li><a href='container/docker/docker file/readme.html'>readme</a></li>
+ <li><a href='container/docker/docker file/README.html'>README</a></li>
 </ul>
 
 </details>

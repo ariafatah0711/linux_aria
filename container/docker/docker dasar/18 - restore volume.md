@@ -1,15 +1,17 @@
+# restore volume
 - restore volume => melakukan restore data backup
 
 - langkah langkah
-    - buat volume baru untuk lokasi restore data backup
-    - buat container baru dengan dua mount
-        - volume baru untuk restore backup dan bind mount folder dari sistem host yang berisi file backup
-    - lakukan restore menggunakan container
-        - dengan cara meng extract isi backup file ke dalam volume
-    - isi file backup sekarang sudah di restore ke volume
-    - delete container yang kita gunakan untuk melakukan restore
-    - volume baru yang berisi data backup siap digunakan oleh container baru
+  - buat volume baru untuk lokasi restore data backup
+  - buat container baru dengan dua mount
+    - volume baru untuk restore backup dan bind mount folder dari sistem host yang berisi file backup
+  - lakukan restore menggunakan container
+    - dengan cara meng extract isi backup file ke dalam volume
+  - isi file backup sekarang sudah di restore ke volume
+  - delete container yang kita gunakan untuk melakukan restore
+  - volume baru yang berisi data backup siap digunakan oleh container baru
 
+## contoh
 ```bash
 docker volume create nginx-data
 

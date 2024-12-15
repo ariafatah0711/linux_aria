@@ -1,7 +1,8 @@
+# docker container run
 - docker container run =>  menjalankan container secara langsung
-    - jadi menjalankan container tanpa harus membuat terlebih dahulu
+  - jadi menjalankan container tanpa harus membuat terlebih dahulu
 
-- docker run
+## docker run
 ```bash
 docker container run --rm --name ubuntu \
 --mount "type=bind,source=/home/ariafatah/nginx/backup,destination=/backup" \

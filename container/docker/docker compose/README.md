@@ -1,4 +1,4 @@
-## docker coompose
+## docker compose
 - docker compose => aplikasi yang digunakan untuk mendefiniskan dan menjalankan multiple Docker Container Secara sekaligus
   ```bash
   DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}

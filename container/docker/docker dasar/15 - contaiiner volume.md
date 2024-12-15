@@ -1,5 +1,7 @@
+## container volume
 - container volume => volume yang kita buat tidak akan hilang jika container dihapus
-    - 
+
+## command
 ```bash
 --mount "type=volume,source=namavolume,destination/folder/path"
 
@@ -7,7 +9,7 @@
 # source=namavolume
 ```
 
-- contoh
+## contoh
 ```bash
 docker volume create nginx
 

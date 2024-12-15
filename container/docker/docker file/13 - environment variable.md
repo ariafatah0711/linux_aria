@@ -1,18 +1,19 @@
+# env variable
 - environment variable instruction => merupakan instruksi yang digunakan untuk mengubah environment variable
-    - baik ketika tahapan build atau ketika jalan dalam docker container
-    - ENV yang sudah ddi definisikan di dalam Dockerfile bisa digunakan kembali dengan menggunakan sintaks ${NAMA_ENV}
-    - environment variable yang dibuat menggunakan instruksi ENV disimpan di dalam docker image 
-        - dan bisa dilihat menggunakan perintah docker image inspect
-    - selain itu, env var juga bisa diganti nilainya ketika pembuatan docker container
-        - dengan perintah "docker contaienr create --env key=value" atau -e key=value
+  - baik ketika tahapan build atau ketika jalan dalam docker container
+  - ENV yang sudah ddi definisikan di dalam Dockerfile bisa digunakan kembali dengan menggunakan sintaks ${NAMA_ENV}
+  - environment variable yang dibuat menggunakan instruksi ENV disimpan di dalam docker image 
+    - dan bisa dilihat menggunakan perintah docker image inspect
+  - selain itu, env var juga bisa diganti nilainya ketika pembuatan docker container
+    - dengan perintah "docker contaienr create --env key=value" atau -e key=value
 
-- env
+## env
 ```bash
 ENV key=value
 ENV key1=value1 key2=value2
 ```
 
-- contoh
+## contoh
 ```bash
 FROM golang:1.18-alpine
 
@@ -26,7 +27,7 @@ EXPOSE ${APP_PORT}
 CMD go run app/main.go
 ```
 
-- main.go
+## main.go
 ```go
 package main
 

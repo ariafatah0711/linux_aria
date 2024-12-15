@@ -1,16 +1,17 @@
-volume => merupakan intruksi yang digunakan untuk membuat volume secara otomatis ketika membuat docker container
-    - semua file yang terdapat di volume secara otomatis akan otomatis di copy ke dalam docker volume
-        - walaupun kita tidak membuat docker volume ketika membuat docker containernya
-        - ini sangat cocok pada kasus ketika aplikasi kita misal menyimpan data di dalam file sehingga data bisa secara otomatis aman berada di docker volume
+# volume instruction
+- volume => merupakan intruksi yang digunakan untuk membuat volume secara otomatis ketika membuat docker container
+  - semua file yang terdapat di volume secara otomatis akan otomatis di copy ke dalam docker volume
+    - walaupun kita tidak membuat docker volume ketika membuat docker containernya
+    - ini sangat cocok pada kasus ketika aplikasi kita misal menyimpan data di dalam file sehingga data bisa secara otomatis aman berada di docker volume
 
-- volume
+## volume
 ```js
 VOLUME /path/to/path
 VOLUME  /path/folder1 /path/folder2
 VOLUME ["/path/A", "/path/b", "/etc/nginx"]
 ```
 
-- contoh
+## contoh
 ```bash
 FROM golang:1.18-alpine
 
@@ -27,7 +28,7 @@ VOLUME ${APP_DATA}
 CMD go run app/main.go
 ```
 
-- main.go
+## main.go
 ```go
 package main
 
@@ -61,7 +62,7 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-- run
+## run
 ```bash
 docker container create --name volume -e APP_PORT=8080 -p 8080:8080 aria/volume
 docker start volume

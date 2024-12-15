@@ -1,10 +1,11 @@
+# health check instruction
 - health check => intruksi yang digunakan untuk memberi tahu docker bagaimana mengecek apakah container berjalan baik atau tidak
-    - scr otomatis container akan memili status health
-        - awal = starting
-        - success = healty
-        - gagal = unhealty
+ - scr otomatis container akan memili status health
+    - awal = starting
+    - success = healty
+    - gagal = unhealty
 
-- healt check
+## health check
 ```bash
 HEALTHCHECK NONE # default (tidak ada pengecekan)
 HEALTCHECK [OPTION] CMD command # pengecekan sesuai perintah CMD disini
@@ -15,7 +16,7 @@ HEALTCHECK [OPTION] CMD command # pengecekan sesuai perintah CMD disini
 # retries=N (default 3)
 ```
 
-- contoh
+## contoh
 ```bash
 FROM golang:1.18-alpine
 
@@ -29,7 +30,7 @@ HEALTHCHECK --interval=5s --start-period=5s CMD curl -f http://localhost:8080/he
 CMD go run app/main.go
 ```
 
-- run
+## run
 ```bash
 docker container ls
 docker container inspect <nama_container>
