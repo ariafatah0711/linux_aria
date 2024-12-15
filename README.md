@@ -49,7 +49,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker%20compose/15%20-%20docker%20file.md'>15 - docker file</a></li>
  <li><a href='container/docker/docker%20compose/16%20-%20health%20check.md'>16 - health check</a></li>
  <li><a href='container/docker/docker%20compose/17%20-%20extends%20service.md'>17 - extends service</a></li>
- <li><a href='container/docker/docker%20compose/README.md'>README</a></li>
+ <li><a href='container/docker/docker%20compose/__readme__.md'>__readme__</a></li>
 </ul>
 
 </details>
@@ -79,7 +79,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker%20dasar/20%20-%20container%20network.md'>20 - container network</a></li>
  <li><a href='container/docker/docker%20dasar/21%20-%20inspect.md'>21 - inspect</a></li>
  <li><a href='container/docker/docker%20dasar/22%20-%20prune.md'>22 - prune</a></li>
- <li><a href='container/docker/docker%20dasar/README.md'>README</a></li>
+ <li><a href='container/docker/docker%20dasar/__readme__.md'>__readme__</a></li>
 </ul>
 
 </details>
@@ -109,7 +109,7 @@ this is my linux conf, and my file for run linux
  <li><a href='container/docker/docker%20file/20%20-%20multi%20stage%20build.md'>20 - multi stage build</a></li>
  <li><a href='container/docker/docker%20file/21-%20docker%20hub%20registry.md'>21- docker hub registry</a></li>
  <li><a href='container/docker/docker%20file/22%20-%20digital%20ocean%20container%20registery.md'>22 - digital ocean container registery</a></li>
- <li><a href='container/docker/docker%20file/README.md'>README</a></li>
+ <li><a href='container/docker/docker%20file/__readme__.md'>__readme__</a></li>
 </ul>
 
 </details>
@@ -194,237 +194,6 @@ this is my linux conf, and my file for run linux
 <summary><b>container\podman</b></summary>
 <ul>
  <li><a href='container/podman/01%20-%20pengenalan.md'>01 - pengenalan</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\dasar_ctf_yt</b></summary>
-<ul>
- <li><a href='ctf/dasar_ctf_yt/01%20-%20dasar%20encoding.md'>01 - dasar encoding</a></li>
- <li><a href='ctf/dasar_ctf_yt/02%20-%20Binary%20data%20dan%20endianness.md'>02 - Binary data dan endianness</a></li>
- <li><a href='ctf/dasar_ctf_yt/03%20-%20Forensics_identification%20file.md'>03 - Forensics_identification file</a></li>
- <li><a href='ctf/dasar_ctf_yt/04%20-%20Forensic_file%20carving.md'>04 - Forensic_file carving</a></li>
- <li><a href='ctf/dasar_ctf_yt/05%20-%20file%20carving.md'>05 - file carving</a></li>
- <li><a href='ctf/dasar_ctf_yt/06%20-%20kriptografi%20classic%20chiper.md'>06 - kriptografi classic chiper</a></li>
- <li><a href='ctf/dasar_ctf_yt/07%20-%20kriptografi%20XOR.md'>07 - kriptografi XOR</a></li>
- <li><a href='ctf/dasar_ctf_yt/08%20-%20kriptografi%20XOR%20repeated%20key.md'>08 - kriptografi XOR repeated key</a></li>
- <li><a href='ctf/dasar_ctf_yt/09%20-%20reverse%20enginering%20dasar.md'>09 - reverse enginering dasar</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\hacktrace.md\devensive</b></summary>
-<ul>
- <li><a href='ctf/hacktrace.md/devensive/01%20-%20intrudex.md'>01 - intrudex</a></li>
- <li><a href='ctf/hacktrace.md/devensive/02%20-%20pcrobe.md'>02 - pcrobe</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\hacktrace.md\offensive</b></summary>
-<ul>
- <li><a href='ctf/hacktrace.md/offensive/01%20-%20access.md'>01 - access</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\htb_academy</b></summary>
-<ul>
- <li><a href='ctf/htb_academy/01%20-%20linux%20fundamental.md'>01 - linux fundamental</a></li>
- <li><a href='ctf/htb_academy/02%20-%20networking.md'>02 - networking</a></li>
- <li><a href='ctf/htb_academy/03%20-%20file%20transfer.md'>03 - file transfer</a></li>
- <li><a href='ctf/htb_academy/04%20-%20webrequest.md'>04 - webrequest</a></li>
- <li><a href='ctf/htb_academy/05%20-%20hardware%20vulnerabilty.md'>05 - hardware vulnerabilty</a></li>
- <li><a href='ctf/htb_academy/06%20-%20local%20file%20inclusion.md'>06 - local file inclusion</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\htb_lab</b></summary>
-<ul>
- <li><a href='ctf/htb_lab/01%20-%20start%20lab.md'>01 - start lab</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\metasploitable\dvwa</b></summary>
-<ul>
- <li><a href='ctf/metasploitable/dvwa/01%20-%20brute%20force.md'>01 - brute force</a></li>
- <li><a href='ctf/metasploitable/dvwa/02%20-%20sql%20injection.md'>02 - sql injection</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\picoCTF</b></summary>
-<ul>
- <li><a href='ctf/picoCTF/01%20-%20general%20basic.md'>01 - general basic</a></li>
- <li><a href='ctf/picoCTF/01.md'>01</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\tryhackme\01 - basic</b></summary>
-<ul>
- <li><a href='ctf/tryhackme/01%20-%20basic/01%20-%20nmap.md'>01 - nmap</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/02%20-%20metasploit.md'>02 - metasploit</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/03%20-%20burpsuite.md'>03 - burpsuite</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/03%20-%20sqlmap.md'>03 - sqlmap</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/04%20-%20hydra.md'>04 - hydra</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/05%20-%20john%20the%20rippper.md'>05 - john the rippper</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/06%20-%20networkservice.md'>06 - networkservice</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/07%20-%20xss.md'>07 - xss</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/08%20-%20digital%20forensik.md'>08 - digital forensik</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/09%20-%20linux%20fifle%20system%20analyst.md'>09 - linux fifle system analyst</a></li>
- <li><a href='ctf/tryhackme/01%20-%20basic/10%20-%20intrudiction%20log.md'>10 - intrudiction log</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\tryhackme\02 - medium</b></summary>
-<ul>
- <li><a href='ctf/tryhackme/02%20-%20medium/01%20-%20sql%20inject.md'>01 - sql inject</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\tryhackme\crpytography</b></summary>
-<ul>
- <li><a href='ctf/tryhackme/crpytography/01%20-%20capture%20the%20flag.md'>01 - capture the flag</a></li>
- <li><a href='ctf/tryhackme/crpytography/02%20-%20crack%20hash.md'>02 - crack hash</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\tryhackme\ctf_easy</b></summary>
-<ul>
- <li><a href='ctf/tryhackme/ctf_easy/01%20-%20root%20me.md'>01 - root me</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/02%20-%20basic%20pentarasi.md'>02 - basic pentarasi</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/02%20-%20vulnversity.md'>02 - vulnversity</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/04%20-%20bounty%20hacker.md'>04 - bounty hacker</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/05%20-%20simplectf.md'>05 - simplectf</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/06%20-%20agent%20sudo.md'>06 - agent sudo</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/07%20-%20owasp.md'>07 - owasp</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/08%20-%20pickle%20rick.md'>08 - pickle rick</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/09%20-%20athem.md'>09 - athem</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/10%20-%20capture.md'>10 - capture</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/11%20-%20grep.md'>11 - grep</a></li>
- <li><a href='ctf/tryhackme/ctf_easy/12%20-%20probe.md'>12 - probe</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\tryhackme\ctf_medium</b></summary>
-<ul>
- <li><a href='ctf/tryhackme/ctf_medium/01%20-%20bookstore.md'>01 - bookstore</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/readme.md'>readme</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux\02 - vulnerabilty and scaning</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/02%20-%20vulnerabilty%20and%20scaning/01%20-%20nmap.md'>01 - nmap</a></li>
- <li><a href='ctf/_kali_linux/02%20-%20vulnerabilty%20and%20scaning/02%20-%20gobuster.md'>02 - gobuster</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux\03 - exploit</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/03%20-%20exploit/01%20-%20sqlmap.md'>01 - sqlmap</a></li>
- <li><a href='ctf/_kali_linux/03%20-%20exploit/02%20-%20metasploit.md'>02 - metasploit</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux\03 - exploit\malware</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/03%20-%20exploit/malware/the%20fat%20rat.md'>the fat rat</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux\04 - wifi</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/04%20-%20wifi/01%20-%20aircrack.md'>01 - aircrack</a></li>
- <li><a href='ctf/_kali_linux/04%20-%20wifi/02%20-%20evil%20twins.md'>02 - evil twins</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux\05 - cryptography</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/05%20-%20cryptography/01%20-%20chiper.md'>01 - chiper</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux\06 - stenography</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/06%20-%20stenography/01%20-%20music.md'>01 - music</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>ctf\_kali_linux\07 - tool</b></summary>
-<ul>
- <li><a href='ctf/_kali_linux/07%20-%20tool/gittool.md'>gittool</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>lks</b></summary>
-<ul>
- <li><a href='lks/note.md'>note</a></li>
- <li><a href='lks/tambahan.md'>tambahan</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>lks\konfigurasi</b></summary>
-<ul>
- <li><a href='lks/konfigurasi/01%20-%20hardening-linux.md'>01 - hardening-linux</a></li>
- <li><a href='lks/konfigurasi/02%20-%20email%20pgp.md'>02 - email pgp</a></li>
- <li><a href='lks/konfigurasi/03%20-%20konfigurasi%20openvpn.md'>03 - konfigurasi openvpn</a></li>
- <li><a href='lks/konfigurasi/04%20-%20ids.md'>04 - ids</a></li>
- <li><a href='lks/konfigurasi/05%20-%20modevasive.md'>05 - modevasive</a></li>
- <li><a href='lks/konfigurasi/06%20-%20header%20security.md'>06 - header security</a></li>
-</ul>
-
-</details>
-
-<details>
-<summary><b>lks\lab</b></summary>
-<ul>
- <li><a href='lks/lab/lfi%20to%20rce.md'>lfi to rce</a></li>
 </ul>
 
 </details>
