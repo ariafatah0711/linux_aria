@@ -60,24 +60,34 @@ footer = """<p id="download"></p>
 def collect_data(path, priority_folders, exclude_dirs):
     data = []
 
-    # Tahap 1: Kumpulkan data direktori
+    def sort_key(dirpath):
+        relative_path = os.path.relpath(dirpath, path).replace("\\", "/")
+        if relative_path in priority_folders:
+            return (0, priority_folders.index(relative_path))
+        elif relative_path.startswith("linux"):
+            return (1, relative_path)
+        else:
+            return (2, relative_path)
+
     for dirpath, dirnames, filenames in os.walk(path):
-        dirnames[:] = [d for d in dirnames if d not in exclude_dirs]  # Exclude direktori yang tidak diinginkan
-        dirnames.sort(key=lambda x: (x not in priority_folders, 
-                                     priority_folders.index(x) if x in priority_folders else x))
+        # Ubah dirnames untuk mengecualikan folder di exclude_dirs
+        relative_path = os.path.relpath(dirpath, path).replace("\\", "/")
+        if any(excluded in relative_path.split("/") for excluded in exclude_dirs):
+            continue  # Langsung skip direktori jika ada di exclude_dirs
+
+        dirnames[:] = [d for d in dirnames if d not in exclude_dirs]  # Hapus subdirektori yang dikecualikan
         
-        if dirpath == path:  # Lewati root path
-            continue
-        
+        dirnames.sort(key=lambda x: sort_key(os.path.join(dirpath, x)))
+
         markdown_files = sorted([f for f in filenames if f.endswith('.md')])
         if markdown_files:
-            data.append((dirpath, markdown_files))  # Simpan dirpath dan file markdown dalam list
+            data.append((dirpath, markdown_files))
     
     return data
 
 def generate_file_list(path, type="md"):
     output = ""
-    priority_folders = ['linux', 'redhat', 'container']
+    priority_folders = ["linux/basics", "linux/networking", "linux/server-configurations", "linux/command", 'linux', 'redhat']
     exclude_dirs = {".git", "tool", "_bak", "_layouts", "assets", "ctf", "lks", "readme"}
     
     data = collect_data(".", priority_folders, exclude_dirs)
