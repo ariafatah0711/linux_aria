@@ -34,6 +34,7 @@ this is my linux conf, and my file for run linux
 <summary><b>linux\basics</b></summary>
 <ul>
  <li><a href='linux/basics/00%20-%20shorcut.md'>00 - shorcut</a></li>
+ <li><a href='linux/basics/command-list.md'>command-list</a></li>
  <li><a href='linux/basics/firewall.md'>firewall</a></li>
  <li><a href='linux/basics/manage%20file.md'>manage file</a></li>
  <li><a href='linux/basics/manage%20network.md'>manage network</a></li>
