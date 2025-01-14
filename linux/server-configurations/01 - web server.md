@@ -91,6 +91,28 @@
     }
     ```
 
+## nginx with ssl
+- create cert
+  ```bash
+  openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /etc/ssl/private/domain.key -out /etc/ssl/certs/domain.crt
+  ```
+- config nginx
+  ```bash
+  server {
+      listen 443 ssl;
+      server_name your_domain.com;
+
+      ssl_certificate /etc/ssl/my_domain/your_certificate.crt;
+      ssl_certificate_key /etc/ssl/my_domain/your_private.key;
+
+      location / {
+          proxy_pass http://backend_server;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+      }
+  } 
+  ```
+
 - test nginx conf, and disable security nginx
   - ```nginx -t```
   - ```setenforce 0``` for disable security nginx folder
