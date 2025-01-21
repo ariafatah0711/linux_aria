@@ -46,6 +46,7 @@
   baseurl=http://10.1.10.211/rhel9.4/AppStream  
   ```
 
+---
 ## rhsm, mematikan repo luar
 - vi /etc/rhsm/rhsm.conf
   ```bash
@@ -62,4 +63,55 @@ echo "gpgcheck=0" > /etc/yum.repos.d/10.1.10.211_rhel9.4_BaseOS.repo
 ```bash
 yum clean all
 yum repolist
+```
+
+---
+# redhat repository server
+- [https://www.serverlab.ca/tutorials/linux/network-services/creating-a-yum-repository-server-for-red-hat-and-centos/](https://www.serverlab.ca/tutorials/linux/network-services/creating-a-yum-repository-server-for-red-hat-and-centos/)
+
+## install package
+```bash
+yum install createrepo
+```
+## create dir repo
+```bash
+mkdir -p /repos/CentOS/6/5/Packages
+
+# create repo
+createrepo /repos/CentOS/6/5
+
+# update
+createrepo --update /repos/CentOS/6/5
+```
+- Using the ISO or Installation Disc
+```bash
+## centos
+cp -arv /media/CentOS/Packages/* /repos/CentOS/6/5/
+
+## redhat
+cp -arv /mnt/disc /repos/redhat
+createrepo /repos/CentOS/6/5
+```
+
+## publish
+### over httpd
+```bash
+yum install httpd
+ln -s /var/www/html/CentOS /repos/CentOS
+```
+## over vsftpd
+```bash
+yum install vsftpd
+ln -s /var/ftp/public/CentOS /repos/CentOS
+```
+
+## Configure Repository on Client
+```bash
+cd /etc/yum.repos.d
+cat > local.repo << EOF
+[mylocalrepo]
+name=Local CentOS Repo
+baseurl=http://my-repo-server/CentOS/6/5
+gpgcheck=0
+EOF
 ```

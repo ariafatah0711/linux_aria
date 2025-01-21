@@ -4,12 +4,17 @@
 ```bash
 firewall-cmd --permanent --add-port=1000-1100/tcp
 firewall-cmd --permanent --add-port={80/tcp,443/tcp}
+firewall-cmd --add-port=8080-8090/tcp
 firewall-cmd --permanent --add-port=21/tcp
 firewall-cmd --permanent --add-service=dns
 firewall-cmd --permanent --remove-port=21/tcp
 
 firewall-cmd --reload
 firewall-cmd --list-ports
+
+firewall-cmd --zone=public --add-port=8080-8090/tcp --permanent
+
+
 ```
 
 ## ufw

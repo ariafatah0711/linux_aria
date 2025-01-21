@@ -112,3 +112,10 @@ Content-Type: text/html
    </body>
 </html>
 ```
+
+## selinux
+- [https://man.docs.euro-linux.com/EL%206%20ELS/selinux-policy-doc/haproxy_selinux.8.en.html](https://man.docs.euro-linux.com/EL%206%20ELS/selinux-policy-doc/haproxy_selinux.8.en.html)
+
+```bash
+sudo semanage permissive -a haproxy_t
+```
