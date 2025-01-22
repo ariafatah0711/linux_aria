@@ -180,7 +180,8 @@
   chown -R :named /var/named/
   ```
 
-## zone template
+# zone template
+## template normal
 ### db.forward
 ```bash
 $TTL 1D
@@ -208,4 +209,30 @@ $TTL 1D
                                         3H )    ; minimum
 @       IN NS   ariafatah.id.
 @       IN PTR  ariafatah.id.
+```
+
+## if add subdomain with more ip
+### db.forward
+```bash
+@       IN      NS      ns1.ariafatah.id.
+
+; A Records
+@       IN      A       11.11.11.1
+ns1     IN      A       11.11.11.1
+www     IN      A       11.11.11.1
+mail    IN      A       11.11.11.1
+ftp     IN      A       11.11.11.1
+ssh     IN      A       11.11.11.1
+
+; Tambahkan untuk IP 11.11.11.40
+example IN      A       11.11.11.40
+```
+
+### db.reverse
+```bash
+@       IN      NS      ns1.ariafatah.id.
+
+; PTR Records
+1       IN      PTR     ns1.ariafatah.id.
+40      IN      PTR     example.ariafatah.id.
 ```

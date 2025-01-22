@@ -1,9 +1,12 @@
 # up asj
 ## automation setup up
 ```bash
-curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/a.sh | sh
-curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/b.sh | sh
-curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/u.sh | sh
+user=aria
+domain=ariafatah.id
+
+curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/a.sh | sh
+curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/b.sh | sh
+curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/u.sh | sh
 ```
 
 ## run
@@ -131,7 +134,7 @@ chown -R :named /var/named/
 named-checkconf /etc/named.conf
 named-checkconf /etc/named.rfc1912.zones
 named-checkzone ariafatah.id db.forward
-named-checkzone 11.11.11.1 db.reverse
+named-checkzone 11.11.11.1.in-addr.arp db.reverse
 
 systemctl start named
 systemctl restart named
