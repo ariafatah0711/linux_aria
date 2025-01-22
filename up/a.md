@@ -8,7 +8,7 @@ curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/
 ## run
 ```bash
 # setup
-yum install podman haproxy bind bind-utils
+yum install podman haproxy bind bind-utils -y
 firewall-cmd --add-port={22/tcp,53/tcp,53/udp,80tcp,443/tcp,8080-8090/tcp} --permanent
 firewall-cmd --add-service=dns --permanent
 firewall-cmd --reload
