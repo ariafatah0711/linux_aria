@@ -98,6 +98,22 @@
         forwarders { 8.8.8.8; 8.8.4.4; };
     }
     ```
+  - or if u want fast setup u can set this
+    ```bash
+    listen-on port 53 { 127.0.0.1; 11.11.11.1; };
+    ---
+    allow-query     { localhost; 0.0.0.0/0; };
+    ```
+  - or use acl
+    ```bash
+    acl trusted {
+      11.11.11.1; 192.168.0.0/24;  # Tambahkan subnet atau IP klien Anda
+    };
+
+    options {
+        allow-query { trusted; };
+    };
+    ```
   - ```vi /etc/named.rfc1912.zones```
     u can use forward.zone or db.forward
     ```bash
@@ -158,3 +174,38 @@
   - ```systemctl enable named```
   - ```systemctl start named```
   - ```systemctl status named```
+
+- dont forget permission
+  ```bash
+  chown -R :named /var/named/
+  ```
+
+## zone template
+### db.forward
+```bash
+$TTL 1D
+@       IN SOA  ariafatah.id. admin.ariafatah.id. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+@       IN NS   ariafatah.id.
+@       IN A    11.11.11.1
+www     IN A    11.11.11.1
+ftp     IN A    11.11.11.1
+ssh     IN A    11.11.11.1
+```
+
+### db.reverse
+```bash
+$TTL 1D
+@       IN SOA  ariafatah.id. admin.ariafatah.id. (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+@       IN NS   ariafatah.id.
+@       IN PTR  ariafatah.id.
+```

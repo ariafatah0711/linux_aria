@@ -161,6 +161,13 @@ sudo certbot --nginx -d <yourdomain.com> -d <www.yourdomain.com>
 
 ## selinux
 ```bash
+man semanage-fcontext
+
 semanage fcontext -a -t httpd_sys_content_t "/path(/.*)?"
-restorecon
+restorecon /path
+ls -ldZ /path
+
+semanage fcontext -a -t httpd_sys_content_t "/linktree(/.*)?"/
+restorecon /linktree/
+ls -ldZ /path
 ```
