@@ -1,14 +1,14 @@
 # up asj
 ## automation setup up
 ```bash
-wget https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/a.sh | sh
-wget https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/b.sh | sh
+curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/a.sh | sh
+curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/b.sh | sh
 ```
 
 ## run
 ```bash
 # setup
-yum install podman haproxy named
+yum install podman haproxy bind bind-utils
 firewall-cmd --add-port={22/tcp,53/tcp,53/udp,80tcp,443/tcp,8080-8090/tcp} --permanent
 firewall-cmd --add-service=dns --permanent
 firewall-cmd --reload
@@ -29,8 +29,8 @@ frontend fe
     default_backend be
 backend be
     balance roundrobin
-    server node1 localhost:8081
-    server node2 localhost:8082
+    server node1 127.0.0.1:8081
+    server node2 127.0.0.1:8082
 EOF
 
 systemctl enable --now haproxy
@@ -68,7 +68,7 @@ EOF
 
 # 1
 cat > db.forward << EOF 
-$TTL 86400
+\$TTL 86400
 @       IN      SOA     ns1.ariafatah.id.       admin.ariafatah.id (
                 2010010101 ; Serial
                 3600    ; Refresh
@@ -85,7 +85,7 @@ ftp     IN      A       11.11.11.1
 ssh     IN      A       11.11.11.1
 EOF
 cat > db.reverse << EOF
-$TTL 86400
+\$TTL 86400
 @       IN      SOA     ns1.ariafatah.id.      admin.ariafatah.id. (
                 2010010101 ; Serial
                 3600    ; Refresh
@@ -99,7 +99,7 @@ EOF
 
 # 2
 cat > db.forward << EOF 
-$TTL 1D
+\$TTL 1D
 @       IN SOA  ariafatah.id. admin.ariafatah.id. (
                                         0       ; serial
                                         1D      ; refresh
@@ -114,7 +114,7 @@ ssh     IN A    11.11.11.1
 EOF
 
 cat > db.reverse << EOF
-$TTL 1D
+\$TTL 1D
 @       IN SOA  ariafatah.id. admin.ariafatah.id. (
                                         0       ; serial
                                         1D      ; refresh

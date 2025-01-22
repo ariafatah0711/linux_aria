@@ -5,7 +5,7 @@ firewall-cmd --add-service=dns --permanent
 firewall-cmd --reload
 
 systemctl enable --now named
-vi /etc/named.conf
+# vi /etc/named.conf
 ##
 ## listen-on port 53 { 127.0.0.1; 11.11.11.1; };
 ## ---
@@ -28,39 +28,39 @@ zone "11.11.11.in-addr.arpa" IN {
 EOF
 
 # 1
-cat > db.forward << EOF 
-$TTL 86400
-@       IN      SOA     ns1.ariafatah.id.       admin.ariafatah.id (
-                2010010101 ; Serial
-                3600    ; Refresh
-                1800    ; Retry
-                604800  ; Expire
-                86400 ); Minimum TTL
+# cat > db.forward << EOF 
+# $TTL 86400
+# @       IN      SOA     ns1.ariafatah.id.       admin.ariafatah.id (
+#                 2010010101 ; Serial
+#                 3600    ; Refresh
+#                 1800    ; Retry
+#                 604800  ; Expire
+#                 86400 ); Minimum TTL
 
-@       IN      NS      ns1.ariafatah.id.
-@       IN      A       11.11.11.1
-ns1     IN      A       11.11.11.1
-www     IN      A       11.11.11.1
-mail    IN      A       11.11.11.1
-ftp     IN      A       11.11.11.1
-ssh     IN      A       11.11.11.1
-EOF
-cat > db.reverse << EOF
-$TTL 86400
-@       IN      SOA     ns1.ariafatah.id.      admin.ariafatah.id. (
-                2010010101 ; Serial
-                3600    ; Refresh
-                1800    ; Retry
-                604800  ; Expire
-                86400 ) ; Minimum TTL
+# @       IN      NS      ns1.ariafatah.id.
+# @       IN      A       11.11.11.1
+# ns1     IN      A       11.11.11.1
+# www     IN      A       11.11.11.1
+# mail    IN      A       11.11.11.1
+# ftp     IN      A       11.11.11.1
+# ssh     IN      A       11.11.11.1
+# EOF
+# cat > db.reverse << EOF
+# $TTL 86400
+# @       IN      SOA     ns1.ariafatah.id.      admin.ariafatah.id. (
+#                 2010010101 ; Serial
+#                 3600    ; Refresh
+#                 1800    ; Retry
+#                 604800  ; Expire
+#                 86400 ) ; Minimum TTL
 
-@       IN      NS      ns1.ariafatah.id.
-1       IN      PTR     ns1.ariafatah.id.
-EOF
+# @       IN      NS      ns1.ariafatah.id.
+# 1       IN      PTR     ns1.ariafatah.id.
+# EOF
 
 # 2
 cat > db.forward << EOF 
-$TTL 1D
+\$TTL 1D
 @       IN SOA  ariafatah.id. admin.ariafatah.id. (
                                         0       ; serial
                                         1D      ; refresh
@@ -75,7 +75,7 @@ ssh     IN A    11.11.11.1
 EOF
 
 cat > db.reverse << EOF
-$TTL 1D
+\$TTL 1D
 @       IN SOA  ariafatah.id. admin.ariafatah.id. (
                                         0       ; serial
                                         1D      ; refresh

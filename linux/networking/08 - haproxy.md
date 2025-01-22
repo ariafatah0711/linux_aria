@@ -115,7 +115,24 @@ Content-Type: text/html
 
 ## selinux
 - [https://man.docs.euro-linux.com/EL%206%20ELS/selinux-policy-doc/haproxy_selinux.8.en.html](https://man.docs.euro-linux.com/EL%206%20ELS/selinux-policy-doc/haproxy_selinux.8.en.html)
-
+### not permanent
 ```bash
 sudo semanage permissive -a haproxy_t
+```
+
+### permanent
+```bash
+cat > haproxy_permissive.te <<EOF
+module haproxy_permissive 1.0;
+
+require {
+    type haproxy_t;
+}
+
+permissive haproxy_t;
+EOF
+
+checkmodule -M -m -o haproxy_permissive.mod haproxy_permissive.te
+semodule_package -o haproxy_permissive.pp -m haproxy_permissive.mod
+semodule -i haproxy_permissive.pp
 ```
