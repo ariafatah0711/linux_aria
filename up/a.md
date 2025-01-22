@@ -3,6 +3,7 @@
 ```bash
 curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/a.sh | sh
 curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/b.sh | sh
+curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/u.sh | sh
 ```
 
 ## run

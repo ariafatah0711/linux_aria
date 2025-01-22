@@ -1,10 +1,31 @@
 # package
-## reinstall package with default configuration
-- if ur want reset configuration file to default u can
-  ```
-  sudo apt-get purge haproxy
-  sudo apt-get install haproxy
-  ```
+## reinstall package with default configuration 
+### apt
+```bash
+# - if ur want reset configuration file to default u can
+sudo apt-get purge haproxy
+sudo apt-get install haproxy
+sudo apt-get autoremove
+
+# remove sisa konfigurasi
+sudo rm -rf /etc/haproxy
+sudo rm -rf /var/lib/haproxy
+sudo rm -rf /var/log/haproxy
+
+sudo apt-get clean
+```
+
+### yum
+```bash
+sudo yum remove haproxy
+
+# remove manual
+sudo rm -rf /etc/haproxy       # File konfigurasi utama
+sudo rm -rf /var/lib/haproxy   # Data runtime
+sudo rm -rf /var/log/haproxy   # Log
+
+sudo yum clean all
+```
 
 # package error
 ## process id
