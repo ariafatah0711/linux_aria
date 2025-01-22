@@ -2,11 +2,13 @@
 ## automation setup up
 ```bash
 user=aria
-domain=ariafatah.id
 
-curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/a.sh | sh
-curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/b.sh | sh
-curl https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/u.sh | sh
+cd /tmp
+wget https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/a.sh
+wget https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/b.sh
+wget https://raw.githubusercontent.com/ariafatah0711/linux_aria/refs/heads/main/up/1/u.sh
+
+# sh a.sh
 ```
 
 ## run

@@ -105,3 +105,5 @@ echo "nameserver 127.0.0.1" > /etc/resolv.conf
 
 nslookup $domain
 dig @11.11.11.1 $domain
+
+systemctl restart NetworkManager

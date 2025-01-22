@@ -1,5 +1,5 @@
 # podman
-podman rm -f web1 web2
+podman rm -fv web1 web2
 
 # haproxy
 sudo yum remove haproxy -y

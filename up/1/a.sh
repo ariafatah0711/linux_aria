@@ -1,6 +1,6 @@
 # setup
 if [ -z $user ]; then 
-    read -p "masukan nama user pengguna yang ingin di install podman" user
+    read -p "masukan nama user untuk memasukan folder webnya > " user
 fi
 
 yum install podman haproxy bind bind-utils -y
