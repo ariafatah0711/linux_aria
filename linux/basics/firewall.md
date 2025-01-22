@@ -12,9 +12,9 @@ firewall-cmd --permanent --remove-port=21/tcp
 firewall-cmd --reload
 firewall-cmd --list-ports
 
+firewall-cmd --new-zone=
+
 firewall-cmd --zone=public --add-port=8080-8090/tcp --permanent
-
-
 ```
 
 ## ufw

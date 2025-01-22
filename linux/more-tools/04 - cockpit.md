@@ -13,3 +13,16 @@ sudo apt install cockpit-podman
 sudo systemctl enable --now cockpit.socket
 sudo systemctl restart cockpit.socket
 ```
+
+### error tls / ssl for tunnel cockpit
+```bash
+# sudo apt install sscg
+# sudo systemctl restart cockpit
+
+sudo cat > /etc/cockpit/cockpit.conf << EOF
+[WebService]
+AllowedOrigins = *
+EOF
+
+sudo systemctl restart cockpit
+```

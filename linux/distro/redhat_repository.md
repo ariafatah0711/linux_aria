@@ -8,6 +8,14 @@
   - and click rhel9dvd or ur iso red hat
 - make folder /mnt/disc/ ```mkdir -p /mnt/disc/```
 - mount repository ```mount /dev/sr0 /mnt/disc/```
+- auto mounting
+  ```bash
+  echo >> /etc/fstab << EOF
+  /dev/sr0    /mnt/disc   iso9660    defaults    0 0
+  EOF
+
+  mount -a
+  ```
 - make file repository conf with ```vi /etc/yum.repos.d/rhel9dvd.repo```
   ```bash
   [BaseOS]

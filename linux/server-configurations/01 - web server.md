@@ -94,7 +94,13 @@
 ## nginx with ssl
 - create cert
   ```bash
+  sudo mkdir -p /etc/ssl/private
+
   openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /etc/ssl/private/domain.key -out /etc/ssl/certs/domain.crt
+
+  openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout /etc/ssl/private/domain.key -out /etc/ssl/certs/domain.crt \
+  -subj "/C=ID/ST=Jawa_Barat/L=Depok/O=Dev-Universe/OU=Dev-Universe/CN=ariafatah.id"
   ```
 - config nginx
   ```bash
@@ -151,4 +157,10 @@
 ```bash
 sudo apt-get install python3-certbot-nginx -y
 sudo certbot --nginx -d <yourdomain.com> -d <www.yourdomain.com>
+```
+
+## selinux
+```bash
+semanage fcontext -a -t httpd_sys_content_t "/path(/.*)?"
+restorecon
 ```
