@@ -1,6 +1,8 @@
 # up asj
 ## automation setup up
 ```bash
+hostnamectl set-hostname <name>
+
 user=aria
 
 cd /tmp

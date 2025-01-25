@@ -11,11 +11,9 @@ firewall-cmd --reload
 
 systemctl enable --now named
 vi /etc/named.conf
-##
 ## listen-on port 53 { 127.0.0.1; 11.11.11.1; };
 ## ---
 ## allow-query     { localhost; 0.0.0.0/0; };
-##
 
 cd /var/named
 cat >> /etc/named.rfc1912.zones << EOF
@@ -32,38 +30,6 @@ zone "$ip1.in-addr.arpa" IN {
 };
 EOF
 
-# 1
-# cat > db.forward << EOF 
-# $TTL 86400
-# @       IN      SOA     ns1.ariafatah.id.       admin.ariafatah.id (
-#                 2010010101 ; Serial
-#                 3600    ; Refresh
-#                 1800    ; Retry
-#                 604800  ; Expire
-#                 86400 ); Minimum TTL
-
-# @       IN      NS      ns1.ariafatah.id.
-# @       IN      A       11.11.11.1
-# ns1     IN      A       11.11.11.1
-# www     IN      A       11.11.11.1
-# mail    IN      A       11.11.11.1
-# ftp     IN      A       11.11.11.1
-# ssh     IN      A       11.11.11.1
-# EOF
-# cat > db.reverse << EOF
-# $TTL 86400
-# @       IN      SOA     ns1.ariafatah.id.      admin.ariafatah.id. (
-#                 2010010101 ; Serial
-#                 3600    ; Refresh
-#                 1800    ; Retry
-#                 604800  ; Expire
-#                 86400 ) ; Minimum TTL
-
-# @       IN      NS      ns1.ariafatah.id.
-# 1       IN      PTR     ns1.ariafatah.id.
-# EOF
-
-# 2
 cat > db.forward << EOF 
 \$TTL 1D
 @       IN SOA  $domain. admin.$domain. (
