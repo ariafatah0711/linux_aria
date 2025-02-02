@@ -76,6 +76,15 @@ this is my linux conf, and my file for run linux
 </details>
 
 <details>
+<summary><b>linux\andorid</b></summary>
+<ul>
+ <li><a href='linux/andorid/adb.html'>adb</a></li>
+ <li><a href='linux/andorid/scrcpy.html'>scrcpy</a></li>
+</ul>
+
+</details>
+
+<details>
 <summary><b>linux\customizations</b></summary>
 <ul>
  <li><a href='linux/customizations/01 - ohmyposh.html'>01 - ohmyposh</a></li>
@@ -105,6 +114,7 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/distro/arch_archinstall.html'>arch_archinstall</a></li>
  <li><a href='linux/distro/arch_hyprland.html'>arch_hyprland</a></li>
  <li><a href='linux/distro/arch_pacman.html'>arch_pacman</a></li>
+ <li><a href='linux/distro/centos_repository.html'>centos_repository</a></li>
  <li><a href='linux/distro/debian_repo un.html'>debian_repo un</a></li>
  <li><a href='linux/distro/redhat_repository.html'>redhat_repository</a></li>
 </ul>
@@ -117,6 +127,8 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/more-tools/01 - ajenti.html'>01 - ajenti</a></li>
  <li><a href='linux/more-tools/02 - freeipa un.html'>02 - freeipa un</a></li>
  <li><a href='linux/more-tools/03 - briker.html'>03 - briker</a></li>
+ <li><a href='linux/more-tools/04 - cockpit.html'>04 - cockpit</a></li>
+ <li><a href='linux/more-tools/05 - cloud flare.html'>05 - cloud flare</a></li>
 </ul>
 
 </details>

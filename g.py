@@ -88,7 +88,7 @@ def collect_data(path, priority_folders, exclude_dirs):
 def generate_file_list(path, type="md"):
     output = ""
     priority_folders = ["linux/basics", "linux/networking", "linux/server-configurations", "linux/command", 'linux', 'redhat']
-    exclude_dirs = {".git", "_bak", "_layouts", "assets", "ctf", "lks", "readme"}
+    exclude_dirs = {".git", "_bak", "_layouts", "assets", "ctf", "lks", "readme", "up"}
     
     data = collect_data(".", priority_folders, exclude_dirs)
 
