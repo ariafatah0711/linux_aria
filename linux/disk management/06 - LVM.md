@@ -9,6 +9,22 @@
   - volume group (vg)
   - logical volume (lv)
 
+## features
+- Ukuran LV (logical volume) dapat diperbesar dan dikurangin secara dinamis. Namun untuk pengurangan tidak disarankan
+- Size disk yang kecil dari beberapa disk yang tidak terpakai dapat digabung menjadi satu volume.
+- LV dimungkinkan memiliki ukuran yang lebih besar dari ukuran 1 disk fisik, disebut disk spanning.
+- LVM dapat mengcopy sampai 6 Salinan data identik, dapat disimpan dan diperbarui secara bersamaan. Fitur ini disebut mirroring LV
+- LV dapat dibuat berdekatan secara logic didistribusikan ke beberapa disk, yang mempercepat throughput I/O untuk file besar saat dibaca dan ditulis secara berurutan. Fitur ini disebut striping. Striping dapat digunakan bersama dengan mirroring.
+- LV dapat di snapshot.
+
+## Architectures
+- Physical Volumes (PVs) => adalah disk fisik yang ditandai pada LVM.
+- Physical Extents (PEs)  🡪 adalah unit-unit dari PV yang akan disebar ke dalam VG.
+- Volume Groups (VGs)  🡪  adalah gabungan dari PV atau tempat organizer PV.
+- Logical Volumes (LVs)  🡪  adalah kumpulan disk partisi yang berasal dari vg dan pv.
+- Logical Extents (LEs)  🡪 adalah unit-unit yang akan dimapping ke PV.
+- Snapshot LV  🡪  adalah tempat pencadangan LV layaknya checkpoint dalam bermain game.
+
 ## layout
 ![alt text](docs/images/image-1.png)
 - LVM Label
