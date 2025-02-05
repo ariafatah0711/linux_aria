@@ -67,3 +67,39 @@ w
 ```bash
 lsblk
 ```
+
+# parted
+```bash
+# virtual disk
+dd if=/dev/zero of=virtualdisk.img bs=1M count=1000
+sudo losetup loop0 virtualdisk.img
+
+parted /dev/sda
+help
+
+# parted with v disk
+parted /dev/loop0 (1000M)
+mklabel msdos
+mkpart
+- Partition type?  primary/extended? primary
+- File system type?  [ext2]? ext2
+- Start? 1
+- End? 1000
+
+print
+quit
+```
+
+## format
+```bash
+# format v disk
+lsblk
+# loop0             7:0    0 1000M  0 loop
+# └─loop0p1       259:0    0  953M  0 loop
+
+mkfs.ext2 /dev/loop0p1
+
+# remove v disk
+sudo losetup -d /dev/loop0
+rm virtualdisk.img
+```
