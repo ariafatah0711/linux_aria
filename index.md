@@ -97,8 +97,9 @@ this is my linux conf, and my file for run linux
 <details>
 <summary><b>linux\disk management</b></summary>
 <ul>
+ <li><a href='linux/disk management/00 - vdisk dd.html'>00 - vdisk dd</a></li>
  <li><a href='linux/disk management/01- disk.html'>01- disk</a></li>
- <li><a href='linux/disk management/02 - fdisk_MBR.html'>02 - fdisk_MBR</a></li>
+ <li><a href='linux/disk management/02 - fdisk_MBR_parted.html'>02 - fdisk_MBR_parted</a></li>
  <li><a href='linux/disk management/03 - gdisk-GPT.html'>03 - gdisk-GPT</a></li>
  <li><a href='linux/disk management/04 - filesystem.html'>04 - filesystem</a></li>
  <li><a href='linux/disk management/05 - swap.html'>05 - swap</a></li>

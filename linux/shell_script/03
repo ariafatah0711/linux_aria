@@ -1,0 +1,14 @@
+#!/bin/sh
+
+hello () {
+    echo "hello world"
+}
+
+hello
+
+hai () {
+    echo "Hello $1"
+}
+
+hai "aria"
+hai "aria fatah"

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+print("Check disk free in /d/ev/sda: ")
+while true
+do
+    usage=$( df -h /dev/sda | grep /dev | awk '{ print $5 }')
+    echo $usage
+    # sleep 3600
+    sleep 2
+done

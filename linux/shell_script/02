@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# if else
+a=10
+b=20
+
+if [ $a -eq $b ]
+then echo "a sama dengan b"
+else echo "a tidak sama dengan b"
+fi
+
+# if elif else with -gt greater then
+nilai=75
+
+if [ $nilai -gt 89 ]; then
+echo "nilai: $nilai rank A"
+elif [ $nilai -gt 79 ]; then
+echo "nilai: $nilai rank B"
+elif [ $nilai -gt 69 ]; then
+echo "nilai: $nilai rank C"
+elif [ $nilai -gt 49 ]; then
+echo "nilai : $nilai rank D"
+else echo "nilai: $nilai rank E"
+fi
+
+# for
+for angka in 0 1 2 3 4 5 6 7 8 9
+do
+    echo $angka
+done
+
+for berkas in /var/log/*.log
+do 
+  ls -lh $berkas
+done
+
+# while
+i=0
+
+while [ $i -le  2 ]
+do
+  echo Number: $i
+  i=$((i+=1))
+done

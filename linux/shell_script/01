@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# hello world
+echo "hello world"
+
+name="aria fatah"
+
+echo $name
+## atau
+echo ${name}
+
+# type data
+# # int
+sum=$((10 + 10))
+echo $sum
+echo $((10 * 10))
+echo $((15 % 2))
+
+a=5
+tambah=$((5 + $a))
+echo $tambah
+tambah=$((tambah += a)) # tidak perlu $tambah karena sudah ada di dalam $(())
+echo $((tambah += a))
+
+# # array
+os=('linux' 'macos' 'windows')
+echo ${os[0]} # linux
+echo ${os[@]} # linux macos windows
+echo ${#os[@]} # 3 => length
+
+q1=('Jan' 'Feb' 'Mar')
+echo $q1[1] # Jan[1] => karena tidak pake {} 
+echo ${q1[1]} # Feb
