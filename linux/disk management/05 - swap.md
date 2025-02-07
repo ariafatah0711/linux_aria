@@ -59,6 +59,14 @@ swapoff /dev/sdc2
 # file
 - swap partition by file
 
+## mkswap
+```bash
+mkswap /dev/sdb1
+swapon /dev/sdb1
+
+swapoff /dev/sdb1
+```
+
 ## command
 ```bash
 dd if=/dev/zero of=/swapfile bs=1024 count=65536
@@ -72,6 +80,9 @@ vi /etc/fstab
 /swapfile none swap defaults 0 0
 or
 /swapfile swap swap defaults 0 0
+
+free -h
+lsblk
 ######
 ```
 

@@ -49,7 +49,7 @@
 ### add partition with type lvm
 ```bash
 fdisk /dev/vdb
-# create partition full
+# create partition
 n
 - p, (default)
 
@@ -100,6 +100,9 @@ mkfs.xfs -f /dev/vg1/lv-2
 # mounting
 mount /dev/vg1/lv-1 /home/ariafatah/lv1
 mount /dev/vg1/lv-2 /home/ariafatah/lv2
+
+# check mount
+df -h
 ```
 
 # LVM extend

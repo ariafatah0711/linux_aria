@@ -44,6 +44,9 @@ n
 -- First Sector : 821248
 -- last Sector  : +200M
 
+# optimal partition disk
+udevadm settle
+
 ### create extended
 n
 - e
