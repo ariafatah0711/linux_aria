@@ -36,6 +36,7 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/basics/00%20-%20shorcut.md'>00 - shorcut</a></li>
  <li><a href='linux/basics/command-list.md'>command-list</a></li>
  <li><a href='linux/basics/compress.md'>compress</a></li>
+ <li><a href='linux/basics/encryption%20decryption.md'>encryption decryption</a></li>
  <li><a href='linux/basics/firewall.md'>firewall</a></li>
  <li><a href='linux/basics/manage%20file.md'>manage file</a></li>
  <li><a href='linux/basics/manage%20network.md'>manage network</a></li>
@@ -73,6 +74,15 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/server-configurations/02%20-%20database%20server.md'>02 - database server</a></li>
  <li><a href='linux/server-configurations/03%20-%20mail%20server%20un.md'>03 - mail server un</a></li>
  <li><a href='linux/server-configurations/04%20-%20xampp_wordpress.md'>04 - xampp_wordpress</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\command</b></summary>
+<ul>
+ <li><a href='linux/command/ssh_scp_sftp.md'>ssh_scp_sftp</a></li>
+ <li><a href='linux/command/wget_curl_rsync.md'>wget_curl_rsync</a></li>
 </ul>
 
 </details>
