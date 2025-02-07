@@ -35,6 +35,7 @@ this is my linux conf, and my file for run linux
 <ul>
  <li><a href='linux/basics/00 - shorcut.html'>00 - shorcut</a></li>
  <li><a href='linux/basics/command-list.html'>command-list</a></li>
+ <li><a href='linux/basics/compress.html'>compress</a></li>
  <li><a href='linux/basics/firewall.html'>firewall</a></li>
  <li><a href='linux/basics/manage file.html'>manage file</a></li>
  <li><a href='linux/basics/manage network.html'>manage network</a></li>
@@ -42,6 +43,7 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/basics/package.html'>package</a></li>
  <li><a href='linux/basics/services.html'>services</a></li>
  <li><a href='linux/basics/tunneling.html'>tunneling</a></li>
+ <li><a href='linux/basics/umask.html'>umask</a></li>
  <li><a href='linux/basics/vbox_upgrade_disk.html'>vbox_upgrade_disk</a></li>
 </ul>
 
@@ -130,6 +132,16 @@ this is my linux conf, and my file for run linux
  <li><a href='linux/more-tools/03 - briker.html'>03 - briker</a></li>
  <li><a href='linux/more-tools/04 - cockpit.html'>04 - cockpit</a></li>
  <li><a href='linux/more-tools/05 - cloud flare.html'>05 - cloud flare</a></li>
+</ul>
+
+</details>
+
+<details>
+<summary><b>linux\shell_script</b></summary>
+<ul>
+ <li><a href='linux/shell_script/01 - var, type data.html'>01 - var, type data</a></li>
+ <li><a href='linux/shell_script/02 - if_elif_else_for_while.html'>02 - if_elif_else_for_while</a></li>
+ <li><a href='linux/shell_script/03 - function_input_output.html'>03 - function_input_output</a></li>
 </ul>
 
 </details>
