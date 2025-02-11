@@ -74,6 +74,14 @@
         $cfg['blowfish_secret'] = 'your_secret';
         ```
 
+- configure access
+  ```bash
+  sudo nano /etc/my.cnf.d/mariadb-server.cnf
+  # bind-address=0.0.0.0
+  
+  sudo systemctl restart mariadb
+  ```
+
 - install phpmyadmin manual instalation
 
 # sql command
