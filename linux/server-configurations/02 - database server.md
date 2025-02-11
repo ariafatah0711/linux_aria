@@ -33,6 +33,21 @@
 - configuration user root
   - ```sudo mysql_secure_installation```
 
+- if cant connect, and have the error
+  ```bash
+  sudo systemctl stop mysqld
+  sudo rm -rf /var/lib/mysql/*
+  sudo mkdir -p /var/lib/mysql
+  sudo chown -R mysql:mysql /var/lib/mysql
+  sudo chmod -R 755 /var/lib/mysql
+
+  # initilaization database (opsional) 
+  sudo mysqld --initialize --user=mysql --datadir=/var/lib/mysql
+
+  sudo systemctl enable mysqld
+  sudo systemctl start mysqld
+  ```
+
 - configuration password for mysql
   - ```mysql -u root -p```
     input ur pass
