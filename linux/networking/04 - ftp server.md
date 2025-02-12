@@ -46,6 +46,19 @@
   local_enable=YES
   write_enable=YES
   ```
+- if passive mode
+  ```bash
+  anonymous_enable=YES
+
+  chroot_local_user=YES
+  chroot_list_enable=YES
+  # (default follows)
+  chroot_list_file=/etc/vsftpd/chroot_list
+
+  pasv_enable=YES
+  pasv_min_port=40000
+  pasv_max_port=50000
+  ```
 
 ## start vsftpd
   - ```firewall-cmd --permanent --add-port=30000-31000/tcp```
