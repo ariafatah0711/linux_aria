@@ -1,4 +1,4 @@
-## Instalasi dan Konfigurasi OpenVPN pada VM Linux dengan Protokol Standar
+<!-- ## Instalasi dan Konfigurasi OpenVPN pada VM Linux dengan Protokol Standar
     - installasi openvpn, dan membuat sertifikat server menggunakan easy-rsa 3.0 ✓
         - instalasi paket yang dibutuhkan
             - yum install epel-release
@@ -91,4 +91,151 @@
 
 ## Uji Konektifitas OpenVP
 - melakukan konektivitas dengan konfigurasi ip 10.10.10.0 ✓
-- melakukan konektivitas dengan konfigurasi ip 127.16.16.0 (yang ini belum bisa ga tau kenapa kayaknya karena subnetmasknya salah) ☓
+- melakukan konektivitas dengan konfigurasi ip 127.16.16.0 (yang ini belum bisa ga tau kenapa kayaknya karena subnetmasknya salah) ☓ -->
+
+## Instalasi dan Konfigurasi OpenVPN pada VM Linux dengan Protokol Standar
+
+### Instalasi OpenVPN dan Pembuatan Sertifikat Server (Easy-RSA 3.0) ✅
+
+#### Instalasi Paket yang Dibutuhkan
+
+```bash
+yum install epel-release
+yum install openvpn easy-rsa
+```
+
+#### Membuat Directory easy-rsa pada `/etc/openvpn`, dan Meng-copy Template easy-rsa
+
+```bash
+mkdir /etc/openvpn/easy-rsa
+cd /usr/share/easy-rsa/3.0.3
+cp -rf * /etc/openvpn/easy-rsa/
+```
+
+#### Membuat Sertifikat untuk Server
+
+```bash
+cd /etc/openvpn/easy-rsa
+./easyrsa init-pki
+./easyrsa build-ca
+./easyrsa gen-dh
+./easyrsa gen-req vpn-harbas nopass
+./easyrsa sign server vpn-harbas
+```
+
+#### Membuat Directory `keys` dan Menyalin Sertifikat yang Dibutuhkan
+
+```bash
+mkdir /etc/openvpn/keys
+chmod 750 /etc/openvpn/keys/
+cp -a /etc/openvpn/easy-rsa/pki/ca.crt /etc/openvpn/keys/
+cp -a /etc/openvpn/easy-rsa/pki/dh.pem /etc/openvpn/keys/dh2048.pem
+cp -a /etc/openvpn/easy-rsa/pki/issued/vpn-harbas.crt /etc/openvpn/keys/
+cp -a /etc/openvpn/easy-rsa/pki/private/vpn-harbas.key /etc/openvpn/keys/
+```
+
+### Instalasi OpenVPN dan Sertifikat Server dengan Easy-RSA 2.0 ❌
+
+(Tidak dilakukan)
+
+---
+
+## Membuat Sertifikat File Client ✅
+
+### Membuat Certificate Client
+
+```bash
+cd /etc/openvpn/easy-rsa
+./easyrsa gen-req client_window nopass
+./easyrsa sign client client_window
+```
+
+### Menyalin Sertifikat Client ke Direktori `/etc/openvpn/client/`
+
+```bash
+cp -a /etc/openvpn/easy-rsa/pki/issued/client_window.crt /etc/openvpn/client/
+cp -a /etc/openvpn/easy-rsa/pki/private/client_window.key /etc/openvpn/client/
+```
+
+### Konfigurasi Server OpenVPN
+
+File: `/etc/openvpn/server.conf`
+
+```ini
+port 1194
+proto udp
+dev tun
+comp-lzo
+management 127.0.0.1 1194
+keepalive 10 120
+persist-key
+persist-tun
+verb 3
+server 127.16.16.0 255.255.255.255
+push "route 192.168.0.0 255.255.255.0"
+push "dhcp-options DNS 192.168.0.5"
+push "dhcp-options DOMAIN harbas.com"
+ca /etc/openvpn/keys/ca.crt
+cert /etc/openvpn/keys/vpn-harbas.crt
+key /etc/openvpn/keys/vpn-harbas.key
+dh /etc/openvpn/keys/dh2048.pem
+```
+
+### Konfigurasi Firewall
+
+```bash
+firewall-cmd --permanent --add-service=openvpn
+firewall-cmd --permanent --add-port=1194/udp
+firewall-cmd --reload
+```
+
+### Membuat File Konfigurasi Client
+
+File: `client1.ovpn`
+
+```ini
+client
+dev tun
+proto udp
+remote 192.168.80.x 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+comp-lzo
+verb 3
+remote-cert-tls server
+<ca>
+--- isi dengan file.ca
+</ca>
+<cert>
+--- isi dengan file.cert
+</cert>
+<key>
+--- isi dengan file.key
+</key>
+```
+
+---
+
+## Konektivitas VPN Client Dapat Berjalan di Background ✅
+
+### Uji Coba VPN pada Windows
+
+* Install OpenVPN
+* Tambahkan file konfigurasi
+* Jalankan OpenVPN
+
+### Uji Coba VPN pada Linux (CLI)
+
+```bash
+apt install openvpn
+sudo openvpn client1.ovp
+```
+
+---
+
+## Uji Konektivitas OpenVPN
+
+* Konektivitas dengan IP 10.10.10.0 ✅
+* Konektivitas dengan IP 127.16.16.0 ❌ (Kemungkinan karena subnetmask salah)
