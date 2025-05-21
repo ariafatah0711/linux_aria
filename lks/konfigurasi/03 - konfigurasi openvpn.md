@@ -108,7 +108,7 @@ yum install openvpn easy-rsa
 
 ```bash
 mkdir /etc/openvpn/easy-rsa
-cd /usr/share/easy-rsa/3.0.3
+cd /usr/share/easy-rsa/3.?.?
 cp -rf * /etc/openvpn/easy-rsa/
 ```
 
@@ -159,26 +159,28 @@ cp -a /etc/openvpn/easy-rsa/pki/private/client_window.key /etc/openvpn/client/
 
 ### Konfigurasi Server OpenVPN
 
-File: `/etc/openvpn/server.conf`
+File: `/etc/openvpn/server/server.conf`
 
 ```ini
-port 1194
-proto udp
-dev tun
-comp-lzo
-management 127.0.0.1 1194
-keepalive 10 120
-persist-key
-persist-tun
-verb 3
-server 127.16.16.0 255.255.255.255
-push "route 192.168.0.0 255.255.255.0"
-push "dhcp-options DNS 192.168.0.5"
-push "dhcp-options DOMAIN harbas.com"
-ca /etc/openvpn/keys/ca.crt
-cert /etc/openvpn/keys/vpn-harbas.crt
-key /etc/openvpn/keys/vpn-harbas.key
-dh /etc/openvpn/keys/dh2048.pem
+port 1194                     # Port server OpenVPN (default 1194)
+proto udp                     # Protokol yang dipakai: UDP
+dev tun                       # Gunakan interface TUN (routing IP)
+comp-lzo                      # Aktifkan kompresi LZO (deprecated, hati-hati)
+management 127.0.0.1 1194     # Management interface di localhost port 1194 (tanpa password, kurang aman)
+keepalive 10 120              # Ping setiap 10 detik, timeout 120 detik
+persist-key                   # Jangan reset key saat restart
+persist-tun                   # Jangan reset tun interface saat restart
+verb 3                        # Level verbose log, 3 = standar cukup detail
+
+server 10.12.10.0 255.255.255.0           # subnet VPN yang di dapatkan client (netmask harus 255.255.255.0 misalnya)
+push "route 192.168.0.0 255.255.255.0"    # Push route jaringan lokal ke klien (client dpt dhcp route ke)
+push "dhcp-options DNS 192.168.0.5"       # Push DNS server ke klien (clinent dpt ip dns)
+push "dhcp-options DOMAIN harbas.com"     # Push domain DNS search ke klien (opsional)
+
+ca /etc/openvpn/keys/ca.crt               # Sertifikat CA
+cert /etc/openvpn/keys/vpn-harbas.crt     # Sertifikat server
+key /etc/openvpn/keys/vpn-harbas.key      # Private key server
+dh /etc/openvpn/keys/dh2048.pem           # Diffie-Hellman parameter
 ```
 
 ### Konfigurasi Firewall
@@ -187,6 +189,12 @@ dh /etc/openvpn/keys/dh2048.pem
 firewall-cmd --permanent --add-service=openvpn
 firewall-cmd --permanent --add-port=1194/udp
 firewall-cmd --reload
+```
+
+### mengaktifkan OpenVPN Server
+```bash
+systemctl enable --now openvpn-server@server
+systemctl restart openvpn-server@server
 ```
 
 ### Membuat File Konfigurasi Client
@@ -215,6 +223,11 @@ remote-cert-tls server
 --- isi dengan file.key
 </key>
 ```
+
+### Tag	Isi file dari Easy-RSA	Keterangan
+- <ca>	pki/ca.crt	Sertifikat CA (Certificate Authority)
+- <cert>	pki/issued/<client_name>.crt	Sertifikat client yang di-generate
+- <key>	pki/private/<client_name>.key	Private key clien
 
 ---
 
