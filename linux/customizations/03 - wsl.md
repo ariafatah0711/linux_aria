@@ -15,6 +15,27 @@ wsl --import <new_distro_name> <path_to_restore> <path_to_backup>/backup.tar
 wsl --import Ubuntu-Restore C:\WSLRestored C:\WSLBackups\Ubuntu-22.04-backup.tar
 ```
 
+# alpine
+```bash
+cat /etc/alpine-release
+# if version 3.17 kebawah maka perlu update
+
+vi /etc/apk/repositories
+###
+https://dl-cdn.alpinelinux.org/alpine/latest-stable/main
+https://dl-cdn.alpinelinux.org/alpine/latest-stable/community
+###
+
+apk update && apk upgrade
+apk add bash sudo nano curl docker-cli
+```
+
+## copy the vm wsl
+```bash
+wsl --export Alpine d:\wsl\alpine.tar
+wsl --import alpine1 d:\wsl\alpine1 d:\wsl\alpine.tar
+```
+
 # error
 - registrasi error 0x80004005
   - https://github.com/microsoft/WSL/issues/10424

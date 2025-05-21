@@ -59,6 +59,17 @@
   pasv_min_port=40000
   pasv_max_port=50000
   ```
+- add user
+  ```bash
+  # adduser ukk
+  # passwd ukk
+
+  vi /etc/vsftpd/vsftpd.conf
+
+  chroot_local_user=YES
+  allow_writeable_chroot=YES
+  local_root=/home/ukk
+  ```
 
 ## start vsftpd
   - ```firewall-cmd --permanent --add-port=30000-31000/tcp```

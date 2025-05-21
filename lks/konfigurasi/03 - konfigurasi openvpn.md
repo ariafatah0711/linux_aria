@@ -34,24 +34,24 @@
             - cp -a /etc/openvpn/easy-rsa/pki/private/client_window.key /etc/openvpn/client/
         - membuat konfigurasi server openvpn
             - vim /etc/openvpn/server.conf
-                ```
-port 1194
-proto udp
-dev tun
-comp-lzo
-management 127.0.0.1 1194
-keepalive 10 120
-persist-key
-persist-tun
-verb 3
-server 127.16.16.0 255.255.255.255
-push "route 192.168.0.0 255.255.255.0"
-push "dhcp-options DNS 192.168.0.5"
-push "dhcp-options DOMAIN harbas.com"
-ca /etc/openvpn/keys/ca.crt
-cert /etc/openvpn/keys/vpn-harbas.crt
-key /etc/openvpn/keys/vpn-harbas.key
-dh /etc/openvpn/keys/dh2048.pem
+                ```INI
+                port 1194
+                proto udp
+                dev tun
+                comp-lzo
+                management 127.0.0.1 1194
+                keepalive 10 120
+                persist-key
+                persist-tun
+                verb 3
+                server 127.16.16.0 255.255.255.255
+                push "route 192.168.0.0 255.255.255.0"
+                push "dhcp-options DNS 192.168.0.5"
+                push "dhcp-options DOMAIN harbas.com"
+                ca /etc/openvpn/keys/ca.crt
+                cert /etc/openvpn/keys/vpn-harbas.crt
+                key /etc/openvpn/keys/vpn-harbas.key
+                dh /etc/openvpn/keys/dh2048.pem
                 ```
         - konfigurasi firewall
             - firewall-cmd --permanent --add-service=openvpn
@@ -60,26 +60,26 @@ dh /etc/openvpn/keys/dh2048.pem
         - membuat certificate client
             - nano client1.ovpn
                 ```
-client
-dev tun
-proto udp
-remote 192.168.80.x 1194
-resolv-retry infinite
-nobind
-persist-key
-persist-tun
-comp-lzo
-verb 3
-remote-cert-tls server
-<ca>
---- isi dengan file.ca
-</ca>
-<cert>
---- isi dengan file.cert
-</cert>
-<key>
---- isi dengan file.key
-</key>
+                client
+                dev tun
+                proto udp
+                remote 192.168.80.x 1194
+                resolv-retry infinite
+                nobind
+                persist-key
+                persist-tun
+                comp-lzo
+                verb 3
+                remote-cert-tls server
+                <ca>
+                --- isi dengan file.ca
+                </ca>
+                <cert>
+                --- isi dengan file.cert
+                </cert>
+                <key>
+                --- isi dengan file.key
+                </key>
                 ```
 
 ## Konektifitas VPN Client dapat Berjalan di Background
