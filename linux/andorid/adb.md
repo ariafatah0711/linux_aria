@@ -60,5 +60,6 @@ fastboot boot twrp.img
 ## adb wifi
 ```bash
 adb tcpip 5555
-adb connect device_ip_address:5555
+adb pair ip:port
+adb connect ip:port
 ```
