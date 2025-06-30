@@ -1,0 +1,50 @@
+# reinstall grub efi kali linux
+```bash
+mkfs.vfat -F32 /dev/partisi_efi bahaya ini hati hati
+
+mkdir -p /mnt/kali/boot/efi
+
+mount /dev/nvme1n1p4 /mnt/kali
+mount /dev/nvme1n1p3 /mnt/kali/boot/efi
+
+mount --bind /dev /mnt/kali/dev
+mount --bind /proc /mnt/kali/proc
+mount --bind /sys /mnt/kali/sys
+mount --bind /run /mnt/kali/run
+mount -t efivarfs efivarfs /mnt/kali/sys/firmware/efi/efivars
+
+chroot /mnt/kali
+
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=KALI
+grub-mkconfig -o /boot/grub/grub.cfg
+
+exit
+umount -R /mnt/kali
+reboot
+```
+
+## reinstall grub efi arch linux
+```bash
+mount --bind /dev /mnt/arch/dev
+mount --bind /proc /mnt/arch/proc
+mount --bind /sys /mnt/arch/sys
+mount --bind /run /mnt/arch/run
+mount --bind /etc/resolv.conf /mnt/arch/etc/resolv.conf # internet
+mount -t efivarfs efivarfs /mnt/arch/sys/firmware/efi/efivars
+
+chroot /mnt/arch
+
+gub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchLinux
+grub-mkconfig -o /boot/grub/grub.cfg
+
+ping -c 3 archlinux.org
+
+pacman -Sy linux linux-firmware
+# jika ada error hapus ini
+# rm -rf /usr/lib/firmware/nvidia/ad103
+# rm -rf /usr/lib/firmware/nvidia/ad104
+# #m -rf /usr/lib/firmware/nvidia/ad106
+# rm -rf /usr/lib/firmware/nvidia/ad107
+
+mkinitcpio -P
+```
